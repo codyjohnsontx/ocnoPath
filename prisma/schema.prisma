@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model TrialCache {
+  id                  String   @id @default(cuid())
+  nctId               String   @unique
+  title               String
+  status              String
+  phase               String[]
+  conditions          String[]
+  briefSummary        String?
+  eligibilityCriteria String?
+  locationsJson       Json
+  sourceUrl           String
+  lastUpdated         String?
+  rawSourceJson       Json
+  sourceVersionKey    String
+  fetchedAt           DateTime @default(now())
+
+  explanations ExplanationCache[]
+}
+
+model ExplanationCache {
+  id               String   @id @default(cuid())
+  nctId            String
+  sourceVersionKey String
+  promptVersion    String
+  model            String?
+  explanationJson  Json
+  safetyStatus     String
+  createdAt        DateTime @default(now())
+
+  trial TrialCache @relation(fields: [nctId], references: [nctId])
+
+  @@index([nctId, sourceVersionKey])
+}
