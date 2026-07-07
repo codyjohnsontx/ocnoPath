@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { AlertTriangle, ArrowRight, LockKeyhole } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { MedicalDisclaimer } from "@/components/medical-disclaimer";
 import { PageIntro } from "@/components/page-intro";
 
@@ -20,6 +20,12 @@ const phases = [
   "PHASE4",
   "NOT_APPLICABLE"
 ];
+
+const fieldClass =
+  "rounded-xl border-[1.5px] border-line bg-field px-[15px] py-[13px] text-[15px] text-ink outline-none transition focus:border-grape focus:ring-2 focus:ring-grape/20";
+const labelClass = "grid gap-2";
+const labelText = "text-sm font-bold text-ink";
+const optionalText = "font-medium text-faint";
 
 export default function SearchPage() {
   const router = useRouter();
@@ -48,164 +54,112 @@ export default function SearchPage() {
   }
 
   return (
-    <main className="min-h-screen bg-clinical px-5 py-10 sm:px-8 lg:px-10">
-      <div className="mx-auto max-w-5xl">
+    <main className="flex-1">
+      <div className="mx-auto max-w-[900px] animate-[fadeUp_500ms_ease-out] px-5 pb-16 pt-11 sm:px-10">
         <PageIntro
           eyebrow="Trial search"
-          title="Enter the basic details needed to search public cancer trial records."
-          body="Avoid names, dates of birth, medical record numbers, or other personal identifiers. Optional fields can improve the search, but they are not required."
+          title="Enter the basics to search public cancer trial records."
+          body="Skip names, dates of birth, and record numbers. Optional fields sharpen the search but are never required."
         />
 
-        <div className="mt-8 rounded-md border border-line bg-white p-5 shadow-soft">
-          <div className="mb-6 flex gap-3 rounded-md border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
-            <AlertTriangle className="mt-0.5 shrink-0" size={18} />
-            <p>
-              This search does not confirm eligibility. Use results to prepare
-              questions for your oncology care team.
-            </p>
-          </div>
+        <form
+          onSubmit={submit}
+          className="mt-8 rounded-[26px] bg-white p-[30px] shadow-card"
+        >
+          <div className="grid gap-5 sm:grid-cols-2">
+            <label className={labelClass}>
+              <span className={labelText}>Cancer type</span>
+              <input
+                required
+                name="cancerType"
+                placeholder="Example: breast cancer"
+                className={fieldClass}
+              />
+            </label>
 
-          <form onSubmit={submit} className="grid gap-6">
-            <div className="grid gap-5 md:grid-cols-2">
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-ink">
-                  Cancer type
-                </span>
-                <input
-                  required
-                  name="cancerType"
-                  placeholder="Example: breast cancer"
-                  className="rounded-md border border-line bg-white px-3 py-3 text-ink outline-none transition focus:border-action focus:ring-2 focus:ring-action/20"
-                />
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-ink">
-                  Stage <span className="font-normal text-slateblue">(optional)</span>
-                </span>
-                <input
-                  name="stage"
-                  placeholder="Example: stage IV"
-                  className="rounded-md border border-line bg-white px-3 py-3 text-ink outline-none transition focus:border-action focus:ring-2 focus:ring-action/20"
-                />
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-ink">
-                  Biomarkers or mutations{" "}
-                  <span className="font-normal text-slateblue">(optional)</span>
-                </span>
-                <input
-                  name="biomarkers"
-                  placeholder="Example: EGFR, HER2, BRCA"
-                  className="rounded-md border border-line bg-white px-3 py-3 text-ink outline-none transition focus:border-action focus:ring-2 focus:ring-action/20"
-                />
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-ink">
-                  Prior treatments{" "}
-                  <span className="font-normal text-slateblue">(optional)</span>
-                </span>
-                <input
-                  name="priorTreatments"
-                  placeholder="Example: chemotherapy, immunotherapy"
-                  className="rounded-md border border-line bg-white px-3 py-3 text-ink outline-none transition focus:border-action focus:ring-2 focus:ring-action/20"
-                />
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-ink">Age group</span>
-                <select
-                  required
-                  name="ageGroup"
-                  defaultValue="adult"
-                  className="rounded-md border border-line bg-white px-3 py-3 text-ink outline-none transition focus:border-action focus:ring-2 focus:ring-action/20"
-                >
-                  <option value="adult">Adult</option>
-                  <option value="pediatric">Pediatric</option>
-                </select>
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-ink">
-                  ZIP code or city/state
-                </span>
-                <input
-                  required
-                  name="location"
-                  placeholder="Example: Austin, TX"
-                  className="rounded-md border border-line bg-white px-3 py-3 text-ink outline-none transition focus:border-action focus:ring-2 focus:ring-action/20"
-                />
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-ink">
-                  Travel radius
-                </span>
-                <select
-                  name="radius"
-                  defaultValue="100"
-                  className="rounded-md border border-line bg-white px-3 py-3 text-ink outline-none transition focus:border-action focus:ring-2 focus:ring-action/20"
-                >
-                  <option value="25">25 miles</option>
-                  <option value="50">50 miles</option>
-                  <option value="100">100 miles</option>
-                  <option value="250">250 miles</option>
-                  <option value="500">500 miles</option>
-                </select>
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-ink">
-                  Willingness to travel{" "}
-                  <span className="font-normal text-slateblue">(optional)</span>
-                </span>
-                <select
-                  name="willingnessToTravel"
-                  defaultValue=""
-                  className="rounded-md border border-line bg-white px-3 py-3 text-ink outline-none transition focus:border-action focus:ring-2 focus:ring-action/20"
-                >
-                  <option value="">No preference</option>
-                  <option value="local only">Local only</option>
-                  <option value="regional travel">Regional travel</option>
-                  <option value="open to travel">Open to travel</option>
-                </select>
-              </label>
-            </div>
-
-            <fieldset className="grid gap-3">
-              <legend className="text-sm font-semibold text-ink">
-                Recruiting status
-              </legend>
-              <div className="flex flex-wrap gap-2">
-                {statuses.map((status) => (
-                  <button
-                    key={status.value}
-                    type="button"
-                    onClick={() => toggleStatus(status.value)}
-                    className={`rounded-md border px-3 py-2 text-sm font-medium transition ${
-                      selectedStatuses.includes(status.value)
-                        ? "border-action bg-action text-white"
-                        : "border-line bg-white text-slateblue hover:border-action"
-                    }`}
-                  >
-                    {status.label}
-                  </button>
-                ))}
-              </div>
-            </fieldset>
-
-            <label className="grid gap-2">
-              <span className="text-sm font-semibold text-ink">
-                Trial phase preference{" "}
-                <span className="font-normal text-slateblue">(optional)</span>
+            <label className={labelClass}>
+              <span className={labelText}>
+                Stage <span className={optionalText}>(optional)</span>
               </span>
-              <select
-                name="phase"
-                defaultValue=""
-                className="rounded-md border border-line bg-white px-3 py-3 text-ink outline-none transition focus:border-action focus:ring-2 focus:ring-action/20"
-              >
+              <input
+                name="stage"
+                placeholder="Example: stage IV"
+                className={fieldClass}
+              />
+            </label>
+
+            <label className={labelClass}>
+              <span className={labelText}>
+                Biomarkers or mutations{" "}
+                <span className={optionalText}>(optional)</span>
+              </span>
+              <input
+                name="biomarkers"
+                placeholder="Example: EGFR, HER2, BRCA"
+                className={fieldClass}
+              />
+            </label>
+
+            <label className={labelClass}>
+              <span className={labelText}>
+                Prior treatments{" "}
+                <span className={optionalText}>(optional)</span>
+              </span>
+              <input
+                name="priorTreatments"
+                placeholder="Example: chemotherapy"
+                className={fieldClass}
+              />
+            </label>
+
+            <label className={labelClass}>
+              <span className={labelText}>Age group</span>
+              <select required name="ageGroup" defaultValue="adult" className={fieldClass}>
+                <option value="adult">Adult</option>
+                <option value="pediatric">Pediatric</option>
+              </select>
+            </label>
+
+            <label className={labelClass}>
+              <span className={labelText}>ZIP code or city/state</span>
+              <input
+                required
+                name="location"
+                placeholder="Example: Austin, TX"
+                className={fieldClass}
+              />
+            </label>
+
+            <label className={labelClass}>
+              <span className={labelText}>Travel radius</span>
+              <select name="radius" defaultValue="100" className={fieldClass}>
+                <option value="25">25 miles</option>
+                <option value="50">50 miles</option>
+                <option value="100">100 miles</option>
+                <option value="250">250 miles</option>
+                <option value="500">500 miles</option>
+              </select>
+            </label>
+
+            <label className={labelClass}>
+              <span className={labelText}>
+                Willingness to travel{" "}
+                <span className={optionalText}>(optional)</span>
+              </span>
+              <select name="willingnessToTravel" defaultValue="" className={fieldClass}>
+                <option value="">No preference</option>
+                <option value="local only">Local only</option>
+                <option value="regional travel">Regional travel</option>
+                <option value="open to travel">Open to travel</option>
+              </select>
+            </label>
+
+            <label className={`${labelClass} sm:col-span-2`}>
+              <span className={labelText}>
+                Trial phase preference{" "}
+                <span className={optionalText}>(optional)</span>
+              </span>
+              <select name="phase" defaultValue="" className={fieldClass}>
                 <option value="">No phase preference</option>
                 {phases.map((phase) => (
                   <option key={phase} value={phase}>
@@ -214,23 +168,52 @@ export default function SearchPage() {
                 ))}
               </select>
             </label>
+          </div>
 
-            <div className="flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
-              <p className="flex max-w-xl gap-2 text-sm leading-6 text-slateblue">
-                <LockKeyhole className="mt-0.5 shrink-0" size={16} />
-                Searches are used to request public trial records. Saved
-                searches stay in this browser only.
-              </p>
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-action px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-action focus:ring-offset-2"
-              >
-                Search trials
-                <ArrowRight size={18} />
-              </button>
+          <div className="mt-6">
+            <span id="recruiting-status-label" className={labelText}>
+              Recruiting status
+            </span>
+            <div
+              role="group"
+              aria-labelledby="recruiting-status-label"
+              className="mt-3 flex flex-wrap gap-2.5"
+            >
+              {statuses.map((status) => {
+                const on = selectedStatuses.includes(status.value);
+                return (
+                  <button
+                    key={status.value}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => toggleStatus(status.value)}
+                    className={`rounded-xl border-[1.5px] px-4 py-2.5 text-sm font-semibold transition ${
+                      on
+                        ? "border-grape bg-grape text-white"
+                        : "border-line2 bg-white text-muted hover:border-grape"
+                    }`}
+                  >
+                    {status.label}
+                  </button>
+                );
+              })}
             </div>
-          </form>
-        </div>
+          </div>
+
+          <div className="mt-[26px] flex flex-col gap-4 border-t border-hair pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-[420px] text-[13.5px] leading-[1.5] text-faint">
+              🔒 Searches request public trial records. Saved searches stay in
+              this browser only.
+            </p>
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-grape px-[30px] py-[15px] text-[15.5px] font-bold text-white shadow-btn transition hover:bg-grapeDark"
+            >
+              Search trials
+              <ArrowRight size={18} />
+            </button>
+          </div>
+        </form>
       </div>
       <MedicalDisclaimer />
     </main>

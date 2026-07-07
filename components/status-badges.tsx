@@ -1,27 +1,37 @@
+const pillBase =
+  "inline-flex items-center rounded-full px-3 py-1.5 text-xs font-bold";
+
+const ok = "bg-okSoft text-okText";
+const info = "bg-infoSoft text-infoText";
+const warn = "bg-cream text-amberDeep";
+const neutral = "bg-neutralSoft text-neutralText";
+
 const statusStyles: Record<string, string> = {
-  RECRUITING: "border-teal-200 bg-teal-50 text-teal-900",
-  NOT_YET_RECRUITING: "border-blue-200 bg-blue-50 text-blue-900",
-  ACTIVE_NOT_RECRUITING: "border-slate-200 bg-slate-50 text-slate-800"
+  RECRUITING: ok,
+  ENROLLING_BY_INVITATION: ok,
+  NOT_YET_RECRUITING: info,
+  ACTIVE_NOT_RECRUITING: warn,
+  SUSPENDED: warn,
+  COMPLETED: neutral,
+  TERMINATED: neutral,
+  WITHDRAWN: neutral,
+  UNKNOWN: neutral
 };
 
 export function StatusBadge({ status }: { status: string }) {
   return (
-    <span
-      className={`rounded-md border px-2 py-1 text-xs font-semibold ${
-        statusStyles[status] || "border-line bg-clinical text-slateblue"
-      }`}
-    >
+    <span className={`${pillBase} ${statusStyles[status] || neutral}`}>
       {format(status)}
     </span>
   );
 }
 
 export function PhaseBadge({ phase }: { phase: string }) {
-  return (
-    <span className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-950">
-      {format(phase)}
-    </span>
-  );
+  return <span className={`${pillBase} bg-grapeSoft text-grape`}>{format(phase)}</span>;
+}
+
+export function IdBadge({ nctId }: { nctId: string }) {
+  return <span className={`${pillBase} ${neutral}`}>{nctId}</span>;
 }
 
 function format(value: string) {
