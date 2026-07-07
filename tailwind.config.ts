@@ -9,15 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#102028",
-        slateblue: "#29556b",
-        mint: "#d9eee8",
-        clinical: "#f4f8f7",
-        line: "#d8e3e1",
-        action: "#0f766e"
+        lav: "#f3f0fb", // page background
+        ink: "#1f1a33", // primary text
+        grape: "#6d4bd8", // primary purple
+        grapeDark: "#5a3cc0", // primary hover
+        amber: "#f5b73d", // accent
+        amberInk: "#3a2c05", // text on amber
+        amberDeep: "#a9791a", // amber-toned heading
+        muted: "#544f6b", // body copy
+        faint: "#8b86a3", // labels, hints
+        line: "#e6ddf7", // borders
+        line2: "#e0d9f2", // button borders
+        hair: "#efeaf7", // hairline dividers
+        lilac: "#f5f2fc", // soft purple surface
+        cream: "#fdf6e8", // soft amber surface
+        field: "#faf8ff" // input fill
+      },
+      fontFamily: {
+        sans: ["var(--font-jakarta)", "system-ui", "sans-serif"]
       },
       boxShadow: {
-        soft: "0 18px 60px rgba(16, 32, 40, 0.12)"
+        nav: "0 6px 18px rgba(109,75,216,.12)",
+        btn: "0 16px 32px rgba(109,75,216,.3)",
+        card: "0 24px 50px rgba(109,75,216,.1)",
+        soft: "0 10px 30px rgba(109,75,216,.07)"
+      },
+      keyframes: {
+        fadeUp: {
+          from: { opacity: "0", transform: "translateY(14px)" },
+          to: { opacity: "1", transform: "none" }
+        }
+      },
+      animation: {
+        fadeUp: "fadeUp 700ms ease-out"
       }
     }
   },

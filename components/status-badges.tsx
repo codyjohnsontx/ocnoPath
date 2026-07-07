@@ -1,14 +1,17 @@
+const pillBase =
+  "inline-flex items-center rounded-full px-3 py-1.5 text-xs font-bold";
+
 const statusStyles: Record<string, string> = {
-  RECRUITING: "border-teal-200 bg-teal-50 text-teal-900",
-  NOT_YET_RECRUITING: "border-blue-200 bg-blue-50 text-blue-900",
-  ACTIVE_NOT_RECRUITING: "border-slate-200 bg-slate-50 text-slate-800"
+  RECRUITING: "bg-[#eafaf1] text-[#1c8a54]",
+  NOT_YET_RECRUITING: "bg-[#eef0fb] text-[#4a45c9]",
+  ACTIVE_NOT_RECRUITING: "bg-cream text-amberDeep"
 };
 
 export function StatusBadge({ status }: { status: string }) {
   return (
     <span
-      className={`rounded-md border px-2 py-1 text-xs font-semibold ${
-        statusStyles[status] || "border-line bg-clinical text-slateblue"
+      className={`${pillBase} ${
+        statusStyles[status] || "bg-[#eee] text-[#555]"
       }`}
     >
       {format(status)}
@@ -18,9 +21,15 @@ export function StatusBadge({ status }: { status: string }) {
 
 export function PhaseBadge({ phase }: { phase: string }) {
   return (
-    <span className="rounded-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-xs font-semibold text-indigo-950">
+    <span className={`${pillBase} bg-[#f0ebfb] text-grape`}>
       {format(phase)}
     </span>
+  );
+}
+
+export function IdBadge({ nctId }: { nctId: string }) {
+  return (
+    <span className={`${pillBase} bg-[#f4f2fb] text-[#7a7594]`}>{nctId}</span>
   );
 }
 

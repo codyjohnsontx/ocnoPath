@@ -1,208 +1,165 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  CheckCircle2,
-  ClipboardList,
-  FileText,
-  LockKeyhole,
-  Search,
-  ShieldCheck
-} from "lucide-react";
-import { MedicalDisclaimer } from "@/components/medical-disclaimer";
-import { TrialExample } from "@/components/trial-example";
-
-const problemPoints = [
-  "Cancer trial databases are overwhelming.",
-  "Eligibility criteria are hard to understand.",
-  "Patients often do not know which questions to ask.",
-  "Important trial options can be difficult to find."
-];
+import { ArrowRight } from "lucide-react";
+import { Squiggle } from "@/components/squiggle";
 
 const steps = [
   {
-    icon: ClipboardList,
+    n: "1",
+    surface: "bg-lilac",
+    badge: "bg-grape text-white",
     title: "Enter basic context",
-    text: "Share cancer type, age group, location, and optional clinical details without uploading records."
+    text: "Share cancer type, age group, and location. Never your records or personal identifiers."
   },
   {
-    icon: Search,
+    n: "2",
+    surface: "bg-cream",
+    badge: "bg-amber text-amberInk",
     title: "Search official sources",
-    text: "Review public ClinicalTrials.gov records through a patient-friendly search flow."
+    text: "We pull public ClinicalTrials.gov records into a friendly, readable flow."
   },
   {
-    icon: FileText,
+    n: "3",
+    surface: "bg-lilac",
+    badge: "bg-grape text-white",
     title: "Read plain-English notes",
-    text: "See cautious explanations, possible concerns, missing information, and questions to ask."
+    text: "Cautious explanations, what's missing, and the questions worth asking."
   }
 ];
 
-const safety = [
-  "Not medical advice",
-  "Does not diagnose",
-  "Does not recommend treatment",
-  "Does not confirm eligibility",
-  "Source-linked explanations",
-  "Privacy-first design",
-  "No real medical record storage in the MVP"
+const capabilities = [
+  "Plain-English summaries",
+  "Public, source-linked records",
+  "Questions for your care team",
+  "Saved privately in your browser"
 ];
 
 export default function Home() {
   return (
-    <main>
-      <section className="relative isolate min-h-[calc(100svh-72px)] overflow-hidden border-b border-line bg-ink text-white">
-        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(16,32,40,0.98)_0%,rgba(16,32,40,0.86)_42%,rgba(15,118,110,0.32)_100%)]" />
-        <div className="absolute inset-y-0 right-0 w-full opacity-40">
-          <div className="h-full w-full bg-[radial-gradient(circle_at_72%_30%,rgba(217,238,232,0.38),transparent_28%),linear-gradient(135deg,transparent_0%,transparent_35%,rgba(244,248,247,0.12)_35%,rgba(244,248,247,0.12)_36%,transparent_36%,transparent_100%)]" />
-        </div>
-        <div className="relative mx-auto flex min-h-[calc(100svh-72px)] max-w-7xl items-center px-5 py-16 sm:px-8 lg:px-10">
-          <div className="max-w-3xl animate-[fadeUp_700ms_ease-out]">
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-mint">
-              OncoPath
-            </p>
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-normal sm:text-6xl lg:text-7xl">
-              Find cancer trials worth discussing with your care team.
+    <main className="flex-1">
+      <div className="mx-auto max-w-[1120px]">
+        {/* Hero */}
+        <section className="relative grid animate-[fadeUp_700ms_ease-out] items-center gap-11 px-5 py-14 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
+          <div className="pointer-events-none absolute -right-10 -top-[70px] hidden h-[280px] w-[280px] rounded-full bg-[#e7dffb] lg:block" />
+          <div className="relative">
+            <h1 className="text-[44px] font-extrabold leading-[1.08] tracking-[-0.02em] sm:text-[54px] lg:text-[60px]">
+              A calmer <Squiggle>path</Squiggle> through cancer trials.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-100">
-              OncoPath helps patients and caregivers understand public cancer
-              clinical trial information and prepare better conversations with
-              oncology teams.
+            <p className="mt-7 max-w-[440px] text-[17.5px] leading-[1.62] text-muted">
+              OncoPath makes public trial information easy to understand and
+              helps you walk into your next appointment with the right questions
+              for your care team.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/search"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:bg-mint focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink"
+                className="inline-flex items-center gap-2 rounded-full bg-grape px-7 py-[15px] text-[15.5px] font-bold text-white shadow-btn transition hover:bg-grapeDark"
               >
                 Start a trial search
                 <ArrowRight size={18} />
               </Link>
-              <a
-                href="#how-it-works"
-                className="inline-flex items-center justify-center rounded-md border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink"
+              <Link
+                href="/discussion-sheet"
+                className="text-[15px] font-bold text-grape hover:underline"
               >
-                See how it works
-              </a>
+                Discussion sheet
+              </Link>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section className="border-b border-line bg-white px-5 py-18 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-action">
-              The problem
+          <div className="relative grid gap-4">
+            <div className="rounded-[22px] bg-grape p-6 text-white">
+              <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#cdbdf7]">
+                Plain-English
+              </p>
+              <h3 className="mb-1.5 mt-2 text-xl font-extrabold">
+                Notes you can read
+              </h3>
+              <p className="text-sm leading-[1.55] text-[#e4dcf8]">
+                Cautious explanations of what the record says, and what it
+                doesn&apos;t.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-[22px] bg-amber p-[22px] text-amberInk">
+                <h3 className="mb-1.5 text-[17px] font-extrabold">
+                  Source-linked
+                </h3>
+                <p className="text-[13.5px] leading-[1.5]">
+                  Every note ties back to the official record.
+                </p>
+              </div>
+              <div className="rounded-[22px] border border-[#eae3f7] bg-white p-[22px]">
+                <h3 className="mb-1.5 text-[17px] font-extrabold text-ink">
+                  Questions to ask
+                </h3>
+                <p className="text-[13.5px] leading-[1.5] text-muted">
+                  Walk in ready to talk it through.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How it works */}
+        <section className="mx-4 rounded-[34px] bg-white px-5 py-14 sm:px-10 sm:py-[60px]">
+          <div className="mb-11 text-center">
+            <p className="mb-2.5 text-[13px] font-bold uppercase tracking-[0.14em] text-amber">
+              How it works
             </p>
-            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-normal text-ink sm:text-4xl">
-              Trial information is public, but it is rarely easy to use.
+            <h2 className="text-[32px] font-extrabold tracking-[-0.02em] sm:text-[40px]">
+              Three <Squiggle>clear</Squiggle> steps.
             </h2>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {problemPoints.map((point) => (
-              <div key={point} className="border-t border-line pt-5">
-                <CheckCircle2 className="mb-4 text-action" size={22} />
-                <p className="text-lg font-medium leading-7 text-ink">
-                  {point}
+          <div className="grid gap-5 md:grid-cols-3">
+            {steps.map((step) => (
+              <div
+                key={step.n}
+                className={`rounded-3xl p-[30px] ${step.surface}`}
+              >
+                <span
+                  className={`flex h-[54px] w-[54px] items-center justify-center rounded-[18px] text-[22px] font-extrabold ${step.badge}`}
+                >
+                  {step.n}
+                </span>
+                <h3 className="mb-2 mt-5 text-[21px] font-extrabold">
+                  {step.title}
+                </h3>
+                <p className="text-[15px] leading-[1.6] text-muted">
+                  {step.text}
                 </p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section
-        id="how-it-works"
-        className="border-b border-line bg-clinical px-5 py-18 sm:px-8 lg:px-10"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-action">
-              How it works
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-normal text-ink sm:text-4xl">
-              Search, understand, and prepare for a better conversation.
-            </h2>
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {steps.map((step) => (
-              <div
-                key={step.title}
-                className="group border-t border-slateblue/25 pt-6 transition duration-300 hover:-translate-y-1"
-              >
-                <step.icon className="text-action" size={26} />
-                <h3 className="mt-5 text-xl font-semibold text-ink">
-                  {step.title}
-                </h3>
-                <p className="mt-3 leading-7 text-slateblue">{step.text}</p>
+        {/* What OncoPath does */}
+        <section className="px-4 py-11 sm:pb-14">
+          <div className="relative overflow-hidden rounded-[30px] bg-grape px-8 py-12 text-white sm:px-12 sm:py-[52px]">
+            <div className="pointer-events-none absolute -right-[30px] -top-10 h-[220px] w-[220px] rounded-full bg-amber/25" />
+            <div className="relative grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+              <div>
+                <p className="mb-2.5 text-[12.5px] font-bold uppercase tracking-[0.16em] text-[#d6c8f7]">
+                  What OncoPath does
+                </p>
+                <h2 className="text-[26px] font-extrabold leading-[1.16] sm:text-[32px]">
+                  Here to connect you with trial options you might not have found
+                  on your own.
+                </h2>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-line bg-white px-5 py-18 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div className="lg:sticky lg:top-24">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-action">
-              Example explanation
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-normal text-ink sm:text-4xl">
-              Complex trial criteria, translated cautiously.
-            </h2>
-            <p className="mt-5 leading-7 text-slateblue">
-              Each explanation separates what is stated in the public record
-              from what remains unknown.
-            </p>
-          </div>
-          <TrialExample />
-        </div>
-      </section>
-
-      <section className="border-b border-line bg-ink px-5 py-18 text-white sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-mint">
-              Trust and safety
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-normal sm:text-4xl">
-              Built around clear limits.
-            </h2>
-            <p className="mt-5 leading-7 text-slate-200">
-              OncoPath is designed to support oncology conversations, not
-              replace clinical judgment.
-            </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {safety.map((item) => (
-              <div key={item} className="flex gap-3 border-t border-white/15 pt-4">
-                <ShieldCheck className="mt-0.5 shrink-0 text-mint" size={20} />
-                <span className="leading-7 text-slate-100">{item}</span>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {capabilities.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl bg-white/[.14] px-[17px] py-[15px] text-[14.5px] font-semibold"
+                  >
+                    {item}
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-white px-5 py-16 sm:px-8 lg:px-10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-action">
-              <LockKeyhole size={16} />
-              Privacy-first MVP
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-normal text-ink">
-              Start with public data and browser-local saved searches.
-            </h2>
-          </div>
-          <Link
-            href="/search"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-action px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-action focus:ring-offset-2"
-          >
-            Start a trial search
-            <ArrowRight size={18} />
-          </Link>
-        </div>
-      </section>
-      <MedicalDisclaimer />
+        </section>
+      </div>
     </main>
   );
 }

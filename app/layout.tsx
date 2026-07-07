@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-const geist = Geist({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-geist-sans"
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-jakarta"
 });
 
 export const metadata: Metadata = {
-  title: "OncoPath | Cancer trial discovery",
+  title: "OncoPath | A calmer path through cancer trials",
   description:
-    "Find cancer trials worth discussing with your care team using source-linked public clinical trial information."
+    "OncoPath makes public cancer trial information easy to understand and helps you walk into your next appointment with the right questions for your care team."
 };
 
 export default function RootLayout({
@@ -22,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className={`${geist.variable} antialiased`}>
+      <body
+        className={`${jakarta.variable} flex min-h-screen flex-col overflow-x-hidden bg-lav antialiased`}
+      >
         <SiteHeader />
         {children}
         <SiteFooter />

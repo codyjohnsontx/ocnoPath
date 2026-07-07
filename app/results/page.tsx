@@ -3,10 +3,9 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { BookmarkPlus, ExternalLink, Loader2, Printer, SearchX } from "lucide-react";
+import { BookmarkPlus, Loader2, SearchX } from "lucide-react";
 import { MedicalDisclaimer } from "@/components/medical-disclaimer";
-import { PageIntro } from "@/components/page-intro";
-import { PhaseBadge, StatusBadge } from "@/components/status-badges";
+import { IdBadge, PhaseBadge, StatusBadge } from "@/components/status-badges";
 import { saveSearch, saveTrialToSheet } from "@/lib/browser-storage";
 import type { TrialRecord } from "@/lib/types";
 
@@ -56,47 +55,53 @@ function ResultsContent() {
   }
 
   return (
-    <main className="min-h-screen bg-clinical px-5 py-10 sm:px-8 lg:px-10">
-      <div className="mx-auto max-w-7xl">
-        <PageIntro
-          eyebrow="Trial results"
-          title="Review trials that may be worth discussing with your oncology team."
-          body="Results are based on public trial records. OncoPath does not confirm eligibility or rank trials as medical recommendations."
-        />
+    <main className="flex-1">
+      <div className="mx-auto max-w-[1120px] animate-[fadeUp_500ms_ease-out] px-5 pb-16 pt-11 sm:px-10">
+        <p className="mb-2.5 text-[13px] font-bold uppercase tracking-[0.14em] text-amber">
+          Trial results
+        </p>
+        <h1 className="text-[32px] font-extrabold leading-[1.12] tracking-[-0.02em] sm:text-[40px]">
+          Trials worth discussing with your oncology team.
+        </h1>
 
-        <div className="mt-6 flex flex-col gap-3 rounded-md border border-line bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-sm leading-6 text-slateblue">
-            Search:{" "}
-            <span className="font-semibold text-ink">
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-4 rounded-[18px] bg-white px-[22px] py-4">
+          <p className="text-[15px] text-muted">
+            Showing{" "}
+            <strong className="text-ink">
               {searchParams.get("cancerType") || "Cancer trials"}
-            </span>{" "}
+            </strong>{" "}
             near{" "}
-            <span className="font-semibold text-ink">
-              {searchParams.get("location") || "selected location"}
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-2">
+            <strong className="text-ink">
+              {searchParams.get("location") || "your area"}
+            </strong>
+          </p>
+          <div className="flex flex-wrap gap-2.5">
             <button
               type="button"
               onClick={handleSaveSearch}
-              className="inline-flex items-center gap-2 rounded-md border border-line bg-white px-3 py-2 text-sm font-semibold text-ink transition hover:border-action"
+              className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-line2 px-[18px] py-2.5 text-sm font-bold text-grape transition hover:border-grape"
             >
-              <BookmarkPlus size={16} />
-              Save search locally
+              <BookmarkPlus size={15} />
+              Save search
             </button>
             <Link
-              href="/discussion-sheet"
-              className="inline-flex items-center gap-2 rounded-md bg-ink px-3 py-2 text-sm font-semibold text-white transition hover:bg-slateblue"
+              href="/search"
+              className="rounded-full border-[1.5px] border-line2 px-[18px] py-2.5 text-sm font-bold text-grape transition hover:border-grape"
             >
-              <Printer size={16} />
+              Edit search
+            </Link>
+            <Link
+              href="/discussion-sheet"
+              className="rounded-full bg-ink px-[18px] py-2.5 text-sm font-bold text-white transition hover:opacity-90"
+            >
               Discussion sheet
             </Link>
           </div>
         </div>
 
         {isLoading ? (
-          <div className="mt-8 flex min-h-72 items-center justify-center rounded-md border border-line bg-white">
-            <div className="flex items-center gap-3 text-slateblue">
+          <div className="mt-6 flex min-h-72 items-center justify-center rounded-[22px] bg-white">
+            <div className="flex items-center gap-3 text-muted">
               <Loader2 className="animate-spin" size={20} />
               Searching official public trial records...
             </div>
@@ -109,53 +114,43 @@ function ResultsContent() {
             body="Try broadening the cancer type, status, phase, or travel radius. Your oncology team may also know about local options not reflected in public records."
           />
         ) : (
-          <div className="mt-8 grid gap-5">
+          <div className="mt-[22px] grid gap-[18px]">
             {trials.map((trial) => (
               <article
                 key={trial.nctId}
-                className="rounded-md border border-line bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-soft"
+                className="rounded-[22px] bg-white p-[26px] shadow-soft transition duration-300 hover:-translate-y-0.5"
               >
-                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                  <div className="max-w-4xl">
+                <div className="flex flex-wrap justify-between gap-5">
+                  <div className="max-w-[640px]">
                     <div className="flex flex-wrap gap-2">
                       <StatusBadge status={trial.status} />
                       <PhaseBadge phase={trial.phase?.[0] || "UNKNOWN"} />
-                      <span className="rounded-md border border-line px-2 py-1 text-xs font-semibold text-slateblue">
-                        {trial.nctId}
-                      </span>
+                      <IdBadge nctId={trial.nctId} />
                     </div>
-                    <h2 className="mt-4 text-2xl font-semibold leading-tight text-ink">
+                    <h2 className="mt-4 text-[22px] font-extrabold leading-[1.25]">
                       {trial.title}
                     </h2>
-                    <p className="mt-3 line-clamp-3 leading-7 text-slateblue">
-                      {trial.briefSummary || "No brief summary is stated in the public trial record."}
+                    <p className="mt-3 text-[15px] leading-[1.6] text-muted">
+                      {trial.briefSummary ||
+                        "No brief summary is stated in the public trial record."}
                     </p>
-                    <dl className="mt-5 grid gap-3 text-sm text-slateblue sm:grid-cols-3">
-                      <div>
-                        <dt className="font-semibold text-ink">Condition</dt>
-                        <dd>{trial.conditions.slice(0, 3).join(", ") || "Not stated"}</dd>
-                      </div>
-                      <div>
-                        <dt className="font-semibold text-ink">Locations</dt>
-                        <dd>{formatLocations(trial)}</dd>
-                      </div>
-                      <div>
-                        <dt className="font-semibold text-ink">Last updated</dt>
-                        <dd>{trial.lastUpdated || "Not stated"}</dd>
-                      </div>
-                    </dl>
+                    <div className="mt-[18px] flex flex-wrap gap-x-[26px] gap-y-3">
+                      <Meta label="Condition" value={trial.conditions.slice(0, 3).join(", ") || "Not stated"} />
+                      <Meta label="Location" value={formatLocations(trial)} />
+                      <Meta label="Last updated" value={trial.lastUpdated || "Not stated"} />
+                    </div>
                   </div>
-                  <div className="flex shrink-0 flex-col gap-2 sm:flex-row lg:flex-col">
+                  <div className="flex min-w-[170px] flex-col gap-2.5">
                     <Link
                       href={`/trial/${trial.nctId}?${query}`}
-                      className="inline-flex items-center justify-center rounded-md bg-action px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-800"
+                      className="rounded-xl bg-grape px-[18px] py-3 text-center text-sm font-bold text-white transition hover:bg-grapeDark"
                     >
                       View explanation
                     </Link>
                     <button
                       type="button"
                       onClick={() => saveTrialToSheet(trial)}
-                      className="inline-flex items-center justify-center rounded-md border border-line bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:border-action"
+                      className="rounded-xl border-[1.5px] border-line2 px-[18px] py-3 text-sm font-bold text-ink transition hover:border-grape"
                     >
                       Add to sheet
                     </button>
@@ -163,10 +158,9 @@ function ResultsContent() {
                       href={trial.sourceUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center justify-center gap-2 rounded-md border border-line bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:border-action"
+                      className="rounded-xl border-[1.5px] border-line2 px-[18px] py-3 text-center text-sm font-bold text-ink transition hover:border-grape"
                     >
-                      Source
-                      <ExternalLink size={15} />
+                      Source ↗
                     </a>
                   </div>
                 </div>
@@ -180,13 +174,22 @@ function ResultsContent() {
   );
 }
 
+function Meta({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <p className="text-xs font-bold text-faint">{label}</p>
+      <p className="mt-1 text-sm font-semibold">{value}</p>
+    </div>
+  );
+}
+
 function EmptyState({ title, body }: { title: string; body: string }) {
   return (
-    <div className="mt-8 flex min-h-72 items-center justify-center rounded-md border border-line bg-white p-8 text-center">
+    <div className="mt-6 flex min-h-72 items-center justify-center rounded-[22px] bg-white p-8 text-center">
       <div className="max-w-lg">
-        <SearchX className="mx-auto text-slateblue" size={28} />
-        <h2 className="mt-4 text-2xl font-semibold text-ink">{title}</h2>
-        <p className="mt-3 leading-7 text-slateblue">{body}</p>
+        <SearchX className="mx-auto text-grape" size={28} />
+        <h2 className="mt-4 text-[22px] font-extrabold text-ink">{title}</h2>
+        <p className="mt-3 text-[15px] leading-[1.6] text-muted">{body}</p>
       </div>
     </div>
   );
