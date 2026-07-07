@@ -13,7 +13,7 @@ const config: Config = {
         ink: "#1f1a33", // primary text
         grape: "#6d4bd8", // primary purple
         grapeDark: "#5a3cc0", // primary hover
-        amber: "#f5b73d", // accent
+        brandAmber: "#f5b73d", // accent (custom token; avoids shadowing Tailwind's amber scale)
         amberInk: "#3a2c05", // text on amber
         amberDeep: "#a9791a", // amber-toned heading
         muted: "#544f6b", // body copy

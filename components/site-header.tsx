@@ -30,7 +30,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="order-last flex w-full items-center justify-center gap-1.5 rounded-full bg-white p-1.5 shadow-nav sm:order-none sm:w-auto">
+        <nav className="flex w-full items-center justify-center gap-1.5 rounded-full bg-white p-1.5 shadow-nav sm:w-auto">
           {navItems.map((item) => (
             <Link
               key={item.href}

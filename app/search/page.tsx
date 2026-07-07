@@ -171,8 +171,14 @@ export default function SearchPage() {
           </div>
 
           <div className="mt-6">
-            <span className={labelText}>Recruiting status</span>
-            <div className="mt-3 flex flex-wrap gap-2.5">
+            <span id="recruiting-status-label" className={labelText}>
+              Recruiting status
+            </span>
+            <div
+              role="group"
+              aria-labelledby="recruiting-status-label"
+              className="mt-3 flex flex-wrap gap-2.5"
+            >
               {statuses.map((status) => {
                 const on = selectedStatuses.includes(status.value);
                 return (

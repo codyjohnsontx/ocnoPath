@@ -58,7 +58,7 @@ function ResultsContent() {
   return (
     <main className="flex-1">
       <div className="mx-auto max-w-[1120px] animate-[fadeUp_500ms_ease-out] px-5 pb-16 pt-11 sm:px-10">
-        <p className="mb-2.5 text-[13px] font-bold uppercase tracking-[0.14em] text-amber">
+        <p className="mb-2.5 text-[13px] font-bold uppercase tracking-[0.14em] text-brandAmber">
           Trial results
         </p>
         <h1 className="text-[32px] font-extrabold leading-[1.12] tracking-[-0.02em] sm:text-[40px]">

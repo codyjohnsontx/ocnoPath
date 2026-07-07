@@ -29,7 +29,7 @@ export default function DiscussionSheetPage() {
       <div className="mx-auto max-w-[900px] animate-[fadeUp_500ms_ease-out] px-5 pb-16 pt-9 sm:px-10">
         <div className="no-print mb-[22px] flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="mb-2 text-[13px] font-bold uppercase tracking-[0.14em] text-amber">
+            <p className="mb-2 text-[13px] font-bold uppercase tracking-[0.14em] text-brandAmber">
               Doctor discussion sheet
             </p>
             <h1 className="text-[28px] font-extrabold tracking-[-0.02em] sm:text-[34px]">
@@ -114,16 +114,22 @@ export default function DiscussionSheetPage() {
                         }
                       />
                     </div>
-                    {explanation ? (
+                    {explanation &&
+                    (explanation.whyMayBeRelevant.length ||
+                      explanation.questionsForOncologyTeam.length) ? (
                       <div className="mt-4 grid gap-[18px] sm:grid-cols-2">
-                        <SheetList
-                          title="Why it may be worth discussing"
-                          items={explanation.whyMayBeRelevant}
-                        />
-                        <SheetList
-                          title="Questions for the oncology team"
-                          items={explanation.questionsForOncologyTeam}
-                        />
+                        {explanation.whyMayBeRelevant.length ? (
+                          <SheetList
+                            title="Why it may be worth discussing"
+                            items={explanation.whyMayBeRelevant}
+                          />
+                        ) : null}
+                        {explanation.questionsForOncologyTeam.length ? (
+                          <SheetList
+                            title="Questions for the oncology team"
+                            items={explanation.questionsForOncologyTeam}
+                          />
+                        ) : null}
                       </div>
                     ) : (
                       <p className="mt-4 text-[13px] leading-[1.5] text-muted">
@@ -168,8 +174,11 @@ function SheetList({ title, items }: { title: string; items: string[] }) {
     <div>
       <h4 className="mb-1.5 text-[13.5px] font-extrabold">{title}</h4>
       <ul className="grid list-disc gap-1 pl-4">
-        {items.map((item) => (
-          <li key={item} className="text-[13px] leading-[1.5] text-muted">
+        {items.map((item, index) => (
+          <li
+            key={`${index}-${item}`}
+            className="text-[13px] leading-[1.5] text-muted"
+          >
             {item}
           </li>
         ))}

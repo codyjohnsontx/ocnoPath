@@ -13,7 +13,7 @@ const steps = [
   {
     n: "2",
     surface: "bg-cream",
-    badge: "bg-amber text-amberInk",
+    badge: "bg-brandAmber text-amberInk",
     title: "Search official sources",
     text: "We pull public ClinicalTrials.gov records into a friendly, readable flow."
   },
@@ -80,7 +80,7 @@ export default function Home() {
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[22px] bg-amber p-[22px] text-amberInk">
+              <div className="rounded-[22px] bg-brandAmber p-[22px] text-amberInk">
                 <h3 className="mb-1.5 text-[17px] font-extrabold">
                   Source-linked
                 </h3>
@@ -103,7 +103,7 @@ export default function Home() {
         {/* How it works */}
         <section className="mx-4 rounded-[34px] bg-white px-5 py-14 sm:px-10 sm:py-[60px]">
           <div className="mb-11 text-center">
-            <p className="mb-2.5 text-[13px] font-bold uppercase tracking-[0.14em] text-amber">
+            <p className="mb-2.5 text-[13px] font-bold uppercase tracking-[0.14em] text-brandAmber">
               How it works
             </p>
             <h2 className="text-[32px] font-extrabold tracking-[-0.02em] sm:text-[40px]">
@@ -135,7 +135,7 @@ export default function Home() {
         {/* What OncoPath does */}
         <section className="px-4 py-11 sm:pb-14">
           <div className="relative overflow-hidden rounded-[30px] bg-grape px-8 py-12 text-white sm:px-12 sm:py-[52px]">
-            <div className="pointer-events-none absolute -right-[30px] -top-10 h-[220px] w-[220px] rounded-full bg-amber/25" />
+            <div className="pointer-events-none absolute -right-[30px] -top-10 h-[220px] w-[220px] rounded-full bg-brandAmber/25" />
             <div className="relative grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div>
                 <p className="mb-2.5 text-[12.5px] font-bold uppercase tracking-[0.16em] text-[#d6c8f7]">
