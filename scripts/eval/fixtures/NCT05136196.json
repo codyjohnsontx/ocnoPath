@@ -1,0 +1,1602 @@
+{
+  "nctId": "NCT05136196",
+  "title": "BiCaZO: A Study Combining Two Immunotherapies (Cabozantinib and Nivolumab) to Treat Patients With Advanced Melanoma or Squamous Cell Head and Neck Cancer, an immunoMATCH Pilot Study",
+  "status": "RECRUITING",
+  "phase": [
+    "PHASE2"
+  ],
+  "conditions": [
+    "Clinical Stage III Cutaneous Melanoma AJCC v8",
+    "Clinical Stage III HPV-Mediated (p16-Positive) Oropharyngeal Carcinoma AJCC v8",
+    "Clinical Stage IV Cutaneous Melanoma AJCC v8",
+    "Clinical Stage IV HPV-Mediated (p16-Positive) Oropharyngeal Carcinoma AJCC v8",
+    "Locally Recurrent Head and Neck Squamous Cell Carcinoma",
+    "Locally Recurrent Hypopharyngeal Squamous Cell Carcinoma",
+    "Locally Recurrent Laryngeal Squamous Cell Carcinoma",
+    "Locally Recurrent Oral Cavity Squamous Cell Carcinoma",
+    "Locally Recurrent Oropharyngeal Squamous Cell Carcinoma",
+    "Metastatic Head and Neck Squamous Cell Carcinoma",
+    "Metastatic Hypopharyngeal Squamous Cell Carcinoma",
+    "Metastatic Laryngeal Squamous Cell Carcinoma",
+    "Metastatic Melanoma",
+    "Metastatic Oral Cavity Squamous Cell Carcinoma",
+    "Metastatic Oropharyngeal Squamous Cell Carcinoma",
+    "Recurrent Melanoma",
+    "Stage III Hypopharyngeal Carcinoma AJCC v8",
+    "Stage III Laryngeal Cancer AJCC v8",
+    "Stage III Lip and Oral Cavity Cancer AJCC v8",
+    "Stage III Oropharyngeal (p16-Negative) Carcinoma AJCC v8",
+    "Stage IV Hypopharyngeal Carcinoma AJCC v8",
+    "Stage IV Laryngeal Cancer AJCC v8",
+    "Stage IV Lip and Oral Cavity Cancer AJCC v8",
+    "Stage IV Oropharyngeal (p16-Negative) Carcinoma AJCC v8",
+    "Unresectable Melanoma"
+  ],
+  "briefSummary": "This phase II trial studies the good and bad effects of the combination of drugs called cabozantinib and nivolumab in treating patients with melanoma or squamous cell head and neck cancer that may have spread from where it first started to nearby tissue, lymph nodes, or distant parts of the body (advanced). Cabozantinib may stop the growth of tumor cells by blocking some of the enzymes needed for cell growth. Immunotherapy with monoclonal antibodies, such as nivolumab, may help the body's immune system attack the cancer, and may interfere with the ability of tumor cells to grow and spread. This trial may help doctors determine how quickly patients can be divided into groups based on biomarkers in their tumors. A biomarker is a biological molecule found in the blood, other body fluids, or in tissues that is a sign of a normal or abnormal process or a sign of a condition or disease. A biomarker may be used to see how well the body responds to a treatment for a disease or condition. The two biomarkers that this trial is studying are \"tumor mutational burden\" and \"tumor inflammation signature.\" Another purpose of this trial is to help doctors learn if cabozantinib and nivolumab shrink or stabilize the cancer, and whether patients respond differently to the combination depending on the status of the biomarkers.",
+  "eligibilityCriteria": "Inclusion Criteria:\n\n* STEP 1 - SPECIMEN SUBMISSION\n* Participants must have histologically confirmed melanoma that is stage III or IV, unresectable, recurrent, or metastatic non-uveal melanoma OR Participants must have histologically confirmed squamous cell carcinoma of the head and neck (HNSCC) that is either locally recurrent and non-amendable to curative therapy (e.g., radiation, surgery) or metastatic. The primary tumor location must be the oropharynx, oral cavity, hypopharynx, or larynx. Primary tumor site of nasopharynx (any histology) or unknown primary tumor are not eligible\n\n  * Note: For participants with primary oropharyngeal cancer, human papillomavirus (HPV) or p16 status must be known prior to step 1 registration\n* Participants must have disease presentation consistent with measurable disease. Note: Current disease measurements will not be required until step 2 registration\n* Participants must have had documented progression during or within 12 weeks after the last dose of PD-1 checkpoint inhibition-based therapy. Participants must have been receiving checkpoint inhibition for a minimum of 6 weeks. Participants who recur during adjuvant anti-PD1 treatment or within 12 weeks of completion of adjuvant anti-PD1 treatment are eligible if they have measurable disease and are considered unresectable\n* Participants with known human immunodeficiency virus (HIV)-infection must be receiving anti-retroviral therapy and have an undetectable viral load test within 6 months prior to step 1 registration\n* Participants with evidence of chronic hepatitis B virus (HBV) infection must have undetectable HBV viral load within 28 days prior to step 1 registration\n* Participants with a history of hepatitis C virus (HCV) infection must have no detectable viral load within 28 days prior to step 1 registration\n* Participants must not have an active infection requiring systemic therapy (except HBV, HCV or HIV as mentioned above)\n* Participants must not have experienced myocardial infarction or thromboembolic event requiring anticoagulation within 90 days prior to step 1 registration, unless clinically stable with ongoing medical management\n* Participants must have recovered to baseline or =\\< grade 1 Common Terminology Criteria for Adverse Events (CTCAE) version (v) 5 toxicities related to any prior treatments, unless adverse events are deemed clinically nonsignificant by the treating investigator or stable on supportive therapy\n* Participants must not have received more than one prior primary radiotherapy regimen, curative or adjuvant, to the mucosal surfaces of the head and neck, with the additional following criteria:\n\n  * If the primary radiation is combined with chemotherapy, a minimum of 16 weeks will be required to have elapsed between the end of radiotherapy and step 1 registration. If the radiation is given alone, a minimum of 8 weeks will be required to have elapsed between the end of radiotherapy and step 1 registration\n  * Additional palliative radiotherapy regimens are permitted but cannot have been administered to previously treated tissue (i.e., overlapping fields are excluded) with the exception of central nervous system (CNS) radiation and must be completed at least 4 weeks prior to step 1 registration\n  * Treatment areas should be healed with no sequelae from radiation therapy (RT) that would predispose to fistula formation\n* Participants must not have received prior treatment with anti-VEGF therapies for any reason\n* Participants must be \\>= 18 years of age\n* Participants must have a Zubrod Performance Status 0 or 1\n* Participants must have adequate cardiac function. Participants with known history or current symptoms of cardiac disease, or history of treatment with cardiotoxic agents, must have a clinical risk assessment of cardiac function using the New York Heart Association Functional Classification and must be class 2B or better to be eligible for this trial\n* Participants must not have any known significant organ disfunction that, in the opinion of the treating investigator, may impact suitability for receiving combination nivolumab/cabozantinib treatment\n* Participants must be able to take oral medication without breaking, opening, crushing, dissolving or chewing capsules\n* Participants must not have malabsorption syndrome\n* Participants must not have active autoimmune disease requiring systemic steroids (equivalent of \\> 10mg of prednisone) or other immune suppression. Exceptions:\n\n  * Type 1 diabetes mellitus\n  * Endocrinopathy only requiring hormone replacement\n  * Skin disorders (e.g., vitiligo, psoriasis, or alopecia) not requiring systemic treatment\n  * Conditions not expected to recur in the absence of an external trigger\n* Participants must not have received an organ allograft\n* Participants must not have a history of hemoptysis (defined as \\>= 1/2 tsp of bright red blood per day) or tumor bleeding within 90 days prior to step 1 registration\n* Participants must not have any of the following criteria due to the possibility of increased risk for tumor bleeding with cabozantinib therapy:\n\n  * Prior carotid bleeding\n  * Tumors that invade major vessels (e.g., the carotid) as shown unequivocally by imaging studies\n  * Central (e.g., within 2 cm from the hilum) lung metastases that are cavitary as shown unequivocally by imaging studies\n  * Any prior history of bleeding related to the current head and neck cancer\n  * History of gross hemoptysis (bright red blood of 1/2 teaspoon or more per episode of coughing) within 3 months\n* Participants must not require concomitant anticoagulation with coumarin agents (e.g., warfarin), direct thrombin inhibitors (e.g., dabigatran), direct factor Xa inhibitor betrixaban, or platelet inhibitors (e.g., clopidogrel)\n\n  * Participants must not require anticoagulants except for the following:\n\n    * Prophylactic use of low-dose aspirin for cardio-protection (per local applicable guidelines) and low-dose low molecular weight heparins (LMWH).\n    * Therapeutic doses of LMWH or anticoagulation with direct factor Xa inhibitors, rivaroxaban, edoxaban, or apixaban in participants without known brain metastases who are on a stable dose of the anticoagulant for at least 1 week prior to step 1 registration without clinically significant hemorrhagic complications from the anticoagulation regimen or the tumor\n* Participants must not have evidence of preexisting uncontrolled hypertension 28 days prior to step 1 registration as documented by baseline blood pressure reading with systolic blood pressure \\> 150 mmHg and/or diastolic blood pressure \\> 90 mmHg. Participants on antihypertensive therapies with controlled blood pressure are eligible\n* Participants must not have a prior or concurrent malignancy whose natural history or treatment (in the opinion of the treating physician) has the potential to interfere with the safety or efficacy assessment of the investigational regimen\n* Participants must not be pregnant or nursing due to the known safety profiles of the drugs in this study. Individuals who are of reproductive potential must have agreed to use an effective contraceptive method with details provided as a part of the consent process. A person who has had menses at any time in the preceding 12 consecutive months or who has semen likely to contain sperm is considered to be of \"reproductive potential\". In addition to routine contraceptive methods, \"effective contraception\" also includes refraining from sexual activity that might result in pregnancy and surgery intended to prevent pregnancy (or with a side-effect of pregnancy prevention) including hysterectomy, bilateral oophorectomy, bilateral tubal ligation/occlusion and vasectomy with testing showing no sperm in the semen\n* Have an adequate archival tissue specimen verified by the local pathologist and documented on the Pathology Review Form from a procedure obtained after the development of resistance to anti-PD-1/L1 therapy. Archival tissue must consist of tumor block or at least 1 hematoxylin and eosin (H\\&E)-stained 4-5 micron slide and 20 freshly cut serially sectioned and numbered 4-5 micron unstained, uncharged slides OR\n\nBe willing to undergo research biopsy AND have tumor accessible for biopsy based on the following criteria:\n\n* Mediastinal, laparoscopic, gastrointestinal, or bronchial endoscopic biopsies can be obtained incidentally to a clinically necessary procedure and NOT for the sole purpose of the clinical trial\n* Acceptable biopsy procedures are:\n\n  * Percutaneous biopsy with local anesthetic and/or sedation with an expected risk of severe complications \\< 2%\n  * Direct transoral biopsy (with or without local anesthetic and/or sedation) with an expected risk of severe complications \\< 2%\n  * Excisional cutaneous biopsy with local anesthetic and/or sedation with an expected risk of severe complications \\< 2%\n  * Biopsy with removal of additional tumor tissue during a medically necessary mediastinoscopy, laparoscopy, gastrointestinal endoscopy, bronchoscopy or craniotomy. No open surgical, laparoscopic or endoscopic procedure should be performed solely to obtain a biopsy for this protocol\n  * Removal of additional tumor tissue during a medically necessary surgical procedure\n\n    * Participants must submit whole blood for germline genomic analysis\n    * Participants must have been offered the opportunity to participate in specimen banking\n    * Note: As a part of the Oncology Patient Enrollment Network (OPEN) registration process the treating institution's identity is provided in order to ensure that the current (within 365 days) date of institutional review board approval for this study has been entered in the system\n* Participants must be informed of the investigational nature of this study and must sign and give informed consent in accordance with institutional and federal guidelines\n* Participants with impaired decision-making capacity are eligible as long as their neurological or psychological condition does not preclude their safe participation in the study (e.g., tracking pill consumption and reporting adverse events to the investigator)\n\n  * STEP 2 TREATMENT REGISTRATION\n* Note: No tests or exams are required to be repeated for step 2 registration (Treatment). However, participants who are known to have a change in eligibility status after step 1 registration are not eligible for step 2 registration\n\n  * Participants must continue to meet eligibility for step 1 registration prior to step 2 registration\n  * Participants must have had their tumor tissue submitted via the Southwest Oncology Group (SWOG) Specimen Tracking System prior to step 2 registration\n  * Participants registered during stage II of the protocol must have received assignment to an open cohort from the SWOG Statistics and Data Management Center based on their biomarker screening profile (not applicable for patients registered during stage I of the protocol)\n  * Participants must have measurable disease. All measurable disease must be assessed within 28 days prior to step 2 registration. All non-measurable disease must be assessed within 42 days prior to step 2 registration. Note: All disease must be assessed and documented on the Baseline Tumor Assessment Form (Response Evaluation Criteria in Solid Tumors \\[RECIST\\] 1.1)\n  * For melanoma participants, CT chest, abdomen and pelvis must be obtained. For HNSCC participants, CT neck and chest must be obtained. Further imaging (i.e., MR brain, CT abdomen/pelvis or extremities, bone scan) will be performed as deemed appropriate by the treating physician\n  * Participants with treated brain metastases must have no evidence of progression on the follow-up brain imaging after central nervous system (CNS)-directed therapy\n  * Participants must not have experienced any significant health changes that, in the opinion of the treating investigator, may impact continued suitability for receiving combination nivolumab/cabozantinib treatment\n  * Participants with treated brain metastases must have discontinued steroid treatment at least 14 days prior to step 2 registration\n  * Participants must not have received investigational agents or monoclonal antibodies (except Food and Drug Administration \\[FDA\\] approved supportive care antibodies, such as denosumab) within 28 days prior to step 2 registration\n  * Participants must not have received surgery, chemotherapy, radiation therapy, biologic agents, or steroids within 14 days prior to step 2 registration\n  * Participants must not have received administration of a live, attenuated vaccine within 30 days prior to step 2 registration. Note: Participants may have received a messenger ribonucleic acid (mRNA) or viral vector-based coronavirus disease 2019 (COVID-19) vaccine within 30 days prior to step 2 registration\n  * Participants must not have received administration of any strong CYP3A4 inducers, such as but not limited to rifampin, carbamazepine, enzalutamide, mitotane, phenytoin and St. John's wort, within 14 days prior to step 2 registration\n  * Participants must not have received administration of any strong CYP3A4 inhibitors, such as but not limited to clarithromycin, itraconazole, ketoconazole, grapefruit juice, indinavir, nelfinavir, ritonavir, nefazodone, saquinavir, and telithromycin, within 5 times the half-life of the CYP3A inhibitor prior to step 2 registration\n  * Participants must have a history and physical examination performed within 28 days prior to step 2 registration\n  * Leukocytes \\>= 3,000/uL (within 28 days prior to step 2 registration)\n  * Absolute neutrophil count \\>= 1,500/uL (within 28 days prior to step 2 registration)\n  * Platelets \\>= 100,000/uL (within 28 days prior to step 2 registration)\n  * Total bilirubin =\\< 1.5 x institutional upper limit of normal (ULN) or =\\< 3 x ULN for participants with Gilbert's disease (within 28 days prior to step 2 registration)\n  * Aspartate aminotransferase (AST) =\\< 3 x institutional ULN (within 28 days prior to step 2 registration)\n  * Alanine aminotransferase (ALT) =\\< 3 x institutional ULN (within 28 days prior to step 2 registration)\n  * Urinalysis: For baseline value (no required value for eligibility)\n  * Measured (OR calculated) creatinine clearance \\>= 30 mL/min using the following Cockcroft-Gault Formula. This specimen must have been drawn and processed within 28 days prior to step 2 registration",
+  "locations": [
+    {
+      "facility": "Mayo Clinic Hospital in Arizona",
+      "city": "Phoenix",
+      "state": "Arizona",
+      "country": "United States",
+      "zip": "85054"
+    },
+    {
+      "facility": "University of Arkansas for Medical Sciences",
+      "city": "Little Rock",
+      "state": "Arkansas",
+      "country": "United States",
+      "zip": "72205"
+    },
+    {
+      "facility": "Tower Cancer Research Foundation",
+      "city": "Beverly Hills",
+      "state": "California",
+      "country": "United States",
+      "zip": "90211"
+    },
+    {
+      "facility": "UCI Health - Chao Family Comprehensive Cancer Center and Ambulatory Care",
+      "city": "Irvine",
+      "state": "California",
+      "country": "United States",
+      "zip": "92612"
+    },
+    {
+      "facility": "The Angeles Clinic and Research Institute - West Los Angeles Office",
+      "city": "Los Angeles",
+      "state": "California",
+      "country": "United States",
+      "zip": "90025"
+    },
+    {
+      "facility": "Cedars-Sinai Medical Center",
+      "city": "Los Angeles",
+      "state": "California",
+      "country": "United States",
+      "zip": "90048"
+    },
+    {
+      "facility": "UC Irvine Health/Chao Family Comprehensive Cancer Center",
+      "city": "Orange",
+      "state": "California",
+      "country": "United States",
+      "zip": "92868"
+    },
+    {
+      "facility": "Rocky Mountain Regional VA Medical Center",
+      "city": "Aurora",
+      "state": "Colorado",
+      "country": "United States",
+      "zip": "80045"
+    },
+    {
+      "facility": "UCHealth Memorial Hospital Central",
+      "city": "Colorado Springs",
+      "state": "Colorado",
+      "country": "United States",
+      "zip": "80909"
+    },
+    {
+      "facility": "Memorial Hospital North",
+      "city": "Colorado Springs",
+      "state": "Colorado",
+      "country": "United States",
+      "zip": "80920"
+    },
+    {
+      "facility": "Poudre Valley Hospital",
+      "city": "Fort Collins",
+      "state": "Colorado",
+      "country": "United States",
+      "zip": "80524"
+    },
+    {
+      "facility": "Cancer Care and Hematology-Fort Collins",
+      "city": "Fort Collins",
+      "state": "Colorado",
+      "country": "United States",
+      "zip": "80528"
+    },
+    {
+      "facility": "UCHealth Greeley Hospital",
+      "city": "Greeley",
+      "state": "Colorado",
+      "country": "United States",
+      "zip": "80631"
+    },
+    {
+      "facility": "Medical Center of the Rockies",
+      "city": "Loveland",
+      "state": "Colorado",
+      "country": "United States",
+      "zip": "80538"
+    },
+    {
+      "facility": "Helen F Graham Cancer Center",
+      "city": "Newark",
+      "state": "Delaware",
+      "country": "United States",
+      "zip": "19713"
+    },
+    {
+      "facility": "Medical Oncology Hematology Consultants PA",
+      "city": "Newark",
+      "state": "Delaware",
+      "country": "United States",
+      "zip": "19713"
+    },
+    {
+      "facility": "Mayo Clinic in Florida",
+      "city": "Jacksonville",
+      "state": "Florida",
+      "country": "United States",
+      "zip": "32224-9980"
+    },
+    {
+      "facility": "Hawaii Cancer Care Inc - Waterfront Plaza",
+      "city": "Honolulu",
+      "state": "Hawaii",
+      "country": "United States",
+      "zip": "96813"
+    },
+    {
+      "facility": "Queen's Cancer Cenrer - POB I",
+      "city": "Honolulu",
+      "state": "Hawaii",
+      "country": "United States",
+      "zip": "96813"
+    },
+    {
+      "facility": "Queen's Medical Center",
+      "city": "Honolulu",
+      "state": "Hawaii",
+      "country": "United States",
+      "zip": "96813"
+    },
+    {
+      "facility": "Queen's Cancer Center - Kuakini",
+      "city": "Honolulu",
+      "state": "Hawaii",
+      "country": "United States",
+      "zip": "96817"
+    },
+    {
+      "facility": "Hawaii Cancer Care - Westridge",
+      "city": "‘Aiea",
+      "state": "Hawaii",
+      "country": "United States",
+      "zip": "96701"
+    },
+    {
+      "facility": "Saint Alphonsus Cancer Care Center-Boise",
+      "city": "Boise",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83706"
+    },
+    {
+      "facility": "Saint Luke's Cancer Institute - Boise",
+      "city": "Boise",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83712"
+    },
+    {
+      "facility": "Saint Alphonsus Cancer Care Center-Caldwell",
+      "city": "Caldwell",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83605"
+    },
+    {
+      "facility": "Kootenai Health - Coeur d'Alene",
+      "city": "Coeur d'Alene",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83814"
+    },
+    {
+      "facility": "Saint Luke's Cancer Institute - Fruitland",
+      "city": "Fruitland",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83619"
+    },
+    {
+      "facility": "Saint Luke's Cancer Institute - Meridian",
+      "city": "Meridian",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83642"
+    },
+    {
+      "facility": "Saint Alphonsus Cancer Care Center-Nampa",
+      "city": "Nampa",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83687"
+    },
+    {
+      "facility": "Saint Luke's Cancer Institute - Nampa",
+      "city": "Nampa",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83687"
+    },
+    {
+      "facility": "Kootenai Clinic Cancer Services - Post Falls",
+      "city": "Post Falls",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83854"
+    },
+    {
+      "facility": "Kootenai Clinic Cancer Services - Sandpoint",
+      "city": "Sandpoint",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83864"
+    },
+    {
+      "facility": "Saint Luke's Cancer Institute - Twin Falls",
+      "city": "Twin Falls",
+      "state": "Idaho",
+      "country": "United States",
+      "zip": "83301"
+    },
+    {
+      "facility": "Rush-Copley Medical Center",
+      "city": "Aurora",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "60504"
+    },
+    {
+      "facility": "Illinois CancerCare-Bloomington",
+      "city": "Bloomington",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61704"
+    },
+    {
+      "facility": "Illinois CancerCare-Canton",
+      "city": "Canton",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61520"
+    },
+    {
+      "facility": "Illinois CancerCare-Carthage",
+      "city": "Carthage",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62321"
+    },
+    {
+      "facility": "Centralia Oncology Clinic",
+      "city": "Centralia",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62801"
+    },
+    {
+      "facility": "Northwestern University",
+      "city": "Chicago",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "60611"
+    },
+    {
+      "facility": "University of Illinois",
+      "city": "Chicago",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "60612"
+    },
+    {
+      "facility": "Carle at The Riverfront",
+      "city": "Danville",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61832"
+    },
+    {
+      "facility": "Cancer Care Specialists of Illinois - Decatur",
+      "city": "Decatur",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62526"
+    },
+    {
+      "facility": "Decatur Memorial Hospital",
+      "city": "Decatur",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62526"
+    },
+    {
+      "facility": "Northwestern Medicine Cancer Center Kishwaukee",
+      "city": "DeKalb",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "60115"
+    },
+    {
+      "facility": "Illinois CancerCare-Dixon",
+      "city": "Dixon",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61021"
+    },
+    {
+      "facility": "Carle Physician Group-Effingham",
+      "city": "Effingham",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62401"
+    },
+    {
+      "facility": "Crossroads Cancer Center",
+      "city": "Effingham",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62401"
+    },
+    {
+      "facility": "Illinois CancerCare-Eureka",
+      "city": "Eureka",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61530"
+    },
+    {
+      "facility": "Illinois CancerCare-Galesburg",
+      "city": "Galesburg",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61401"
+    },
+    {
+      "facility": "Northwestern Medicine Cancer Center Delnor",
+      "city": "Geneva",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "60134"
+    },
+    {
+      "facility": "Illinois CancerCare-Kewanee Clinic",
+      "city": "Kewanee",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61443"
+    },
+    {
+      "facility": "Northwestern Medicine Lake Forest Hospital",
+      "city": "Lake Forest",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "60045"
+    },
+    {
+      "facility": "Illinois CancerCare-Macomb",
+      "city": "Macomb",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61455"
+    },
+    {
+      "facility": "Carle Physician Group-Mattoon/Charleston",
+      "city": "Mattoon",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61938"
+    },
+    {
+      "facility": "Loyola University Medical Center",
+      "city": "Maywood",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "60153"
+    },
+    {
+      "facility": "Cancer Care Center of O'Fallon",
+      "city": "O'Fallon",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62269"
+    },
+    {
+      "facility": "Northwestern Medicine Orland Park",
+      "city": "Orland Park",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "60462"
+    },
+    {
+      "facility": "Illinois CancerCare-Ottawa Clinic",
+      "city": "Ottawa",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61350"
+    },
+    {
+      "facility": "Illinois CancerCare-Pekin",
+      "city": "Pekin",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61554"
+    },
+    {
+      "facility": "Illinois CancerCare-Peoria",
+      "city": "Peoria",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61615"
+    },
+    {
+      "facility": "Illinois CancerCare-Peru",
+      "city": "Peru",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61354"
+    },
+    {
+      "facility": "Illinois CancerCare-Princeton",
+      "city": "Princeton",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61356"
+    },
+    {
+      "facility": "Memorial Hospital East",
+      "city": "Shiloh",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62269"
+    },
+    {
+      "facility": "Southern Illinois University School of Medicine",
+      "city": "Springfield",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62702"
+    },
+    {
+      "facility": "Springfield Clinic",
+      "city": "Springfield",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62702"
+    },
+    {
+      "facility": "Springfield Memorial Hospital",
+      "city": "Springfield",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "62781"
+    },
+    {
+      "facility": "Carle Cancer Center",
+      "city": "Urbana",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61801"
+    },
+    {
+      "facility": "Northwestern Medicine Cancer Center Warrenville",
+      "city": "Warrenville",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "60555"
+    },
+    {
+      "facility": "Illinois CancerCare - Washington",
+      "city": "Washington",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "61571"
+    },
+    {
+      "facility": "Rush-Copley Healthcare Center",
+      "city": "Yorkville",
+      "state": "Illinois",
+      "country": "United States",
+      "zip": "60560"
+    },
+    {
+      "facility": "Mary Greeley Medical Center",
+      "city": "Ames",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50010"
+    },
+    {
+      "facility": "McFarland Clinic - Ames",
+      "city": "Ames",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50010"
+    },
+    {
+      "facility": "UI Health Care Mission Cancer and Blood - Ankeny Clinic",
+      "city": "Ankeny",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50023"
+    },
+    {
+      "facility": "McFarland Clinic - Boone",
+      "city": "Boone",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50036"
+    },
+    {
+      "facility": "Mercy Hospital",
+      "city": "Cedar Rapids",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "52403"
+    },
+    {
+      "facility": "Oncology Associates at Mercy Medical Center",
+      "city": "Cedar Rapids",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "52403"
+    },
+    {
+      "facility": "Mercy Cancer Center-West Lakes",
+      "city": "Clive",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50325"
+    },
+    {
+      "facility": "UI Health Care Mission Cancer and Blood - West Des Moines Clinic",
+      "city": "Clive",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50325"
+    },
+    {
+      "facility": "UI Health Care Mission Cancer and Blood - Des Moines Clinic",
+      "city": "Des Moines",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50309"
+    },
+    {
+      "facility": "Mercy Medical Center - Des Moines",
+      "city": "Des Moines",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50314"
+    },
+    {
+      "facility": "UI Health Care Mission Cancer and Blood - Laurel Clinic",
+      "city": "Des Moines",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50314"
+    },
+    {
+      "facility": "McFarland Clinic - Trinity Cancer Center",
+      "city": "Fort Dodge",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50501"
+    },
+    {
+      "facility": "McFarland Clinic - Jefferson",
+      "city": "Jefferson",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50129"
+    },
+    {
+      "facility": "McFarland Clinic - Marshalltown",
+      "city": "Marshalltown",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50158"
+    },
+    {
+      "facility": "UI Health Care Mission Cancer and Blood - Waukee Clinic",
+      "city": "Waukee",
+      "state": "Iowa",
+      "country": "United States",
+      "zip": "50263"
+    },
+    {
+      "facility": "Tufts Medical Center",
+      "city": "Boston",
+      "state": "Massachusetts",
+      "country": "United States",
+      "zip": "02111"
+    },
+    {
+      "facility": "Baystate Medical Center",
+      "city": "Springfield",
+      "state": "Massachusetts",
+      "country": "United States",
+      "zip": "01199"
+    },
+    {
+      "facility": "Tufts Medical Center Cancer Center Stoneham",
+      "city": "Stoneham",
+      "state": "Massachusetts",
+      "country": "United States",
+      "zip": "02180"
+    },
+    {
+      "facility": "Trinity Health Saint Joseph Mercy Hospital Ann Arbor",
+      "city": "Ann Arbor",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48106"
+    },
+    {
+      "facility": "University of Michigan Rogel Cancer Center",
+      "city": "Ann Arbor",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48109"
+    },
+    {
+      "facility": "Bronson Battle Creek",
+      "city": "Battle Creek",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49017"
+    },
+    {
+      "facility": "Trinity Health IHA Medical Group Hematology Oncology - Brighton",
+      "city": "Brighton",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48114"
+    },
+    {
+      "facility": "Trinity Health Medical Center - Brighton",
+      "city": "Brighton",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48114"
+    },
+    {
+      "facility": "Trinity Health IHA Medical Group Hematology Oncology - Canton",
+      "city": "Canton",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48188"
+    },
+    {
+      "facility": "Trinity Health Medical Center - Canton",
+      "city": "Canton",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48188"
+    },
+    {
+      "facility": "Chelsea Hospital",
+      "city": "Chelsea",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48118"
+    },
+    {
+      "facility": "Trinity Health IHA Medical Group Hematology Oncology - Chelsea Hospital",
+      "city": "Chelsea",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48118"
+    },
+    {
+      "facility": "Wayne State University/Karmanos Cancer Institute",
+      "city": "Detroit",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48201"
+    },
+    {
+      "facility": "OSF Saint Francis Hospital and Medical Group",
+      "city": "Escanaba",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49829"
+    },
+    {
+      "facility": "Weisberg Cancer Treatment Center",
+      "city": "Farmington Hills",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48334"
+    },
+    {
+      "facility": "Cancer Hematology Centers - Flint",
+      "city": "Flint",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48503"
+    },
+    {
+      "facility": "Genesee Hematology Oncology PC",
+      "city": "Flint",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48503"
+    },
+    {
+      "facility": "Genesys Hurley Cancer Institute",
+      "city": "Flint",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48503"
+    },
+    {
+      "facility": "Hurley Medical Center",
+      "city": "Flint",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48503"
+    },
+    {
+      "facility": "Corewell Health Grand Rapids Hospitals - Butterworth Hospital",
+      "city": "Grand Rapids",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49503"
+    },
+    {
+      "facility": "Trinity Health Grand Rapids Hospital",
+      "city": "Grand Rapids",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49503"
+    },
+    {
+      "facility": "Bronson Methodist Hospital",
+      "city": "Kalamazoo",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49007"
+    },
+    {
+      "facility": "West Michigan Cancer Center",
+      "city": "Kalamazoo",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49007"
+    },
+    {
+      "facility": "Beacon Kalamazoo Cancer Center",
+      "city": "Kalamazoo",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49009"
+    },
+    {
+      "facility": "University of Michigan Health - Sparrow Lansing",
+      "city": "Lansing",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48912"
+    },
+    {
+      "facility": "Trinity Health Saint Mary Mercy Livonia Hospital",
+      "city": "Livonia",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48154"
+    },
+    {
+      "facility": "Trinity Health Muskegon Hospital",
+      "city": "Muskegon",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49444"
+    },
+    {
+      "facility": "Corewell Health Lakeland Hospitals - Niles Hospital",
+      "city": "Niles",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49120"
+    },
+    {
+      "facility": "Cancer and Hematology Centers of Western Michigan - Norton Shores",
+      "city": "Norton Shores",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49444"
+    },
+    {
+      "facility": "Trinity Health Saint Joseph Mercy Oakland Hospital",
+      "city": "Pontiac",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48341"
+    },
+    {
+      "facility": "Corewell Health Reed City Hospital",
+      "city": "Reed City",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49677"
+    },
+    {
+      "facility": "Corewell Health Lakeland Hospitals - Marie Yeager Cancer Center",
+      "city": "Saint Joseph",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49085"
+    },
+    {
+      "facility": "Munson Medical Center",
+      "city": "Traverse City",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49684"
+    },
+    {
+      "facility": "University of Michigan Health - West",
+      "city": "Wyoming",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "49519"
+    },
+    {
+      "facility": "Huron Gastroenterology PC",
+      "city": "Ypsilanti",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48106"
+    },
+    {
+      "facility": "Trinity Health IHA Medical Group Hematology Oncology Ann Arbor Campus",
+      "city": "Ypsilanti",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "48197"
+    },
+    {
+      "facility": "Sanford Joe Lueken Cancer Center",
+      "city": "Bemidji",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "56601"
+    },
+    {
+      "facility": "Essentia Health Saint Joseph's Medical Center",
+      "city": "Brainerd",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "56401"
+    },
+    {
+      "facility": "Minnesota Oncology - Burnsville",
+      "city": "Burnsville",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55337"
+    },
+    {
+      "facility": "Mercy Hospital",
+      "city": "Coon Rapids",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55433"
+    },
+    {
+      "facility": "Essentia Health - Deer River Clinic",
+      "city": "Deer River",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "56636"
+    },
+    {
+      "facility": "Essentia Health Saint Mary's - Detroit Lakes Clinic",
+      "city": "Detroit Lakes",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "56501"
+    },
+    {
+      "facility": "Essentia Health Cancer Center",
+      "city": "Duluth",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55805"
+    },
+    {
+      "facility": "Fairview Southdale Hospital",
+      "city": "Edina",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55435"
+    },
+    {
+      "facility": "Essentia Health - Fosston",
+      "city": "Fosston",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "56542"
+    },
+    {
+      "facility": "Unity Hospital",
+      "city": "Fridley",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55432"
+    },
+    {
+      "facility": "Essentia Health Hibbing Clinic",
+      "city": "Hibbing",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55746"
+    },
+    {
+      "facility": "Saint John's Hospital - Healtheast",
+      "city": "Maplewood",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55109"
+    },
+    {
+      "facility": "Abbott-Northwestern Hospital",
+      "city": "Minneapolis",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55407"
+    },
+    {
+      "facility": "Essentia Health - Park Rapids",
+      "city": "Park Rapids",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "56470"
+    },
+    {
+      "facility": "Mayo Clinic in Rochester",
+      "city": "Rochester",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55905"
+    },
+    {
+      "facility": "Park Nicollet Clinic - Saint Louis Park",
+      "city": "Saint Louis Park",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55416"
+    },
+    {
+      "facility": "Regions Hospital",
+      "city": "Saint Paul",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55101"
+    },
+    {
+      "facility": "United Hospital",
+      "city": "Saint Paul",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55102"
+    },
+    {
+      "facility": "Essentia Health Sandstone",
+      "city": "Sandstone",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55072"
+    },
+    {
+      "facility": "Essentia Health Virginia Clinic",
+      "city": "Virginia",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55792"
+    },
+    {
+      "facility": "Ridgeview Medical Center",
+      "city": "Waconia",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55387"
+    },
+    {
+      "facility": "Minnesota Oncology Hematology PA-Woodbury",
+      "city": "Woodbury",
+      "state": "Minnesota",
+      "country": "United States",
+      "zip": "55125"
+    },
+    {
+      "facility": "Saint Francis Medical Center",
+      "city": "Cape Girardeau",
+      "state": "Missouri",
+      "country": "United States",
+      "zip": "63703"
+    },
+    {
+      "facility": "Siteman Cancer Center at Saint Peters Hospital",
+      "city": "City of Saint Peters",
+      "state": "Missouri",
+      "country": "United States",
+      "zip": "63376"
+    },
+    {
+      "facility": "Siteman Cancer Center at West County Hospital",
+      "city": "Creve Coeur",
+      "state": "Missouri",
+      "country": "United States",
+      "zip": "63141"
+    },
+    {
+      "facility": "Washington University School of Medicine",
+      "city": "St Louis",
+      "state": "Missouri",
+      "country": "United States",
+      "zip": "63110"
+    },
+    {
+      "facility": "Mercy Hospital South",
+      "city": "St Louis",
+      "state": "Missouri",
+      "country": "United States",
+      "zip": "63128"
+    },
+    {
+      "facility": "Siteman Cancer Center-South County",
+      "city": "St Louis",
+      "state": "Missouri",
+      "country": "United States",
+      "zip": "63129"
+    },
+    {
+      "facility": "Siteman Cancer Center at Christian Hospital",
+      "city": "St Louis",
+      "state": "Missouri",
+      "country": "United States",
+      "zip": "63136"
+    },
+    {
+      "facility": "Community Hospital of Anaconda",
+      "city": "Anaconda",
+      "state": "Montana",
+      "country": "United States",
+      "zip": "59711"
+    },
+    {
+      "facility": "Billings Clinic Cancer Center",
+      "city": "Billings",
+      "state": "Montana",
+      "country": "United States",
+      "zip": "59101"
+    },
+    {
+      "facility": "Bozeman Health Deaconess Hospital",
+      "city": "Bozeman",
+      "state": "Montana",
+      "country": "United States",
+      "zip": "59715"
+    },
+    {
+      "facility": "Benefis Sletten Cancer Institute",
+      "city": "Great Falls",
+      "state": "Montana",
+      "country": "United States",
+      "zip": "59405"
+    },
+    {
+      "facility": "Logan Health Medical Center",
+      "city": "Kalispell",
+      "state": "Montana",
+      "country": "United States",
+      "zip": "59901"
+    },
+    {
+      "facility": "Community Medical Center",
+      "city": "Missoula",
+      "state": "Montana",
+      "country": "United States",
+      "zip": "59804"
+    },
+    {
+      "facility": "Nebraska Medicine-Bellevue",
+      "city": "Bellevue",
+      "state": "Nebraska",
+      "country": "United States",
+      "zip": "68123"
+    },
+    {
+      "facility": "Nebraska Medicine-Village Pointe",
+      "city": "Omaha",
+      "state": "Nebraska",
+      "country": "United States",
+      "zip": "68118"
+    },
+    {
+      "facility": "University of Nebraska Medical Center",
+      "city": "Omaha",
+      "state": "Nebraska",
+      "country": "United States",
+      "zip": "68198"
+    },
+    {
+      "facility": "Dartmouth Hitchcock Medical Center/Dartmouth Cancer Center",
+      "city": "Lebanon",
+      "state": "New Hampshire",
+      "country": "United States",
+      "zip": "03756"
+    },
+    {
+      "facility": "University of New Mexico Cancer Center",
+      "city": "Albuquerque",
+      "state": "New Mexico",
+      "country": "United States",
+      "zip": "87106"
+    },
+    {
+      "facility": "Northwell Health/Center for Advanced Medicine",
+      "city": "Lake Success",
+      "state": "New York",
+      "country": "United States",
+      "zip": "11042"
+    },
+    {
+      "facility": "NYU Langone Hospital - Long Island",
+      "city": "Mineola",
+      "state": "New York",
+      "country": "United States",
+      "zip": "11501"
+    },
+    {
+      "facility": "Laura and Isaac Perlmutter Cancer Center at NYU Langone",
+      "city": "New York",
+      "state": "New York",
+      "country": "United States",
+      "zip": "10016"
+    },
+    {
+      "facility": "Southeastern Medical Oncology Center-Clinton",
+      "city": "Clinton",
+      "state": "North Carolina",
+      "country": "United States",
+      "zip": "28328"
+    },
+    {
+      "facility": "Southeastern Medical Oncology Center-Goldsboro",
+      "city": "Goldsboro",
+      "state": "North Carolina",
+      "country": "United States",
+      "zip": "27534"
+    },
+    {
+      "facility": "Southeastern Medical Oncology Center-Jacksonville",
+      "city": "Jacksonville",
+      "state": "North Carolina",
+      "country": "United States",
+      "zip": "28546"
+    },
+    {
+      "facility": "Sanford Bismarck Medical Center",
+      "city": "Bismarck",
+      "state": "North Dakota",
+      "country": "United States",
+      "zip": "58501"
+    },
+    {
+      "facility": "Essentia Health Cancer Center-South University Clinic",
+      "city": "Fargo",
+      "state": "North Dakota",
+      "country": "United States",
+      "zip": "58103"
+    },
+    {
+      "facility": "Sanford Broadway Medical Center",
+      "city": "Fargo",
+      "state": "North Dakota",
+      "country": "United States",
+      "zip": "58122"
+    },
+    {
+      "facility": "Sanford Roger Maris Cancer Center",
+      "city": "Fargo",
+      "state": "North Dakota",
+      "country": "United States",
+      "zip": "58122"
+    },
+    {
+      "facility": "Essentia Health - Jamestown Clinic",
+      "city": "Jamestown",
+      "state": "North Dakota",
+      "country": "United States",
+      "zip": "58401"
+    },
+    {
+      "facility": "Miami Valley Hospital South",
+      "city": "Centerville",
+      "state": "Ohio",
+      "country": "United States",
+      "zip": "45459"
+    },
+    {
+      "facility": "Premier Blood and Cancer Center",
+      "city": "Dayton",
+      "state": "Ohio",
+      "country": "United States",
+      "zip": "45409"
+    },
+    {
+      "facility": "Miami Valley Hospital North",
+      "city": "Dayton",
+      "state": "Ohio",
+      "country": "United States",
+      "zip": "45415"
+    },
+    {
+      "facility": "Atrium Medical Center-Middletown Regional Hospital",
+      "city": "Franklin",
+      "state": "Ohio",
+      "country": "United States",
+      "zip": "45005-1066"
+    },
+    {
+      "facility": "Miami Valley Cancer Care and Infusion",
+      "city": "Greenville",
+      "state": "Ohio",
+      "country": "United States",
+      "zip": "45331"
+    },
+    {
+      "facility": "Upper Valley Medical Center",
+      "city": "Troy",
+      "state": "Ohio",
+      "country": "United States",
+      "zip": "45373"
+    },
+    {
+      "facility": "University of Oklahoma Health Sciences Center",
+      "city": "Oklahoma City",
+      "state": "Oklahoma",
+      "country": "United States",
+      "zip": "73104"
+    },
+    {
+      "facility": "Saint Charles Health System",
+      "city": "Bend",
+      "state": "Oregon",
+      "country": "United States",
+      "zip": "97701"
+    },
+    {
+      "facility": "Clackamas Radiation Oncology Center",
+      "city": "Clackamas",
+      "state": "Oregon",
+      "country": "United States",
+      "zip": "97015"
+    },
+    {
+      "facility": "Providence Newberg Medical Center",
+      "city": "Newberg",
+      "state": "Oregon",
+      "country": "United States",
+      "zip": "97132"
+    },
+    {
+      "facility": "Saint Alphonsus Cancer Care Center-Ontario",
+      "city": "Ontario",
+      "state": "Oregon",
+      "country": "United States",
+      "zip": "97914"
+    },
+    {
+      "facility": "Providence Willamette Falls Medical Center",
+      "city": "Oregon City",
+      "state": "Oregon",
+      "country": "United States",
+      "zip": "97045"
+    },
+    {
+      "facility": "Providence Portland Medical Center",
+      "city": "Portland",
+      "state": "Oregon",
+      "country": "United States",
+      "zip": "97213"
+    },
+    {
+      "facility": "Providence Saint Vincent Medical Center",
+      "city": "Portland",
+      "state": "Oregon",
+      "country": "United States",
+      "zip": "97225"
+    },
+    {
+      "facility": "Thomas Jefferson University Hospital",
+      "city": "Philadelphia",
+      "state": "Pennsylvania",
+      "country": "United States",
+      "zip": "19107"
+    },
+    {
+      "facility": "Jefferson Torresdale Hospital",
+      "city": "Philadelphia",
+      "state": "Pennsylvania",
+      "country": "United States",
+      "zip": "19114"
+    },
+    {
+      "facility": "Asplundh Cancer Pavilion",
+      "city": "Willow Grove",
+      "state": "Pennsylvania",
+      "country": "United States",
+      "zip": "19090"
+    },
+    {
+      "facility": "Rapid City Regional Hospital",
+      "city": "Rapid City",
+      "state": "South Dakota",
+      "country": "United States",
+      "zip": "57701"
+    },
+    {
+      "facility": "Sanford Cancer Center Oncology Clinic",
+      "city": "Sioux Falls",
+      "state": "South Dakota",
+      "country": "United States",
+      "zip": "57104"
+    },
+    {
+      "facility": "Sanford USD Medical Center - Sioux Falls",
+      "city": "Sioux Falls",
+      "state": "South Dakota",
+      "country": "United States",
+      "zip": "57117-5134"
+    },
+    {
+      "facility": "Huntsman Cancer Institute/University of Utah",
+      "city": "Salt Lake City",
+      "state": "Utah",
+      "country": "United States",
+      "zip": "84112"
+    },
+    {
+      "facility": "Dartmouth Cancer Center - North",
+      "city": "Saint Johnsbury",
+      "state": "Vermont",
+      "country": "United States",
+      "zip": "05819"
+    },
+    {
+      "facility": "Inova Alexandria Hospital",
+      "city": "Alexandria",
+      "state": "Virginia",
+      "country": "United States",
+      "zip": "22304"
+    },
+    {
+      "facility": "Inova Schar Cancer Institute",
+      "city": "Fairfax",
+      "state": "Virginia",
+      "country": "United States",
+      "zip": "22031"
+    },
+    {
+      "facility": "Inova Fair Oaks Hospital",
+      "city": "Fairfax",
+      "state": "Virginia",
+      "country": "United States",
+      "zip": "22033"
+    },
+    {
+      "facility": "Inova Fairfax Hospital",
+      "city": "Falls Church",
+      "state": "Virginia",
+      "country": "United States",
+      "zip": "22042"
+    },
+    {
+      "facility": "Centra Alan B Pearson Regional Cancer Center",
+      "city": "Lynchburg",
+      "state": "Virginia",
+      "country": "United States",
+      "zip": "24501"
+    },
+    {
+      "facility": "Virginia Cancer Institute",
+      "city": "Richmond",
+      "state": "Virginia",
+      "country": "United States",
+      "zip": "23229"
+    },
+    {
+      "facility": "VCU Massey Cancer Center at Stony Point",
+      "city": "Richmond",
+      "state": "Virginia",
+      "country": "United States",
+      "zip": "23235"
+    },
+    {
+      "facility": "VCU Massey Comprehensive Cancer Center",
+      "city": "Richmond",
+      "state": "Virginia",
+      "country": "United States",
+      "zip": "23298"
+    },
+    {
+      "facility": "VCU Health Tappahannock Hospital",
+      "city": "Tappahannock",
+      "state": "Virginia",
+      "country": "United States",
+      "zip": "22560"
+    },
+    {
+      "facility": "Duluth Clinic Ashland",
+      "city": "Ashland",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54806"
+    },
+    {
+      "facility": "Marshfield Medical Center-EC Cancer Center",
+      "city": "Eau Claire",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54701"
+    },
+    {
+      "facility": "Saint Vincent Hospital Cancer Center Green Bay",
+      "city": "Green Bay",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54301"
+    },
+    {
+      "facility": "Saint Vincent Hospital Cancer Center at Saint Mary's",
+      "city": "Green Bay",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54303"
+    },
+    {
+      "facility": "Gundersen Lutheran Medical Center",
+      "city": "La Crosse",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54601"
+    },
+    {
+      "facility": "Marshfield Medical Center-Marshfield",
+      "city": "Marshfield",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54449"
+    },
+    {
+      "facility": "Medical College of Wisconsin",
+      "city": "Milwaukee",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "53226"
+    },
+    {
+      "facility": "Marshfield Medical Center - Minocqua",
+      "city": "Minocqua",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54548"
+    },
+    {
+      "facility": "ProHealth D N Greenwald Center",
+      "city": "Mukwonago",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "53149"
+    },
+    {
+      "facility": "Cancer Center of Western Wisconsin",
+      "city": "New Richmond",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54017"
+    },
+    {
+      "facility": "ProHealth Oconomowoc Memorial Hospital",
+      "city": "Oconomowoc",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "53066"
+    },
+    {
+      "facility": "Saint Vincent Hospital Cancer Center at Oconto Falls",
+      "city": "Oconto Falls",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54154"
+    },
+    {
+      "facility": "Marshfield Medical Center-Rice Lake",
+      "city": "Rice Lake",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54868"
+    },
+    {
+      "facility": "Saint Vincent Hospital Cancer Center at Sheboygan",
+      "city": "Sheboygan",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "53081"
+    },
+    {
+      "facility": "Marshfield Medical Center-River Region at Stevens Point",
+      "city": "Stevens Point",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54482"
+    },
+    {
+      "facility": "Saint Vincent Hospital Cancer Center at Sturgeon Bay",
+      "city": "Sturgeon Bay",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54235-1495"
+    },
+    {
+      "facility": "Essentia Health Saint Mary's Hospital - Superior",
+      "city": "Superior",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54880"
+    },
+    {
+      "facility": "ProHealth Waukesha Memorial Hospital",
+      "city": "Waukesha",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "53188"
+    },
+    {
+      "facility": "UW Cancer Center at ProHealth Care",
+      "city": "Waukesha",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "53188"
+    },
+    {
+      "facility": "Marshfield Medical Center - Weston",
+      "city": "Weston",
+      "state": "Wisconsin",
+      "country": "United States",
+      "zip": "54476"
+    }
+  ],
+  "sourceUrl": "https://clinicaltrials.gov/study/NCT05136196",
+  "lastUpdated": "2026-07-07"
+}

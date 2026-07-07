@@ -10,3 +10,6 @@ coverage
 .playwright-cli
 output
 tsconfig.tsbuildinfo
+
+# Raw eval runs are regenerable and noisy; commit curated reports, not every run.
+scripts/eval/results/

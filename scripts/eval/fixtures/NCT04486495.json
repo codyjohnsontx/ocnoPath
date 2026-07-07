@@ -1,0 +1,194 @@
+{
+  "nctId": "NCT04486495",
+  "title": "Minimal Invasive Axillary Staging and Treatment After Neoadjuvant Systemic Therapy in Node Positive Breast Cancer",
+  "status": "RECRUITING",
+  "phase": [
+    "UNKNOWN"
+  ],
+  "conditions": [
+    "Breast Cancer",
+    "Neoadjuvant Therapy",
+    "Lymph Node Metastases"
+  ],
+  "briefSummary": "Today, the majority of clinically node positive (cN+) breast cancer patients is treated with neoadjuvant systemic therapy (NST). Axillary staging and treatment after NST in cN+ patients are areas of controversy. Patients with a pathological complete response (pCR) of the axillary lymph nodes are not expected to benefit from axillary lymph node dissection (ALND). Hence, less invasive axillary staging procedures are being introduced to avoid unnecessary ALND. However, evidence supporting the safety of replacing ALND by less invasive techniques in terms of oncologic safety and impact on quality of life (QoL) is lacking.",
+  "eligibilityCriteria": "Inclusion Criteria:\n\n* Female patient with unilateral invasive breast cancer and cN1-3\n* Pathologically proven positive axillary lymph node\n* Planned to undergo neoadjuvant chemotherapy (± immunotherapy), followed by staging and treatment of the breast and axilla\n\nExclusion Criteria:\n\n* Clinically node negative breast cancer before NST\n* Bilateral invasive breast cancer\n* Neoadjuvant endocrine therapy\n* Distant metastases (including oligometastatic disease)\n* History of invasive breast cancer\n* Other malignancies, except for basal/squamous cell skin cancer, and in situ carcinoma of the cervix or breast\n* Axillary surgery or radiotherapy before NST (this includes SLNB prior to NST)",
+  "locations": [
+    {
+      "facility": "Jeroen Bosch Hospital",
+      "city": "'s-Hertogenbosch",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Northwest Clinics",
+      "city": "Alkmaar",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "The Netherlands Cancer Institute",
+      "city": "Amsterdam",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Gelre Hospital",
+      "city": "Apeldoorn",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Rijnstate Hospital",
+      "city": "Arnhem",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Red Cross Hospital",
+      "city": "Beverwijk",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Alexander Monro Hospital",
+      "city": "Bilthoven",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Amphia Hospital",
+      "city": "Breda",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Van Weel-Bethesda",
+      "city": "Dirksland",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Slingeland Hospital",
+      "city": "Doetinchem",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Albert Schweitzer Hospital",
+      "city": "Dordrecht",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Gelderse Vallei Hospital",
+      "city": "Ede",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Catharina Hospital",
+      "city": "Eindhoven",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Máxima Medical Center",
+      "city": "Eindhoven",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Medisch Spectrum Twente",
+      "city": "Enschede",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Martini Hospital",
+      "city": "Groningen",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Saxenburgh Medical Center",
+      "city": "Hardenberg",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Ziekenhuisgroep Twente",
+      "city": "Hengelo",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Tergooi Hospital",
+      "city": "Hilversum",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Spaarne Gasthuis",
+      "city": "Hoofddorp",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Dijklander Hospital",
+      "city": "Hoorn",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Medical Center Leeuwarden",
+      "city": "Leeuwarden",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Leiden University Medical Center",
+      "city": "Leiden",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Alrijne Hospital",
+      "city": "Leiderdorp",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Haaglanden Medical Center",
+      "city": "Leidschendam",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Maastricht University Medical Center",
+      "city": "Maastricht",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Canisius Wilhelmina Hospital",
+      "city": "Nijmegen",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Erasmus Medical Center",
+      "city": "Rotterdam",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Franciscus Gasthuis",
+      "city": "Rotterdam",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Ikazia Hospital",
+      "city": "Rotterdam",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Maasstad Hospital",
+      "city": "Rotterdam",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Spijkenisse Medical Center",
+      "city": "Spijkenisse",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "ZorgSaam Hospital",
+      "city": "Terneuzen",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Diakonessenhuis",
+      "city": "Utrecht",
+      "country": "Netherlands"
+    },
+    {
+      "facility": "Isala Hospital",
+      "city": "Zwolle",
+      "country": "Netherlands"
+    }
+  ],
+  "sourceUrl": "https://clinicaltrials.gov/study/NCT04486495",
+  "lastUpdated": "2022-08-24"
+}

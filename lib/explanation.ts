@@ -42,7 +42,12 @@ async function explainWithOpenAI(
   }
 
   try {
-    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    const client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+      // Optional: point at any OpenAI-compatible host (e.g. Groq) without changing the code path.
+      // Unset => default OpenAI endpoint (backward-compatible).
+      baseURL: process.env.OPENAI_BASE_URL
+    });
     const completion = await client.chat.completions.create({
       model: process.env.OPENAI_MODEL || "gpt-4o-mini",
       response_format: { type: "json_object" },
