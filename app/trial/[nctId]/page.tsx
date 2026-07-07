@@ -70,14 +70,7 @@ function TrialDetailContent() {
   }, [trial, searchParams]);
 
   if (isLoading) {
-    return (
-      <main className="flex flex-1 items-center justify-center py-24">
-        <div className="flex items-center gap-3 text-muted">
-          <Loader2 className="animate-spin" size={20} />
-          Loading public trial record...
-        </div>
-      </main>
-    );
+    return <TrialLoading />;
   }
 
   if (!trial) {
@@ -124,7 +117,14 @@ function TrialDetailContent() {
             <div className="my-6 grid grid-cols-1 gap-4 border-y border-hair py-5 sm:grid-cols-3">
               <Meta label="Conditions" value={trial.conditions.join(", ") || "Not stated"} />
               <Meta label="Last updated" value={trial.lastUpdated || "Not stated"} />
-              <Meta label="Locations" value={`${trial.locations.length || "No"} listed`} />
+              <Meta
+                label="Locations"
+                value={
+                  trial.locations.length
+                    ? `${trial.locations.length} listed`
+                    : "None listed"
+                }
+              />
             </div>
 
             <h2 className="mb-1 mt-[26px] text-[22px] font-extrabold">
@@ -144,18 +144,26 @@ function TrialDetailContent() {
                     </p>
                   </NoteBox>
                 ) : null}
-                <NoteBox tone="grape" title="Why it may be relevant">
-                  <NoteList items={explanation.whyMayBeRelevant} />
-                </NoteBox>
-                <NoteBox tone="amber" title="Possible eligibility concerns">
-                  <NoteList items={explanation.possibleEligibilityConcerns} />
-                </NoteBox>
-                <NoteBox tone="grape" title="Missing information">
-                  <NoteList items={explanation.missingInformation} />
-                </NoteBox>
-                <NoteBox tone="amber" title="Questions to ask your oncology team">
-                  <NoteList items={explanation.questionsForOncologyTeam} />
-                </NoteBox>
+                {explanation.whyMayBeRelevant?.length ? (
+                  <NoteBox tone="grape" title="Why it may be relevant">
+                    <NoteList items={explanation.whyMayBeRelevant} />
+                  </NoteBox>
+                ) : null}
+                {explanation.possibleEligibilityConcerns?.length ? (
+                  <NoteBox tone="amber" title="Possible eligibility concerns">
+                    <NoteList items={explanation.possibleEligibilityConcerns} />
+                  </NoteBox>
+                ) : null}
+                {explanation.missingInformation?.length ? (
+                  <NoteBox tone="grape" title="Missing information">
+                    <NoteList items={explanation.missingInformation} />
+                  </NoteBox>
+                ) : null}
+                {explanation.questionsForOncologyTeam?.length ? (
+                  <NoteBox tone="amber" title="Questions to ask your oncology team">
+                    <NoteList items={explanation.questionsForOncologyTeam} />
+                  </NoteBox>
+                ) : null}
                 {explanation.sourceGroundedNotes?.length ? (
                   <NoteBox tone="grape" title="Source-grounded notes">
                     <NoteList items={explanation.sourceGroundedNotes} />
@@ -248,8 +256,11 @@ function NoteBox({
 function NoteList({ items }: { items: string[] }) {
   return (
     <ul className="grid list-disc gap-1.5 pl-[18px]">
-      {items.map((item) => (
-        <li key={item} className="text-[14.5px] leading-[1.55] text-muted">
+      {items.map((item, index) => (
+        <li
+          key={`${index}-${item}`}
+          className="text-[14.5px] leading-[1.55] text-muted"
+        >
           {item}
         </li>
       ))}
@@ -257,9 +268,20 @@ function NoteList({ items }: { items: string[] }) {
   );
 }
 
+function TrialLoading() {
+  return (
+    <main className="flex flex-1 items-center justify-center py-24">
+      <div className="flex items-center gap-3 text-muted">
+        <Loader2 className="animate-spin" size={20} />
+        Loading public trial record...
+      </div>
+    </main>
+  );
+}
+
 export default function TrialDetailPage() {
   return (
-    <Suspense>
+    <Suspense fallback={<TrialLoading />}>
       <TrialDetailContent />
     </Suspense>
   );

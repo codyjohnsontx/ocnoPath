@@ -27,8 +27,9 @@ export function Squiggle({
         <path
           d="M4 9C34 3 86 3 116 7"
           stroke={color}
-          strokeWidth="5"
+          strokeWidth="3"
           strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
         />
       </svg>
     </span>

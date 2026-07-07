@@ -23,7 +23,14 @@ const config: Config = {
         hair: "#efeaf7", // hairline dividers
         lilac: "#f5f2fc", // soft purple surface
         cream: "#fdf6e8", // soft amber surface
-        field: "#faf8ff" // input fill
+        field: "#faf8ff", // input fill
+        grapeSoft: "#f0ebfb", // grape-tinted pill fill
+        okSoft: "#eafaf1", // recruiting pill fill
+        okText: "#1c8a54", // recruiting pill text
+        infoSoft: "#eef0fb", // not-yet-recruiting pill fill
+        infoText: "#4a45c9", // not-yet-recruiting pill text
+        neutralSoft: "#f4f2fb", // neutral pill fill
+        neutralText: "#7a7594" // neutral pill text
       },
       fontFamily: {
         sans: ["var(--font-jakarta)", "system-ui", "sans-serif"]
@@ -33,15 +40,6 @@ const config: Config = {
         btn: "0 16px 32px rgba(109,75,216,.3)",
         card: "0 24px 50px rgba(109,75,216,.1)",
         soft: "0 10px 30px rgba(109,75,216,.07)"
-      },
-      keyframes: {
-        fadeUp: {
-          from: { opacity: "0", transform: "translateY(14px)" },
-          to: { opacity: "1", transform: "none" }
-        }
-      },
-      animation: {
-        fadeUp: "fadeUp 700ms ease-out"
       }
     }
   },

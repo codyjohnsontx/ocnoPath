@@ -7,6 +7,7 @@ import { BookmarkPlus, Loader2, SearchX } from "lucide-react";
 import { MedicalDisclaimer } from "@/components/medical-disclaimer";
 import { IdBadge, PhaseBadge, StatusBadge } from "@/components/status-badges";
 import { saveSearch, saveTrialToSheet } from "@/lib/browser-storage";
+import { formatLocations } from "@/lib/format";
 import type { TrialRecord } from "@/lib/types";
 
 function ResultsContent() {
@@ -193,15 +194,6 @@ function EmptyState({ title, body }: { title: string; body: string }) {
       </div>
     </div>
   );
-}
-
-function formatLocations(trial: TrialRecord) {
-  if (!trial.locations.length) return "Not stated";
-  const first = trial.locations[0];
-  const cityState = [first.city, first.state].filter(Boolean).join(", ");
-  return trial.locations.length > 1
-    ? `${cityState || first.country || "Listed"} + ${trial.locations.length - 1} more`
-    : cityState || first.country || "Listed";
 }
 
 export default function ResultsPage() {

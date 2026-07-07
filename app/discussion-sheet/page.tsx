@@ -5,13 +5,16 @@ import Link from "next/link";
 import { Printer, Trash2 } from "lucide-react";
 import { clearDiscussionSheet, getDiscussionSheet } from "@/lib/browser-storage";
 import { PhaseBadge, StatusBadge } from "@/components/status-badges";
-import type { DiscussionSheetState, TrialRecord } from "@/lib/types";
+import { formatLocations } from "@/lib/format";
+import type { DiscussionSheetState } from "@/lib/types";
 
 export default function DiscussionSheetPage() {
   const [sheet, setSheet] = useState<DiscussionSheetState | null>(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     setSheet(getDiscussionSheet());
+    setLoaded(true);
   }, []);
 
   function clearSheet() {
@@ -67,7 +70,7 @@ export default function DiscussionSheetPage() {
             </p>
           </div>
 
-          {trials.length === 0 ? (
+          {loaded && trials.length === 0 ? (
             <div className="py-12 text-center">
               <h3 className="text-xl font-extrabold text-ink">
                 No trials added yet
@@ -82,7 +85,7 @@ export default function DiscussionSheetPage() {
                 Start a search
               </Link>
             </div>
-          ) : (
+          ) : trials.length > 0 ? (
             <div className="grid gap-[26px] py-6">
               {trials.map((trial) => {
                 const explanation = sheet?.explanations.find(
@@ -132,7 +135,7 @@ export default function DiscussionSheetPage() {
                 );
               })}
             </div>
-          )}
+          ) : null}
 
           <footer className="border-t border-hair pt-5 text-[13px] leading-[1.6] text-faint">
             Only your oncology care team and the trial team can determine whether
@@ -173,13 +176,4 @@ function SheetList({ title, items }: { title: string; items: string[] }) {
       </ul>
     </div>
   );
-}
-
-function formatLocations(trial: TrialRecord) {
-  if (!trial.locations.length) return "Not stated";
-  const first = trial.locations[0];
-  const cityState = [first.city, first.state].filter(Boolean).join(", ");
-  return trial.locations.length > 1
-    ? `${cityState || first.country || "Listed"} + ${trial.locations.length - 1} more`
-    : cityState || first.country || "Listed";
 }

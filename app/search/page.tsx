@@ -179,6 +179,7 @@ export default function SearchPage() {
                   <button
                     key={status.value}
                     type="button"
+                    aria-pressed={on}
                     onClick={() => toggleStatus(status.value)}
                     className={`rounded-xl border-[1.5px] px-4 py-2.5 text-sm font-semibold transition ${
                       on
