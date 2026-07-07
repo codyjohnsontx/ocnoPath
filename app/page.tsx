@@ -147,9 +147,9 @@ export default function Home() {
                 </h2>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
-                {capabilities.map((item) => (
+                {capabilities.map((item, index) => (
                   <div
-                    key={item}
+                    key={`cap-${index}`}
                     className="rounded-2xl bg-white/[.14] px-[17px] py-[15px] text-[14.5px] font-semibold"
                   >
                     {item}
