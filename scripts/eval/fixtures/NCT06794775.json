@@ -1,0 +1,32 @@
+{
+  "nctId": "NCT06794775",
+  "title": "SWE-NEO: Swedish NeoAdjuvant Trial Comparing Monotherapy to Combined Immunotherapy in Resectable Stage III Melanoma",
+  "status": "RECRUITING",
+  "phase": [
+    "PHASE3"
+  ],
+  "conditions": [
+    "Malignant Melanoma Stage III"
+  ],
+  "briefSummary": "At present two studies (SWOG S1801 and NADINA) have demonstrated superiority when using neoadjuvant treatment compared to adjuvant treatment only, but no studies have compared PD-1 monotherapy (SWOG 1801 regimen) to the PD-1/CTLA-4 combination (NADINA regimen) therapy. The SWE-NEO study aims to compare these two regimens, where the PD-1/CTLA-4 combination is potentially more effective, but also associated with more side effects.",
+  "eligibilityCriteria": "Inclusion Criteria:\n\n1. Participants must be at least 18 years of age.\n2. Can provide a signed informed consent as described in the protocol, including compliance with the requirements and restrictions listed in the ICF and in this protocol.\n3. World Health Organization (WHO) Performance Status 0 or 1.\n4. Patients must have\n\n   1. Histologically or cytologically confirmed Stage III melanoma. In the case of in-transit metastases (with or without lymph node metastases)' ≤3 resectable in-transit metastases are allowed.\n   2. Patients with cutaneous, acral, or unknown primary melanomas are eligible for enrollment.\n   3. Resectable tumors are defined as having no significant vascular, neural or bony involvement. Only patients where a complete surgical resection with tumor-free margins can safely be achieved are defined as resectable.\n5. Female patient of childbearing potential should have a negative urine or serum pregnancy test within 72 hours prior to receiving the first treatment. If the urine test is positive or cannot be confirmed as negative, a serum pregnancy test will be required.\n6. Female patients of childbearing potential must be willing to use a highly effective method of contraception, for the course of the study through 150 days after the last dose of study medication. Note: Abstinence is acceptable if this is the usual lifestyle and preferred contraception for the subject. Highly effective methods of contraception include one or more of the following:\n\n   1. male partner who is sterile (vasectomised) prior to the female study subject's entry into the study and is the sole sexual partner for the female subject;\n   2. hormonal (oral, intravaginal, transdermal, implantable or injectable)\n   3. an intrauterine hormone-releasing system (IUS)\n   4. an intrauterine device (IUD) with a documented failure rate of \\< 1%.\n7. Male patients of childbearing potential must agree to use an adequate method of contraception, starting with the first dose of study therapy through 150 days after the last dose of study therapy. Abstinence is acceptable if this is the usual lifestyle and preferred contraception for the subject. A unique female sexual partner must postmenopausal, permanently sterilized (e.g. hysterectomy or tubal ligation), or use a highly effective method of contraception.\n8. No other malignancies, except if treated with curative intent and with a cancer-related life expectancy of more than 5 years.\n9. No prior immunotherapy targeting CTLA-4, PD-1 or PD-L1.\n10. No prior targeted therapy targeting BRAF and/or MEK.\n\nExclusion Criteria:\n\n1. Unresectable melanoma\n2. Uveal/ocular or mucosal melanoma\n3. Any serious or uncontrolled medical conditions that, in the investigator's opinion, may increase the risk associated with study participation or study drug administration, impair the ability of the subject to receive protocol therapy, or interfere with the interpretation of study results .\n4. Subjects with a condition requiring systemic treatment with either corticosteroids (\\> 10 mg daily prednisone equivalents) or other immunosuppressive medications within 14 days of study drug administration. Inhaled or topical steroids and adrenal replacement doses \\> 10 mg daily prednisone equivalents are permitted in the absence of active autoimmune disease.\n5. Women who are pregnant or breastfeeding.\n6. Any condition that potentially hamper compliance with the study protocol and follow-up schedule; those conditions should be discussed with the subject before registration in the trial.",
+  "locations": [
+    {
+      "facility": "Sahlgrenska University Hospital",
+      "city": "Gothenburg",
+      "country": "Sweden"
+    },
+    {
+      "facility": "Skane University Hospital",
+      "city": "Lund",
+      "country": "Sweden"
+    },
+    {
+      "facility": "Karolinska University Hospital",
+      "city": "Stockholm",
+      "country": "Sweden"
+    }
+  ],
+  "sourceUrl": "https://clinicaltrials.gov/study/NCT06794775",
+  "lastUpdated": "2025-12-12"
+}

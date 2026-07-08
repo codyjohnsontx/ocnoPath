@@ -1,0 +1,23 @@
+{
+  "nctId": "NCT06183762",
+  "title": "A Real-World Study of Treatment Patterns and Effectiveness in MET Mutation-Positive Advanced Lung Cancer",
+  "status": "RECRUITING",
+  "phase": [
+    "UNKNOWN"
+  ],
+  "conditions": [
+    "Advanced Lung Cancer"
+  ],
+  "briefSummary": "This is a descriptive observational study in which data are collected in an epidemiological manner. This study is not intended to alter or interfere with the current medical practice of the enrolled patients. Data will be collected in a forward-looking manner. This is a descriptive observational study in which data are collected in an epidemiological manner. This study is not intended to alter or interfere with the current medical practice of the enrolled patients. Data from patients on prior treatment will be collected retrospectively, and data from patients who will be treated later and included in the study will be collected in a prospective manner. The criteria for retrospective collection were consistent with those for prospective collection. Eligible patients will be enrolled after NGS analysis of tumor tissue and informed consent has been obtained. Information required for the study will be collected (every 3 months).",
+  "eligibilityCriteria": "Inclusion Criteria:\n\n1. Patients must be ≥18 years of age.\n2. Provision of fully informed consent prior to any study specific procedures.\n3. Histologically or cytologically confirmed, unresectable stage IIIB/IIIC or stage IV NSCLC.\n4. Genetic variants of tumor tissue detected by NGS.\n\nExclusion Criteria:\n\nNone.",
+  "locations": [
+    {
+      "facility": "Hunan Province Tumor Hospital",
+      "city": "Changsha",
+      "state": "Hunan",
+      "country": "China"
+    }
+  ],
+  "sourceUrl": "https://clinicaltrials.gov/study/NCT06183762",
+  "lastUpdated": "2024-09-19"
+}

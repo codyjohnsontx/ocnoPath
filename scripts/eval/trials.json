@@ -1,0 +1,77 @@
+{
+  "note": "Gold set for the OncoPath explanation accuracy eval (roadmap 1.1). NCT IDs pulled live from ClinicalTrials.gov v2 and chosen to span cancer types, trial phases, and eligibility-criteria complexity (simple observational -> dense biomarker-gated Phase 1). Snapshot freezes each to scripts/eval/fixtures so the eval is reproducible even as CT.gov data drifts.",
+  "trials": [
+    {
+      "nctId": "NCT04486495",
+      "tags": ["breast", "phase-NA", "simple"],
+      "why": "Short criteria (~700 chars), surgical/staging study — baseline for a simple record.",
+      "searchContext": { "cancerType": "breast cancer", "ageGroup": "adult", "stageProvided": true, "biomarkersProvided": false, "priorTreatmentsProvided": true }
+    },
+    {
+      "nctId": "NCT06107686",
+      "tags": ["breast", "phase-2", "biomarker", "moderate"],
+      "why": "Biomarker-selected advanced solid tumors — tempts overstatement about who qualifies.",
+      "searchContext": { "cancerType": "breast cancer", "ageGroup": "adult", "stageProvided": true, "biomarkersProvided": true, "priorTreatmentsProvided": true }
+    },
+    {
+      "nctId": "NCT06183762",
+      "tags": ["lung", "phase-NA", "observational", "biomarker", "simple"],
+      "why": "Real-world observational MET-mutation study — short criteria, names a biomarker in the title.",
+      "searchContext": { "cancerType": "lung cancer", "ageGroup": "adult", "stageProvided": false, "biomarkersProvided": true, "priorTreatmentsProvided": false }
+    },
+    {
+      "nctId": "NCT04199741",
+      "tags": ["lung", "sclc", "phase-1-2", "imaging", "moderate"],
+      "why": "Small-cell lung imaging study — non-treatment design the summary must not frame as therapy.",
+      "searchContext": { "cancerType": "small cell lung cancer", "ageGroup": "adult", "stageProvided": true, "biomarkersProvided": false, "priorTreatmentsProvided": false }
+    },
+    {
+      "nctId": "NCT06738303",
+      "tags": ["prostate", "phase-2", "treatment", "moderate"],
+      "why": "Metastatic castrate-resistant treatment comparison — clear treatment trial with real prior-therapy gates.",
+      "searchContext": { "cancerType": "prostate cancer", "ageGroup": "adult", "stageProvided": true, "biomarkersProvided": false, "priorTreatmentsProvided": true }
+    },
+    {
+      "nctId": "NCT05645718",
+      "tags": ["pediatric", "leukemia", "phase-2", "complex"],
+      "why": "Pediatric B-ALL regimen with dense criteria — pediatric age group, high complexity.",
+      "searchContext": { "cancerType": "acute lymphoblastic leukemia", "ageGroup": "pediatric", "stageProvided": false, "biomarkersProvided": false, "priorTreatmentsProvided": true }
+    },
+    {
+      "nctId": "NCT03571321",
+      "tags": ["pediatric", "aya", "leukemia", "phase-1", "biomarker", "complex"],
+      "why": "Ph-like ALL in adolescents/young adults — biomarker-defined subtype, dense criteria.",
+      "searchContext": { "cancerType": "Ph-like acute lymphoblastic leukemia", "ageGroup": "pediatric", "stageProvided": false, "biomarkersProvided": true, "priorTreatmentsProvided": true }
+    },
+    {
+      "nctId": "NCT06010862",
+      "tags": ["pancreatic", "phase-1", "cell-therapy", "biomarker", "complex"],
+      "why": "CEA-targeted CAR-T, CEA-positive advanced tumors — early-phase cell therapy with a hard biomarker gate.",
+      "searchContext": { "cancerType": "pancreatic cancer", "ageGroup": "adult", "stageProvided": true, "biomarkersProvided": true, "priorTreatmentsProvided": true }
+    },
+    {
+      "nctId": "NCT05116072",
+      "tags": ["pancreatic", "phase-1-2", "surgical", "complex"],
+      "why": "TPIAT for resectable pancreatic adenocarcinoma — surgical + complex eligibility.",
+      "searchContext": { "cancerType": "pancreatic cancer", "ageGroup": "adult", "stageProvided": true, "biomarkersProvided": false, "priorTreatmentsProvided": false }
+    },
+    {
+      "nctId": "NCT05607095",
+      "tags": ["melanoma", "uveal", "rare", "phase-1", "cell-therapy", "very-complex"],
+      "why": "TIL therapy for uveal (rare) melanoma — ~12k-char criteria, stress test for omission of exclusions.",
+      "searchContext": { "cancerType": "uveal melanoma", "ageGroup": "adult", "stageProvided": true, "biomarkersProvided": false, "priorTreatmentsProvided": true }
+    },
+    {
+      "nctId": "NCT06794775",
+      "tags": ["melanoma", "phase-3", "neoadjuvant", "moderate"],
+      "why": "Phase 3 neoadjuvant monotherapy vs combination — comparative design the notes must not rank.",
+      "searchContext": { "cancerType": "melanoma", "ageGroup": "adult", "stageProvided": true, "biomarkersProvided": false, "priorTreatmentsProvided": false }
+    },
+    {
+      "nctId": "NCT05136196",
+      "tags": ["melanoma", "phase-2", "combination", "very-complex"],
+      "why": "Combination immunotherapy with ~14k-char criteria — hardest faithfulness stress test.",
+      "searchContext": { "cancerType": "melanoma", "ageGroup": "adult", "stageProvided": true, "biomarkersProvided": false, "priorTreatmentsProvided": true }
+    }
+  ]
+}
