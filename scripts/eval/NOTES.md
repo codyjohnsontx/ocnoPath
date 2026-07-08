@@ -100,3 +100,22 @@ For each run, note the model + date and jot what you see. Watch for:
   (e.g. "consult your oncology team" marked unsupported). Calibration template
   generated (`calibration.labels.json`, 6 blind claims) — needs Cody's labels to
   measure judge-vs-human agreement before the number is trustworthy.
+
+### 2026-07-08 — calibration round 1 (n=6, human = Cody)
+
+- Agreement: **exact 2/6 (33%), faithful-vs-not 3/6 (50%)**. Low — so **the 81%
+  is not yet trustworthy**; the judge and a human disagree systematically.
+- Systematic disagreement #1 (the important one): second-person "You have…/You are
+  looking for…" claims. Judge = SUPPORTED (the underlying facts match eligibility);
+  human = UNSUPPORTED (the source says nothing about the *reader*). For a medical
+  app the conservative human read is the right standard — the app must not assert a
+  reader's diagnosis or wishes. **The judge is too lenient on reader-assertions**,
+  and the generator shouldn't produce them at all.
+- Disagreement #2: "new treatment approach" — here the judge was stricter than the
+  human. Genuine gray area.
+- Actions (next slice): (a) tighten the judge prompt so claims asserting facts about
+  the reader that aren't in the source count UNSUPPORTED; (b) better, fix the
+  GENERATOR to stop second-person reader-assertions (product/safety win); (c) re-run
+  judge + re-calibrate; (d) expand the calibration sample beyond n=6.
+- Caveat: n=6 is a small sample — directional, not definitive. The value here is the
+  *pattern* it exposed, not the exact %.
