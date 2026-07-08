@@ -20,7 +20,9 @@ matching (Phase 4) before faithfulness is proven (Phase 1).
 - [x] 1.2 Thin eval: snapshot + run + usability/fallback rate + manual read (Groq llama-3.3-70b: 12/12 usable after the validator fix)
 - [ ] 1.3 Automated faithfulness judge (claim-level source grounding) + human-calibrated subset  ← NEXT
 - [ ] 1.4 Overstatement/eligibility scan beyond current blocklist; export & harden validateExplanation
-      (partial: disclaimer now guaranteed by construction; broader overstatement scan still TODO)
+      (done: disclaimer guaranteed by construction; dropped model-generated safetyWarnings that
+      freelanced unsourced clinical claims. TODO: broader overstatement scan; retry/timeout for
+      large prompts; granular fallback reasons)
 - [ ] 1.5 Published eval REPORT.md + written case study (the flagship portfolio artifact)
 - [ ] 1.6 Product principles / non-goals doc + decision log
 

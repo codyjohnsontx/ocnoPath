@@ -48,3 +48,25 @@ For each run, note the model + date and jot what you see. Watch for:
   Claim-level faithfulness grading is the next slice (1.3); that's where the real
   quality number comes from.
 - Next: read a few full outputs for over/understatement, then build the judge.
+
+### 2026-07-08 — read-through + drop model safetyWarnings
+- Manual read (3 trials: simple breast, CAR-T, melanoma combo): summaries and
+  eligibility extraction are faithful and genuinely useful. **One systemic leak:**
+  the model used `safetyWarnings` to freelance clinical risk claims — e.g. it
+  reframed exclusion criteria ("patients with cardiomyopathy are excluded") into
+  risk assertions ("at risk for cardiac complications"), and added terms not in
+  the source ("cardiovascular events", "hemorrhage" — verified absent via grep).
+  Grounded-but-reframed and outright-ungrounded claims both violate "use only the
+  provided info," in the field that reads most like medical advice.
+- Fix (1.4): dropped `safetyWarnings` from the model schema; the app now emits
+  only the guaranteed canonical disclaimer. Re-run confirms all 12 have exactly
+  that one warning — freelancing eliminated.
+- Usability this run: 11/12 (92%). The 1 fallback was NCT05136196 (14,403-char
+  eligibility) with reason "AI explanation service was unavailable" — a transient
+  throw on the largest prompt (it passed in the prior run), NOT caused by this
+  change. Robustness follow-up: add retry + timeout handling for large prompts,
+  and make the catch-all reason distinguish timeout vs. invalid-JSON vs. network.
+- Minor content nits for later: some `possibleEligibilityConcerns` are actually
+  inclusion criteria (mis-bucketed); "You have been diagnosed with..." reads as
+  asserting facts about the reader.
+- Next: build the claim-level faithfulness judge (1.3) against this cleaner baseline.

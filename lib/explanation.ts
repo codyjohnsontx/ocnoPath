@@ -83,7 +83,10 @@ async function explainWithOpenAI(
       missingInformation: normalizeList(parsed.missingInformation),
       questionsForOncologyTeam: normalizeList(parsed.questionsForOncologyTeam),
       sourceGroundedNotes: normalizeList(parsed.sourceGroundedNotes),
-      safetyWarnings: normalizeList(parsed.safetyWarnings),
+      // The model no longer generates safety warnings — it used the field to
+      // freelance unsourced clinical risk claims. ensureSafetyWarning() adds the
+      // guaranteed canonical disclaimer below.
+      safetyWarnings: [],
       generatedAt: new Date().toISOString(),
       model: completion.model,
       sourceVersionKey: sourceVersionKey(trial)
@@ -150,7 +153,10 @@ async function explainWithOllama(
       missingInformation: normalizeList(parsed.missingInformation),
       questionsForOncologyTeam: normalizeList(parsed.questionsForOncologyTeam),
       sourceGroundedNotes: normalizeList(parsed.sourceGroundedNotes),
-      safetyWarnings: normalizeList(parsed.safetyWarnings),
+      // The model no longer generates safety warnings — it used the field to
+      // freelance unsourced clinical risk claims. ensureSafetyWarning() adds the
+      // guaranteed canonical disclaimer below.
+      safetyWarnings: [],
       generatedAt: new Date().toISOString(),
       model: `ollama:${model}`,
       sourceVersionKey: sourceVersionKey(trial)
@@ -181,8 +187,7 @@ function userPrompt(trial: TrialRecord, searchContext?: Record<string, unknown>)
       possibleEligibilityConcerns: ["string"],
       missingInformation: ["string"],
       questionsForOncologyTeam: ["string"],
-      sourceGroundedNotes: ["string"],
-      safetyWarnings: ["string"]
+      sourceGroundedNotes: ["string"]
     },
     trial: {
       nctId: trial.nctId,
