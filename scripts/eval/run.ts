@@ -3,9 +3,10 @@
  * set and report the headline signal: how often the configured model produces
  * usable output vs. silently falling back to the deterministic template.
  *
- * Prereq: snapshot first (npm run eval:snapshot), then set the provider env
- * (see scripts/eval/README.md). Run: npm run eval:run
+ * Prereq: snapshot first (npm run eval:snapshot), then set the provider env in
+ * .env.local (auto-loaded below). Run: npm run eval:run
  */
+import "./_env";
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
