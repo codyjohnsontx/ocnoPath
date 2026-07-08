@@ -35,3 +35,16 @@ For each run, note the model + date and jot what you see. Watch for:
   2. And/or state the exact required warning in the system prompt.
 - Follow-up: after the fix, re-run to get the true model usability rate, then
   move to faithfulness grading (1.3).
+
+### 2026-07-08 — Groq llama-3.3-70b-versatile (after Option A fix)
+- Usability: **12/12 (100%)**, 0 fallback.
+- Fix: guarantee the canonical disclaimer by construction (ensureSafetyWarning)
+  and drop the phrase-match gate from validateExplanation; kept the
+  prohibited-language + structure gates. Result: well-formed model explanations
+  are no longer discarded, and the mandatory disclaimer is always present
+  regardless of the model.
+- IMPORTANT — do not overclaim: "usability" = *passed the safety gate / not a
+  fallback*. It does **not** mean the explanations are faithful or accurate.
+  Claim-level faithfulness grading is the next slice (1.3); that's where the real
+  quality number comes from.
+- Next: read a few full outputs for over/understatement, then build the judge.

@@ -15,11 +15,12 @@ matching (Phase 4) before faithfulness is proven (Phase 1).
 - [x] Purple/amber redesign + accessibility/review passes
 
 ## Phase 1 — Prove it works (trust & evidence)  ← CURRENT
-- [ ] 1.0 Wire Groq hosted model (production model = the model we evaluate)
-- [ ] 1.1 Gold set of real trials (~10–15 to start, grow toward ~30)
-- [ ] 1.2 Thin eval: snapshot + run + usability/fallback rate + manual read
-- [ ] 1.3 Automated faithfulness judge (claim-level source grounding) + human-calibrated subset
+- [x] 1.0 Wire Groq hosted model (production model = the model we evaluate)
+- [x] 1.1 Gold set of real trials (12; grow toward ~30)
+- [x] 1.2 Thin eval: snapshot + run + usability/fallback rate + manual read (Groq llama-3.3-70b: 12/12 usable after the validator fix)
+- [ ] 1.3 Automated faithfulness judge (claim-level source grounding) + human-calibrated subset  ← NEXT
 - [ ] 1.4 Overstatement/eligibility scan beyond current blocklist; export & harden validateExplanation
+      (partial: disclaimer now guaranteed by construction; broader overstatement scan still TODO)
 - [ ] 1.5 Published eval REPORT.md + written case study (the flagship portfolio artifact)
 - [ ] 1.6 Product principles / non-goals doc + decision log
 

@@ -16,6 +16,13 @@ const prohibitedPatterns = [
   /guaranteed/i
 ];
 
+// The mandatory disclaimer is a safety guarantee, not something we trust the
+// model to remember to say. We always ensure it is present (see
+// ensureSafetyWarning) rather than rejecting otherwise-valid explanations that
+// worded it differently.
+const REQUIRED_SAFETY_WARNING =
+  "Only your oncology care team and the trial team can determine whether this trial is appropriate for you.";
+
 export async function explainTrial(
   trial: TrialRecord,
   searchContext?: Record<string, unknown>
@@ -82,7 +89,7 @@ async function explainWithOpenAI(
       sourceVersionKey: sourceVersionKey(trial)
     };
 
-    return validateExplanation(explanation)
+    return validateExplanation(ensureSafetyWarning(explanation))
       ? explanation
       : fallbackExplanation(trial, "AI output did not pass safety validation.");
   } catch {
@@ -149,7 +156,7 @@ async function explainWithOllama(
       sourceVersionKey: sourceVersionKey(trial)
     };
 
-    return validateExplanation(explanation)
+    return validateExplanation(ensureSafetyWarning(explanation))
       ? explanation
       : fallbackExplanation(trial, "Ollama output did not pass safety validation.");
   } catch {
@@ -193,16 +200,26 @@ function userPrompt(trial: TrialRecord, searchContext?: Record<string, unknown>)
   });
 }
 
+// Guarantees the mandatory disclaimer is present so a safety-critical warning
+// never depends on the model wording it a specific way. Prepends the canonical
+// warning when no equivalent (mentioning both the oncology care team and the
+// trial team) is already there.
+function ensureSafetyWarning(explanation: TrialExplanation) {
+  const hasEquivalent = explanation.safetyWarnings.some((warning) =>
+    /oncology care team.*trial team|trial team.*oncology care team/i.test(warning)
+  );
+  if (!hasEquivalent) {
+    explanation.safetyWarnings = [REQUIRED_SAFETY_WARNING, ...explanation.safetyWarnings];
+  }
+  return explanation;
+}
+
 function validateExplanation(explanation: TrialExplanation) {
   const text = JSON.stringify(explanation);
   const hasProhibitedLanguage = prohibitedPatterns.some((pattern) => pattern.test(text));
-  const hasRequiredWarning = explanation.safetyWarnings.some((warning) =>
-    /oncology care team.*trial team|trial team.*oncology care team/i.test(warning)
-  );
 
   return (
     !hasProhibitedLanguage &&
-    hasRequiredWarning &&
     Boolean(explanation.plainEnglishSummary) &&
     explanation.whyMayBeRelevant.length > 0 &&
     explanation.possibleEligibilityConcerns.length > 0 &&
@@ -242,9 +259,7 @@ function fallbackExplanation(trial: TrialRecord, reason: string): TrialExplanati
       `Prompt version: ${PROMPT_VERSION}`,
       `Safety fallback used: ${reason}`
     ],
-    safetyWarnings: [
-      "Only your oncology care team and the trial team can determine whether this trial is appropriate for you."
-    ],
+    safetyWarnings: [REQUIRED_SAFETY_WARNING],
     generatedAt: new Date().toISOString(),
     sourceVersionKey: sourceVersionKey(trial)
   };
