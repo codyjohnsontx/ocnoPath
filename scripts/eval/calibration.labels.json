@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "instructions": "Judge each claim against the SOURCE only (briefSummary here + full eligibility in the named fixture). Fill humanVerdict with one of: SUPPORTED, PARTIALLY_SUPPORTED, UNSUPPORTED, OVERSTATED. Do NOT look at the judged results file first. Then re-run: npm run eval:calibrate",
+    "judgedFile": "scripts/eval/results/2026-07-08T07-27-15-079Z-judged.json"
+  },
+  "labels": [
+    {
+      "nctId": "NCT06107686",
+      "field": "whyMayBeRelevant",
+      "claim": "May be relevant for patients with advanced solid tumors who have not responded to previous treatments or have limited treatment options.",
+      "briefSummary": "This study is a multicenter, open-label, phase II study of YL202 in China to evaluate the efficacy, safety, and PK characteristics of YL202 in the following selected patients with advanced solid tumors.",
+      "note": "Full eligibility in fixtures/NCT06107686.json",
+      "humanVerdict": ""
+    },
+    {
+      "nctId": "NCT06107686",
+      "field": "whyMayBeRelevant",
+      "claim": "YL202 may offer a new treatment approach for patients with specific types of cancer, including NSCLC, breast cancer, and HNSCC.",
+      "briefSummary": "This study is a multicenter, open-label, phase II study of YL202 in China to evaluate the efficacy, safety, and PK characteristics of YL202 in the following selected patients with advanced solid tumors.",
+      "note": "Full eligibility in fixtures/NCT06107686.json",
+      "humanVerdict": ""
+    },
+    {
+      "nctId": "NCT06107686",
+      "field": "sourceGroundedNotes",
+      "claim": "The study is sponsored by an unknown sponsor, and the protocol was last updated on November 26, 2025.",
+      "briefSummary": "This study is a multicenter, open-label, phase II study of YL202 in China to evaluate the efficacy, safety, and PK characteristics of YL202 in the following selected patients with advanced solid tumors.",
+      "note": "Full eligibility in fixtures/NCT06107686.json",
+      "humanVerdict": ""
+    },
+    {
+      "nctId": "NCT04486495",
+      "field": "plainEnglishSummary",
+      "claim": "This trial is studying the safety and effectiveness of less invasive axillary staging procedures after neoadjuvant systemic therapy in patients with node-positive breast cancer.",
+      "briefSummary": "Today, the majority of clinically node positive (cN+) breast cancer patients is treated with neoadjuvant systemic therapy (NST). Axillary staging and treatment after NST in cN+ patients are areas of controversy. Patients with a pathological complete response (pCR) of the axillary lymph nodes are not expected to benefit from axillary lymph node dissection (ALND). Hence, less invasive axillary staging procedures are being introduced to avoid unnecessary ALND. However, evidence supporting the safety of replacing ALND by less invasive techniques in terms of oncologic safety and impact on quality of life (QoL) is lacking.",
+      "note": "Full eligibility in fixtures/NCT04486495.json",
+      "humanVerdict": ""
+    },
+    {
+      "nctId": "NCT04486495",
+      "field": "whyMayBeRelevant",
+      "claim": "You have been diagnosed with node-positive breast cancer and are planned to undergo neoadjuvant chemotherapy.",
+      "briefSummary": "Today, the majority of clinically node positive (cN+) breast cancer patients is treated with neoadjuvant systemic therapy (NST). Axillary staging and treatment after NST in cN+ patients are areas of controversy. Patients with a pathological complete response (pCR) of the axillary lymph nodes are not expected to benefit from axillary lymph node dissection (ALND). Hence, less invasive axillary staging procedures are being introduced to avoid unnecessary ALND. However, evidence supporting the safety of replacing ALND by less invasive techniques in terms of oncologic safety and impact on quality of life (QoL) is lacking.",
+      "note": "Full eligibility in fixtures/NCT04486495.json",
+      "humanVerdict": ""
+    },
+    {
+      "nctId": "NCT04486495",
+      "field": "whyMayBeRelevant",
+      "claim": "You are looking for alternatives to axillary lymph node dissection after neoadjuvant systemic therapy.",
+      "briefSummary": "Today, the majority of clinically node positive (cN+) breast cancer patients is treated with neoadjuvant systemic therapy (NST). Axillary staging and treatment after NST in cN+ patients are areas of controversy. Patients with a pathological complete response (pCR) of the axillary lymph nodes are not expected to benefit from axillary lymph node dissection (ALND). Hence, less invasive axillary staging procedures are being introduced to avoid unnecessary ALND. However, evidence supporting the safety of replacing ALND by less invasive techniques in terms of oncologic safety and impact on quality of life (QoL) is lacking.",
+      "note": "Full eligibility in fixtures/NCT04486495.json",
+      "humanVerdict": ""
+    }
+  ]
+}

@@ -78,3 +78,25 @@ For each run, note the model + date and jot what you see. Watch for:
   fall back with the same generic "service unavailable" reason (a masked 429).
   Reinforces the retry/backoff + granular-fallback-reason TODO. Space out runs, or
   add backoff before drawing conclusions from a low usability number.
+
+### 2026-07-08 — first faithfulness run (judge = Groq openai/gpt-oss-120b)
+
+- Graded the 11-explanation run (post-safetyWarnings). **Faithfulness: 81%
+  (100/123 claims SUPPORTED)**; 10 UNSUPPORTED, 3 OVERSTATED, 10 PARTIALLY.
+- **Judge bug found & fixed (eval-of-the-eval):** first pass read 67% because the
+  judge was only shown `{title, conditions, briefSummary, eligibilityCriteria}`
+  while the generator also sees `status, phase, locations, lastUpdated, sourceUrl`.
+  It false-flagged grounded claims ("currently recruiting", dates, locations,
+  "on clinicaltrials.gov") as UNSUPPORTED. Fixed judge to full source parity with
+  lib/explanation.ts's userPrompt → 81%.
+- Recurring real findings (both cluster in `sourceGroundedNotes` / `whyMayBeRelevant`):
+  1. **Sponsor hallucination** — invents sponsor names not in any source field
+     (Iovance, Case Comprehensive Cancer Center, etc.).
+  2. **Reader-assertion** — fabricates the reader's situation ("You are looking
+     for alternative surgical procedures...").
+  Candidate fix (future slice): drop/constrain `sourceGroundedNotes` like we did
+  `safetyWarnings`, and forbid second-person assertions in the prompt.
+- **Do not trust 81% yet:** it's the judge's own number. A few flags are borderline
+  (e.g. "consult your oncology team" marked unsupported). Calibration template
+  generated (`calibration.labels.json`, 6 blind claims) — needs Cody's labels to
+  measure judge-vs-human agreement before the number is trustworthy.
