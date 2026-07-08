@@ -21,8 +21,9 @@ matching (Phase 4) before faithfulness is proven (Phase 1).
 - [x] 1.1 Gold set of real trials (12; grow toward ~30)
 - [x] 1.2 Thin eval: snapshot + run + usability/fallback rate + manual read (Groq llama-3.3-70b: 12/12 usable after the validator fix)
 - [ ] 1.3 Automated faithfulness judge (claim-level source grounding) + human-calibrated subset  ← IN PROGRESS
-      (judge + calibration harness shipped; first run 81% faithful on Groq gpt-oss-120b; found the
-      recurring sponsor-hallucination + reader-assertion patterns; awaiting human calibration labels)
+      (judge + calibration harness shipped; judge says 81% faithful on Groq gpt-oss-120b. Calibration
+      round 1 (n=6) = 33%/50% agreement: judge too lenient on second-person reader-assertions. Next:
+      tighten judge + stop generator "you…" claims, re-run, re-calibrate. 81% NOT yet trusted.)
 - [ ] 1.4 Overstatement/eligibility scan beyond current blocklist; export & harden validateExplanation
       (done: disclaimer guaranteed by construction; dropped model-generated safetyWarnings that
       freelanced unsourced clinical claims. TODO: broader overstatement scan; retry/timeout for
