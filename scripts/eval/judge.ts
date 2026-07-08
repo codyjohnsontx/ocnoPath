@@ -37,6 +37,13 @@ type Verdict =
 type Claim = { id: string; field: string; text: string };
 type Graded = Claim & { verdict: Verdict | "MISSING"; reason: string; sourceSnippet: string };
 
+const VALID_VERDICTS = new Set<Verdict>([
+  "SUPPORTED",
+  "PARTIALLY_SUPPORTED",
+  "UNSUPPORTED",
+  "OVERSTATED"
+]);
+
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 function latestResultsFile(): string {
@@ -128,15 +135,24 @@ async function judgeExplanation(trial: TrialRecord, claims: Claim[]): Promise<Gr
       }
       return claims.map((c) => {
         const v = byId.get(c.id);
+        const raw = typeof v?.verdict === "string" ? v.verdict : undefined;
+        // Coerce unknown/malformed verdicts to MISSING so they show up in the
+        // breakdown instead of silently inflating the denominator.
+        const verdict: Verdict | "MISSING" =
+          raw && VALID_VERDICTS.has(raw as Verdict) ? (raw as Verdict) : "MISSING";
         return {
           ...c,
-          verdict: (v?.verdict as Verdict) ?? "MISSING",
-          reason: v?.reason ?? "judge returned no verdict for this claim",
+          verdict,
+          reason:
+            verdict === "MISSING" && raw
+              ? `judge returned an invalid verdict: ${raw}`
+              : v?.reason ?? "judge returned no verdict for this claim",
           sourceSnippet: v?.sourceSnippet ?? ""
         };
       });
-    } catch {
+    } catch (err) {
       if (attempt === 0) await sleep(1500); // one backoff retry
+      else console.error(`  judge call failed: ${err instanceof Error ? err.message : String(err)}`);
     }
   }
   return null;

@@ -12,7 +12,7 @@
 import "./_env";
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { dirname, join } from "node:path";
+import { basename, dirname, join } from "node:path";
 import type { TrialRecord } from "../../lib/types";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -72,7 +72,7 @@ function prepare() {
   const out = {
     _meta: {
       instructions: `Judge each claim against the SOURCE only (briefSummary here + full eligibility in the named fixture). Fill humanVerdict with one of: ${VERDICTS.join(", ")}. Do NOT look at the judged results file first. Then re-run: npm run eval:calibrate`,
-      judgedFile: judgedFile.replace(here + "/", "scripts/eval/").replace(resultsDir, "results")
+      judgedFile: `results/${basename(judgedFile)}`
     },
     labels
   };
@@ -90,11 +90,10 @@ function score() {
     return;
   }
 
-  // Re-read the exact judged file this template was built from.
-  const judgedRel = file._meta?.judgedFile as string;
-  const judgedAbs = judgedRel?.startsWith("results")
-    ? join(resultsDir, judgedRel.replace(/^results\//, ""))
-    : latestJudgedFile();
+  // Re-read the exact judged file this template was built from. basename()
+  // normalizes whatever form _meta.judgedFile was stored in to just the filename.
+  const judgedRel = file._meta?.judgedFile as string | undefined;
+  const judgedAbs = judgedRel ? join(resultsDir, basename(judgedRel)) : latestJudgedFile();
   const judged = JSON.parse(readFileSync(judgedAbs, "utf8")) as Judged;
   const judgeBy = new Map<string, string>();
   for (const j of judged.judged) {
