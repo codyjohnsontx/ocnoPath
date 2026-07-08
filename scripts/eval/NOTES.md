@@ -20,6 +20,7 @@ For each run, note the model + date and jot what you see. Watch for:
 ## Runs
 
 ### 2026-07-08 — Groq llama-3.3-70b-versatile (first real run)
+
 - Usability: 0/12 (0%) — all fell back with "AI output did not pass safety validation."
 - Root cause (via one raw-output diagnostic): **not** a model-quality problem. The
   model returns all 7 fields, cautious language, no prohibited phrases, and
@@ -37,6 +38,7 @@ For each run, note the model + date and jot what you see. Watch for:
   move to faithfulness grading (1.3).
 
 ### 2026-07-08 — Groq llama-3.3-70b-versatile (after Option A fix)
+
 - Usability: **12/12 (100%)**, 0 fallback.
 - Fix: guarantee the canonical disclaimer by construction (ensureSafetyWarning)
   and drop the phrase-match gate from validateExplanation; kept the
@@ -50,6 +52,7 @@ For each run, note the model + date and jot what you see. Watch for:
 - Next: read a few full outputs for over/understatement, then build the judge.
 
 ### 2026-07-08 — read-through + drop model safetyWarnings
+
 - Manual read (3 trials: simple breast, CAR-T, melanoma combo): summaries and
   eligibility extraction are faithful and genuinely useful. **One systemic leak:**
   the model used `safetyWarnings` to freelance clinical risk claims — e.g. it
@@ -70,3 +73,8 @@ For each run, note the model + date and jot what you see. Watch for:
   inclusion criteria (mis-bucketed); "You have been diagnosed with..." reads as
   asserting facts about the reader.
 - Next: build the claim-level faithfulness judge (1.3) against this cleaner baseline.
+- Rate-limit observation: running the full eval several times in quick succession
+  hits Groq's free-tier limit — the first ~5 calls succeed, then the rest throw and
+  fall back with the same generic "service unavailable" reason (a masked 429).
+  Reinforces the retry/backoff + granular-fallback-reason TODO. Space out runs, or
+  add backoff before drawing conclusions from a low usability number.
