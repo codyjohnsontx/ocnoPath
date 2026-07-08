@@ -55,3 +55,36 @@ source grounding, roadmap 1.3) comes next and builds on these fixtures.
 With no `OPENAI_API_KEY` set (or `AI_PROVIDER` unset), every trial should report
 `FALLBACK` and usability should be 0% — that confirms fallback detection works
 before you trust a real run.
+
+## Faithfulness judge (roadmap 1.3)
+
+Usability (above) only means "passed the safety gate." The judge measures the
+thing that matters: does each claim trace back to the source trial text?
+
+1. **Set a judge model** in `.env.local` — a larger, different-family model than
+   the generator, to avoid self-grading bias. On Groq you only set the model
+   (base URL + key default to the `OPENAI_*` values):
+
+   ```ini
+   JUDGE_MODEL=openai/gpt-oss-120b
+   ```
+
+2. **Grade the latest run:**
+
+   ```bash
+   npm run eval:judge
+   ```
+
+   Grades each factual claim (`plainEnglishSummary`, `whyMayBeRelevant`,
+   `possibleEligibilityConcerns`, `missingInformation`, `sourceGroundedNotes`)
+   as SUPPORTED / PARTIALLY_SUPPORTED / UNSUPPORTED / OVERSTATED, prints a
+   faithfulness %, and lists flagged claims. Writes `results/<runId>-judged.json`.
+
+3. **Calibrate the judge** (so its numbers are trustworthy):
+
+   ```bash
+   npm run eval:calibrate     # first run: writes calibration.labels.json to fill
+   # ...label the humanVerdict fields blind, then:
+   npm run eval:calibrate     # prints judge-vs-human agreement
+   ```
+

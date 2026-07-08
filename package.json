@@ -9,7 +9,9 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "eval:snapshot": "tsx scripts/eval/snapshot.ts",
-    "eval:run": "tsx scripts/eval/run.ts"
+    "eval:run": "tsx scripts/eval/run.ts",
+    "eval:judge": "tsx scripts/eval/judge.ts",
+    "eval:calibrate": "tsx scripts/eval/calibrate.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
