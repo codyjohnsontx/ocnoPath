@@ -31,7 +31,7 @@ source grounding, roadmap 1.3) comes next and builds on these fixtures.
 2. **Point at the model that will serve production** (Groq free tier). Put the
    provider vars in `.env.local` (gitignored) — `run.ts` auto-loads it:
 
-   ```
+   ```ini
    AI_PROVIDER=openai
    OPENAI_BASE_URL=https://api.groq.com/openai/v1
    OPENAI_API_KEY=gsk_your_groq_key

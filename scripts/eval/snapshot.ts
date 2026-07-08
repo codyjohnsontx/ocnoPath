@@ -14,6 +14,10 @@ import type { TrialRecord } from "../../lib/types";
 const here = dirname(fileURLToPath(import.meta.url));
 const fixturesDir = join(here, "fixtures");
 
+// Locations don't affect explanation faithfulness, but some trials list
+// hundreds of sites — cap them so fixtures stay lean and prompts don't bloat.
+const MAX_LOCATIONS = 5;
+
 type GoldTrial = { nctId: string; tags: string[]; why: string };
 type GoldSet = { trials: GoldTrial[] };
 
@@ -54,8 +58,9 @@ async function main() {
     }
 
     // rawSource is the full v2 payload and is never sent to the model — drop it
-    // to keep fixtures lean and diff-friendly.
+    // to keep fixtures lean and diff-friendly. Cap locations for the same reason.
     const { rawSource: _drop, ...lean } = record as TrialRecord;
+    lean.locations = lean.locations.slice(0, MAX_LOCATIONS);
     writeFileSync(
       join(fixturesDir, `${entry.nctId}.json`),
       JSON.stringify(lean, null, 2) + "\n"
