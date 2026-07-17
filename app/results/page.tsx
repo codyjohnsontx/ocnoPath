@@ -23,7 +23,12 @@ import { MedicalDisclaimer } from "@/components/medical-disclaimer";
 import { IdBadge, PhaseBadges, StatusBadge } from "@/components/status-badges";
 import { saveSearch, saveTrialToSheet } from "@/lib/browser-storage";
 import { formatNearestLocation } from "@/lib/format";
-import type { TrialRecord, TrialSearchMetadata } from "@/lib/types";
+import type {
+  TrialRecord,
+  TrialSearchMetadata,
+  TrialSearchResult
+} from "@/lib/types";
+import { trialSearchResultSchema } from "@/lib/validation";
 
 const MAX_CURSOR_HISTORY = 20;
 const PUBLIC_TRIAL_SOURCE_ERROR =
@@ -638,10 +643,8 @@ function getApiError(value: unknown) {
   return typeof value.error === "string" ? value.error : null;
 }
 
-function isSearchResponse(
-  value: unknown
-): value is { trials?: TrialRecord[]; metadata?: TrialSearchMetadata } {
-  return Boolean(value && typeof value === "object" && !Array.isArray(value));
+function isSearchResponse(value: unknown): value is TrialSearchResult {
+  return trialSearchResultSchema.safeParse(value).success;
 }
 
 function Meta({ label, value }: { label: string; value: string }) {

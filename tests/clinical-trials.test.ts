@@ -11,7 +11,10 @@ import {
   type SearchOrigin
 } from "../lib/clinical-trials";
 import type { SearchCriteria } from "../lib/types";
-import { searchCriteriaSchema } from "../lib/validation";
+import {
+  searchCriteriaSchema,
+  trialSearchResultSchema
+} from "../lib/validation";
 
 const criteria: SearchCriteria = {
   cancerType: "breast cancer",
@@ -79,6 +82,27 @@ test("rejects a title-only cancer match when registered conditions conflict", ()
     conditionMatches("small cell lung cancer", ["Small Cell Lung Carcinoma"]),
     true
   );
+  assert.equal(
+    conditionMatches("non-small cell lung cancer", ["Small Cell Lung Cancer"]),
+    false
+  );
+  assert.equal(
+    conditionMatches("small cell lung cancer", ["Non-Small Cell Lung Cancer"]),
+    false
+  );
+  assert.equal(
+    conditionMatches("non-Hodgkin lymphoma", ["Hodgkin Lymphoma"]),
+    false
+  );
+  assert.equal(
+    conditionMatches("Hodgkin lymphoma", ["Non-Hodgkin Lymphoma"]),
+    false
+  );
+  assert.equal(
+    conditionMatches("lung cancer", ["Non-Small Cell Lung Cancer"]),
+    true
+  );
+  assert.equal(conditionMatches("lymphoma", ["Non-Hodgkin Lymphoma"]), true);
 });
 
 test("returns the nearest site with a matching recruiting status", async () => {
@@ -199,6 +223,22 @@ test("rejects a successful search response without a studies array", async () =>
   }
 });
 
+test("rejects malformed upstream pagination fields", async () => {
+  const originalFetch = globalThis.fetch;
+
+  try {
+    for (const payload of [
+      { studies: [], nextPageToken: 42 },
+      { studies: [], totalCount: "12" }
+    ]) {
+      globalThis.fetch = async () => jsonResponse(payload);
+      await assert.rejects(() => searchTrials(criteria), ClinicalTrialsError);
+    }
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test("rejects a malformed successful single-study response", async () => {
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async () =>
@@ -254,6 +294,53 @@ test("applies route defaults only to absent radius and status values", () => {
       ...baseCriteria,
       radius: "100",
       status: [""]
+    }).success,
+    false
+  );
+});
+
+test("validates the complete client search response shape", () => {
+  const response = {
+    trials: [
+      {
+        nctId: "NCT12345678",
+        title: "Example study",
+        status: "RECRUITING",
+        phase: ["PHASE2"],
+        conditions: ["Lung Cancer"],
+        locations: [],
+        sourceUrl: "https://clinicaltrials.gov/study/NCT12345678"
+      }
+    ],
+    metadata: {
+      source: "ClinicalTrials.gov",
+      sourceStatus: "live",
+      origin: { label: "Austin, TX", latitude: 30.2672, longitude: -97.7431 },
+      radiusMiles: 100,
+      appliedFilters: ["Condition: lung cancer"],
+      fetchedAt: "2026-07-17T00:00:00.000Z",
+      pagination: {
+        pageSize: 12,
+        hasNextPage: false,
+        sourceRecordsScanned: 1,
+        sourceTotalCount: 1,
+        orderingPolicy: "Source order."
+      }
+    }
+  };
+
+  assert.equal(trialSearchResultSchema.safeParse(response).success, true);
+  assert.equal(
+    trialSearchResultSchema.safeParse({ ...response, trials: {} }).success,
+    false
+  );
+  assert.equal(
+    trialSearchResultSchema.safeParse({
+      ...response,
+      metadata: {
+        ...response.metadata,
+        pagination: { pageSize: 12, hasNextPage: false }
+      }
     }).success,
     false
   );

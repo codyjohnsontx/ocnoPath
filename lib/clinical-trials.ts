@@ -325,8 +325,12 @@ export function conditionMatches(cancerType: string, conditions: string[]) {
 
   if (!meaningfulTerms.length) return true;
   return conditions.some((condition) => {
-    const conditionTerms = new Set(canonicalConditionTerms(condition));
-    return meaningfulTerms.every((term) => conditionTerms.has(term));
+    const conditionTerms = canonicalConditionTerms(condition);
+    const conditionTermSet = new Set(conditionTerms);
+    return (
+      conditionPolarityMatches(meaningfulTerms, conditionTerms) &&
+      meaningfulTerms.every((term) => conditionTermSet.has(term))
+    );
   });
 }
 
@@ -344,7 +348,14 @@ function isCtSearchResponse(value: unknown): value is CtSearchResponse {
   return (
     isRecord(value) &&
     Array.isArray(value.studies) &&
-    value.studies.every(isCtStudy)
+    value.studies.every(isCtStudy) &&
+    (value.nextPageToken === undefined ||
+      (typeof value.nextPageToken === "string" &&
+        value.nextPageToken.length > 0)) &&
+    (value.totalCount === undefined ||
+      (typeof value.totalCount === "number" &&
+        Number.isInteger(value.totalCount) &&
+        value.totalCount >= 0))
   );
 }
 
@@ -485,8 +496,31 @@ const CONDITION_TERM_CANONICAL: Record<string, string> = {
 function canonicalConditionTerms(value: string) {
   return normalizeWords(value)
     .split(" ")
-    .filter((term) => term.length >= 4 && !GENERIC_CONDITION_TERMS.has(term))
+    .filter(
+      (term) =>
+        (term === "non" || term.length >= 4) &&
+        !GENERIC_CONDITION_TERMS.has(term)
+    )
     .map((term) => CONDITION_TERM_CANONICAL[term] ?? term);
+}
+
+function conditionPolarityMatches(left: string[], right: string[]) {
+  const leftNegated = negatedConditionTerms(left);
+  const rightNegated = negatedConditionTerms(right);
+  const sharedNegationTargets = new Set([...leftNegated, ...rightNegated]);
+
+  return [...sharedNegationTargets].every((term) => {
+    if (!left.includes(term) || !right.includes(term)) return true;
+    return leftNegated.has(term) === rightNegated.has(term);
+  });
+}
+
+function negatedConditionTerms(terms: string[]) {
+  const negated = new Set<string>();
+  terms.forEach((term, index) => {
+    if (term === "non" && terms[index + 1]) negated.add(terms[index + 1]);
+  });
+  return negated;
 }
 
 function normalizeWords(value: string) {

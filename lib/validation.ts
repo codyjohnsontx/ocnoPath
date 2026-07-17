@@ -56,5 +56,31 @@ export const trialRecordSchema = z.object({
   nearestLocation: trialLocationSchema.optional(),
   sourceUrl: z.string(),
   lastUpdated: z.string().optional(),
-  rawSource: z.unknown()
+  rawSource: z.unknown().optional()
+});
+
+export const trialSearchMetadataSchema = z.object({
+  source: z.literal("ClinicalTrials.gov"),
+  sourceStatus: z.literal("live"),
+  origin: z.object({
+    label: z.string(),
+    latitude: z.number(),
+    longitude: z.number()
+  }),
+  radiusMiles: z.number(),
+  appliedFilters: z.array(z.string()),
+  fetchedAt: z.string(),
+  pagination: z.object({
+    pageSize: z.number().int().positive(),
+    hasNextPage: z.boolean(),
+    nextCursor: z.string().min(1).optional(),
+    sourceRecordsScanned: z.number().int().nonnegative(),
+    sourceTotalCount: z.number().int().nonnegative().optional(),
+    orderingPolicy: z.string()
+  })
+});
+
+export const trialSearchResultSchema = z.object({
+  trials: z.array(trialRecordSchema),
+  metadata: trialSearchMetadataSchema
 });
