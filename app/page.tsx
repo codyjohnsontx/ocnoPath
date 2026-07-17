@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpenText,
+  ExternalLink,
+  LockKeyhole,
+  MessageCircleQuestion
+} from "lucide-react";
 import { Squiggle } from "@/components/squiggle";
 
 const steps = [
@@ -27,10 +33,22 @@ const steps = [
 ];
 
 const capabilities = [
-  "Plain-English summaries",
-  "Public, source-linked records",
-  "Questions for your care team",
-  "Saved privately in your browser"
+  {
+    text: "Plain-English summaries",
+    icon: BookOpenText
+  },
+  {
+    text: "Public, source-linked records",
+    icon: ExternalLink
+  },
+  {
+    text: "Questions for your care team",
+    icon: MessageCircleQuestion
+  },
+  {
+    text: "Saved privately in your browser",
+    icon: LockKeyhole
+  }
 ];
 
 export default function Home() {
@@ -147,14 +165,20 @@ export default function Home() {
                 </h2>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
-                {capabilities.map((item, index) => (
-                  <div
-                    key={`cap-${index}`}
-                    className="rounded-2xl bg-white/[.14] px-[17px] py-[15px] text-[14.5px] font-semibold"
-                  >
-                    {item}
-                  </div>
-                ))}
+                {capabilities.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={item.text}
+                      className="capability-tile capability-fill"
+                    >
+                      <span className="capability-icon" aria-hidden="true">
+                        <Icon size={17} />
+                      </span>
+                      <span className="relative z-10">{item.text}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
