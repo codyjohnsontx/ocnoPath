@@ -60,7 +60,7 @@ type CtStudy = {
 };
 
 type CtSearchResponse = {
-  studies?: CtStudy[];
+  studies: CtStudy[];
   nextPageToken?: string;
   totalCount?: number;
 };
@@ -147,8 +147,13 @@ export async function searchTrials(
       );
     }
 
-    const data = (await response.json()) as CtSearchResponse;
-    const studies = Array.isArray(data.studies) ? data.studies : [];
+    const data = await parseClinicalTrialsJson(response);
+    if (!isCtSearchResponse(data)) {
+      throw new ClinicalTrialsError(
+        "ClinicalTrials.gov returned an invalid response."
+      );
+    }
+    const studies = data.studies;
     sourceRecordsScanned += studies.length;
     sourceTotalCount ??= data.totalCount;
 
@@ -180,11 +185,7 @@ export async function searchTrials(
         return distanceDifference || a.nctId.localeCompare(b.nctId);
       }
     )
-    .slice(0, RESULT_PAGE_SIZE)
-    .map((trial) => ({
-      ...trial,
-      locations: trial.nearestLocation ? [trial.nearestLocation] : []
-    }));
+    .slice(0, RESULT_PAGE_SIZE);
 
   return {
     trials,
@@ -222,7 +223,20 @@ export async function getTrialByNctId(nctId: string): Promise<TrialRecord | null
     );
   }
 
-  return normalizeStudy(await response.json());
+  const data = await parseClinicalTrialsJson(response);
+  if (!isCtStudy(data)) {
+    throw new ClinicalTrialsError(
+      "ClinicalTrials.gov returned an invalid response."
+    );
+  }
+
+  const trial = normalizeStudy(data);
+  if (!trial) {
+    throw new ClinicalTrialsError(
+      "ClinicalTrials.gov returned an invalid response."
+    );
+  }
+  return trial;
 }
 
 export function buildSearchParams(
@@ -274,7 +288,8 @@ export function resolveSearchOrigin(location: string): SearchOrigin | null {
   const [city, stateInput, ...extra] = trimmed.split(",").map((part) => part.trim());
   if (!city || !stateInput || extra.length) return null;
 
-  const state = zipcodes.states.normalize(stateInput);
+  const state = zipcodes.states.normalize(stateInput) as string | undefined;
+  if (!state) return null;
   const matches = zipcodes.lookupByName(city, state);
   if (!matches.length) return null;
 
@@ -306,16 +321,45 @@ export function distanceMiles(
 }
 
 export function conditionMatches(cancerType: string, conditions: string[]) {
-  const conditionText = normalizeWords(conditions.join(" "));
-  const meaningfulTerms = normalizeWords(cancerType)
-    .split(" ")
-    .filter((term) => term.length >= 4 && !GENERIC_CONDITION_TERMS.has(term));
+  const meaningfulTerms = canonicalConditionTerms(cancerType);
 
   if (!meaningfulTerms.length) return true;
-  return meaningfulTerms.some((term) => {
-    const aliases = CONDITION_ALIASES[term] ?? [term];
-    return aliases.some((alias) => conditionText.includes(alias));
+  return conditions.some((condition) => {
+    const conditionTerms = new Set(canonicalConditionTerms(condition));
+    return meaningfulTerms.every((term) => conditionTerms.has(term));
   });
+}
+
+async function parseClinicalTrialsJson(response: Response): Promise<unknown> {
+  try {
+    return await response.json();
+  } catch {
+    throw new ClinicalTrialsError(
+      "ClinicalTrials.gov returned an invalid response."
+    );
+  }
+}
+
+function isCtSearchResponse(value: unknown): value is CtSearchResponse {
+  return (
+    isRecord(value) &&
+    Array.isArray(value.studies) &&
+    value.studies.every(isCtStudy)
+  );
+}
+
+function isCtStudy(value: unknown): value is CtStudy {
+  if (!isRecord(value) || !isRecord(value.protocolSection)) return false;
+  const identification = value.protocolSection.identificationModule;
+  return (
+    isRecord(identification) &&
+    typeof identification.nctId === "string" &&
+    identification.nctId.length > 0
+  );
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value && typeof value === "object" && !Array.isArray(value));
 }
 
 function normalizeStudy(study: CtStudy, includeRawSource = true): TrialRecord | null {
@@ -414,6 +458,7 @@ function degreesToRadians(value: number) {
 const GENERIC_CONDITION_TERMS = new Set([
   "cancer",
   "carcinoma",
+  "cell",
   "disease",
   "malignant",
   "neoplasm",
@@ -421,14 +466,28 @@ const GENERIC_CONDITION_TERMS = new Set([
   "tumor"
 ]);
 
-const CONDITION_ALIASES: Record<string, string[]> = {
-  colorectal: ["colorectal", "colon", "rectal"],
-  pancreatic: ["pancreatic", "pancreas"],
-  ovarian: ["ovarian", "ovary"],
-  prostate: ["prostate", "prostatic"],
-  renal: ["renal", "kidney"],
-  hepatic: ["hepatic", "liver"]
+const CONDITION_TERM_CANONICAL: Record<string, string> = {
+  colon: "colorectal",
+  colorectal: "colorectal",
+  rectal: "colorectal",
+  pancreas: "pancreatic",
+  pancreatic: "pancreatic",
+  ovarian: "ovarian",
+  ovary: "ovarian",
+  prostate: "prostate",
+  prostatic: "prostate",
+  kidney: "renal",
+  renal: "renal",
+  hepatic: "hepatic",
+  liver: "hepatic"
 };
+
+function canonicalConditionTerms(value: string) {
+  return normalizeWords(value)
+    .split(" ")
+    .filter((term) => term.length >= 4 && !GENERIC_CONDITION_TERMS.has(term))
+    .map((term) => CONDITION_TERM_CANONICAL[term] ?? term);
+}
 
 function normalizeWords(value: string) {
   return value

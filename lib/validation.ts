@@ -7,17 +7,26 @@ export const searchCriteriaSchema = z.object({
   priorTreatments: z.string().max(240).optional(),
   ageGroup: z.enum(["adult", "pediatric"]),
   location: z.string().min(2).max(120),
-  radius: z.enum(["25", "50", "100", "250", "500"]).default("100"),
-  status: z
-    .array(
-      z.enum([
-        "RECRUITING",
-        "NOT_YET_RECRUITING",
-        "ACTIVE_NOT_RECRUITING"
-      ])
-    )
-    .min(1)
-    .default(["RECRUITING"]),
+  radius: z.preprocess(
+    (value) => (value === null ? undefined : value),
+    z.enum(["25", "50", "100", "250", "500"]).default("100")
+  ),
+  status: z.preprocess(
+    (value) =>
+      value === null || (Array.isArray(value) && value.length === 0)
+        ? undefined
+        : value,
+    z
+      .array(
+        z.enum([
+          "RECRUITING",
+          "NOT_YET_RECRUITING",
+          "ACTIVE_NOT_RECRUITING"
+        ])
+      )
+      .min(1)
+      .default(["RECRUITING"])
+  ),
   phase: z
     .enum(["EARLY_PHASE1", "PHASE1", "PHASE2", "PHASE3", "PHASE4", "NA"])
     .optional()

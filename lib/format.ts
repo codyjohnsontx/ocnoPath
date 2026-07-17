@@ -22,10 +22,6 @@ export function formatNearestLocation(trial: TrialRecord) {
     [location.city, location.state].filter(Boolean).join(", ") ||
     location.country ||
     "Location listed";
-  const distance =
-    location.distanceMiles === undefined
-      ? ""
-      : ` · about ${Math.round(location.distanceMiles)} straight-line miles away`;
 
-  return `${place}${distance}`;
+  return place;
 }

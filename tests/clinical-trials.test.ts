@@ -5,11 +5,13 @@ import {
   ClinicalTrialsError,
   conditionMatches,
   distanceMiles,
+  getTrialByNctId,
   resolveSearchOrigin,
   searchTrials,
   type SearchOrigin
 } from "../lib/clinical-trials";
 import type { SearchCriteria } from "../lib/types";
+import { searchCriteriaSchema } from "../lib/validation";
 
 const criteria: SearchCriteria = {
   cancerType: "breast cancer",
@@ -50,6 +52,7 @@ test("resolves ZIP and City, ST without an external geocoder", () => {
   assert.equal(byZip.label, "Austin, TX 78701");
   assert.equal(byCity.label, "Austin, TX");
   assert.ok(Math.abs(byCity.latitude - 30.27) < 0.2);
+  assert.equal(resolveSearchOrigin("Austin, NotAState"), null);
 });
 
 test("calculates straight-line distance in miles", () => {
@@ -66,6 +69,16 @@ test("rejects a title-only cancer match when registered conditions conflict", ()
   assert.equal(conditionMatches("breast cancer", ["Prostate Cancer"]), false);
   assert.equal(conditionMatches("breast cancer", ["Breast Neoplasms"]), true);
   assert.equal(conditionMatches("colorectal cancer", ["Colon Cancer"]), true);
+  assert.equal(conditionMatches("kidney cancer", ["Renal Cell Carcinoma"]), true);
+  assert.equal(conditionMatches("Renal Cell Carcinoma", ["Kidney Cancer"]), true);
+  assert.equal(
+    conditionMatches("small cell lung cancer", ["Small Intestine Cancer"]),
+    false
+  );
+  assert.equal(
+    conditionMatches("small cell lung cancer", ["Small Cell Lung Carcinoma"]),
+    true
+  );
 });
 
 test("returns the nearest site with a matching recruiting status", async () => {
@@ -99,7 +112,7 @@ test("returns the nearest site with a matching recruiting status", async () => {
       ["NCT12345678"]
     );
     assert.equal(result.trials[0].nearestLocation?.city, "Austin");
-    assert.equal(result.trials[0].locations.length, 1);
+    assert.equal(result.trials[0].locations.length, 2);
     assert.ok((result.trials[0].nearestLocation?.distanceMiles ?? 20) < 15);
     assert.equal(result.metadata.sourceStatus, "live");
     assert.equal(result.metadata.pagination.hasNextPage, false);
@@ -173,6 +186,77 @@ test("throws on an upstream error instead of returning synthetic trials", async 
   } finally {
     globalThis.fetch = originalFetch;
   }
+});
+
+test("rejects a successful search response without a studies array", async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => jsonResponse({ totalCount: 0 });
+
+  try {
+    await assert.rejects(() => searchTrials(criteria), ClinicalTrialsError);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("rejects a malformed successful single-study response", async () => {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () =>
+    jsonResponse({ protocolSection: { identificationModule: {} } });
+
+  try {
+    await assert.rejects(
+      () => getTrialByNctId("NCT12345678"),
+      ClinicalTrialsError
+    );
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("applies route defaults only to absent radius and status values", () => {
+  const baseCriteria = {
+    cancerType: "breast cancer",
+    ageGroup: "adult",
+    location: "Austin, TX"
+  };
+  const emptyValues = searchCriteriaSchema.safeParse({
+    ...baseCriteria,
+    radius: null,
+    status: []
+  });
+  const nullStatus = searchCriteriaSchema.safeParse({
+    ...baseCriteria,
+    radius: null,
+    status: null
+  });
+
+  assert.equal(emptyValues.success, true);
+  assert.equal(nullStatus.success, true);
+  if (emptyValues.success) {
+    assert.equal(emptyValues.data.radius, "100");
+    assert.deepEqual(emptyValues.data.status, ["RECRUITING"]);
+  }
+  if (nullStatus.success) {
+    assert.deepEqual(nullStatus.data.status, ["RECRUITING"]);
+  }
+
+  assert.equal(
+    searchCriteriaSchema.safeParse({
+      ...baseCriteria,
+      radius: "75",
+      status: ["RECRUITING"]
+    }).success,
+    false
+  );
+  assert.equal(
+    searchCriteriaSchema.safeParse({
+      ...baseCriteria,
+      radius: "100",
+      status: [""]
+    }).success,
+    false
+  );
 });
 
 function study(nctId: string, locations: ReturnType<typeof location>[]) {
