@@ -13,3 +13,19 @@ export function formatLocations(trial: TrialRecord) {
     ? `${cityState || first.country || "Listed"} + ${trial.locations.length - 1} more`
     : cityState || first.country || "Listed";
 }
+
+export function formatNearestLocation(trial: TrialRecord) {
+  const location = trial.nearestLocation;
+  if (!location) return "No matching site found within the selected radius";
+
+  const place =
+    [location.city, location.state].filter(Boolean).join(", ") ||
+    location.country ||
+    "Location listed";
+  const distance =
+    location.distanceMiles === undefined
+      ? ""
+      : ` · about ${Math.round(location.distanceMiles)} straight-line miles away`;
+
+  return `${place}${distance}`;
+}

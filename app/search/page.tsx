@@ -13,12 +13,12 @@ const statuses = [
 ];
 
 const phases = [
-  "EARLY_PHASE1",
-  "PHASE1",
-  "PHASE2",
-  "PHASE3",
-  "PHASE4",
-  "NOT_APPLICABLE"
+  { value: "EARLY_PHASE1", label: "Early phase 1" },
+  { value: "PHASE1", label: "Phase 1" },
+  { value: "PHASE2", label: "Phase 2" },
+  { value: "PHASE3", label: "Phase 3" },
+  { value: "PHASE4", label: "Phase 4" },
+  { value: "NA", label: "Not applicable" }
 ];
 
 const fieldClass =
@@ -59,7 +59,7 @@ export default function SearchPage() {
         <PageIntro
           eyebrow="Trial search"
           title="Enter the basics to search public cancer trial records."
-          body="Skip names, dates of birth, and record numbers. Optional fields sharpen the search but are never required."
+          body="Use a 5-digit US ZIP code or City, ST. Skip names, dates of birth, and record numbers."
         />
 
         <form
@@ -131,7 +131,7 @@ export default function SearchPage() {
             </label>
 
             <label className={labelClass}>
-              <span className={labelText}>Travel radius</span>
+              <span className={labelText}>Search radius (straight-line)</span>
               <select name="radius" defaultValue="100" className={fieldClass}>
                 <option value="25">25 miles</option>
                 <option value="50">50 miles</option>
@@ -143,27 +143,14 @@ export default function SearchPage() {
 
             <label className={labelClass}>
               <span className={labelText}>
-                Willingness to travel{" "}
-                <span className={optionalText}>(optional)</span>
-              </span>
-              <select name="willingnessToTravel" defaultValue="" className={fieldClass}>
-                <option value="">No preference</option>
-                <option value="local only">Local only</option>
-                <option value="regional travel">Regional travel</option>
-                <option value="open to travel">Open to travel</option>
-              </select>
-            </label>
-
-            <label className={`${labelClass} sm:col-span-2`}>
-              <span className={labelText}>
                 Trial phase preference{" "}
                 <span className={optionalText}>(optional)</span>
               </span>
               <select name="phase" defaultValue="" className={fieldClass}>
                 <option value="">No phase preference</option>
                 {phases.map((phase) => (
-                  <option key={phase} value={phase}>
-                    {phase.replaceAll("_", " ")}
+                  <option key={phase.value} value={phase.value}>
+                    {phase.label}
                   </option>
                 ))}
               </select>
@@ -202,8 +189,8 @@ export default function SearchPage() {
 
           <div className="mt-[26px] flex flex-col gap-4 border-t border-hair pt-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-[420px] text-[13.5px] leading-[1.5] text-faint">
-              🔒 Searches request public trial records. Saved searches stay in
-              this browser only.
+              Search terms are sent to OncoPath and ClinicalTrials.gov. Saved
+              searches stay in this browser only.
             </p>
             <button
               type="submit"

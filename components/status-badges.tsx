@@ -30,6 +30,17 @@ export function PhaseBadge({ phase }: { phase: string }) {
   return <span className={`${pillBase} bg-grapeSoft text-grape`}>{format(phase)}</span>;
 }
 
+export function PhaseBadges({ phases }: { phases: string[] }) {
+  const values = phases.length ? phases : ["UNKNOWN"];
+  return (
+    <>
+      {values.map((phase) => (
+        <PhaseBadge key={phase} phase={phase} />
+      ))}
+    </>
+  );
+}
+
 export function IdBadge({ nctId }: { nctId: string }) {
   return <span className={`${pillBase} ${neutral}`}>{nctId}</span>;
 }

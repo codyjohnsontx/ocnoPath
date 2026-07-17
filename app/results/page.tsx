@@ -3,19 +3,27 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { BookmarkPlus, Loader2, SearchX } from "lucide-react";
+import {
+  BookmarkPlus,
+  ChevronLeft,
+  ChevronRight,
+  Loader2,
+  SearchX
+} from "lucide-react";
 import { MedicalDisclaimer } from "@/components/medical-disclaimer";
-import { IdBadge, PhaseBadge, StatusBadge } from "@/components/status-badges";
+import { IdBadge, PhaseBadges, StatusBadge } from "@/components/status-badges";
 import { saveSearch, saveTrialToSheet } from "@/lib/browser-storage";
-import { formatLocations } from "@/lib/format";
-import type { TrialRecord } from "@/lib/types";
+import { formatNearestLocation } from "@/lib/format";
+import type { TrialRecord, TrialSearchMetadata } from "@/lib/types";
 
 function ResultsContent() {
   const searchParams = useSearchParams();
   const [trials, setTrials] = useState<TrialRecord[]>([]);
+  const [metadata, setMetadata] = useState<TrialSearchMetadata | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const query = useMemo(() => searchParams.toString(), [searchParams]);
+  const pageNumber = parsePageNumber(searchParams.get("page"));
 
   useEffect(() => {
     let ignore = false;
@@ -24,16 +32,24 @@ function ResultsContent() {
 
     fetch(`/api/trials/search?${query}`)
       .then(async (response) => {
-        if (!response.ok) throw new Error(await response.text());
-        return response.json();
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Trial search is temporarily unavailable.");
+        }
+        return data;
       })
       .then((data) => {
-        if (!ignore) setTrials(data.trials ?? []);
+        if (!ignore) {
+          setTrials(data.trials ?? []);
+          setMetadata(data.metadata ?? null);
+        }
       })
-      .catch(() => {
+      .catch((reason: unknown) => {
         if (!ignore) {
           setError(
-            "OncoPath could not reach the public trial source right now. Try again in a few minutes."
+            reason instanceof Error
+              ? reason.message
+              : "OncoPath could not reach the public trial source right now."
           );
         }
       })
@@ -55,6 +71,37 @@ function ResultsContent() {
     });
   }
 
+  function paginationHref(direction: "previous" | "next") {
+    const params = new URLSearchParams(searchParams.toString());
+    const history = params.getAll("cursorHistory");
+    params.delete("cursorHistory");
+
+    if (direction === "next") {
+      const nextCursor = metadata?.pagination.nextCursor;
+      if (!nextCursor) return null;
+
+      [...history, params.get("cursor") || "__START__"].forEach((cursor) =>
+        params.append("cursorHistory", cursor)
+      );
+      params.set("cursor", nextCursor);
+      params.set("page", String(pageNumber + 1));
+    } else {
+      const previousCursor = history.at(-1);
+      if (!previousCursor) return null;
+
+      history.slice(0, -1).forEach((cursor) =>
+        params.append("cursorHistory", cursor)
+      );
+      if (previousCursor === "__START__") params.delete("cursor");
+      else params.set("cursor", previousCursor);
+
+      if (pageNumber <= 2) params.delete("page");
+      else params.set("page", String(pageNumber - 1));
+    }
+
+    return `/results?${params.toString()}`;
+  }
+
   return (
     <main className="flex-1">
       <div className="mx-auto max-w-[1120px] animate-[fadeUp_500ms_ease-out] px-5 pb-16 pt-11 sm:px-10">
@@ -62,18 +109,22 @@ function ResultsContent() {
           Trial results
         </p>
         <h1 className="text-[32px] font-extrabold leading-[1.12] tracking-[-0.02em] sm:text-[40px]">
-          Trials worth discussing with your oncology team.
+          Public trial records matching your search.
         </h1>
 
         <div className="mt-5 flex flex-wrap items-center justify-between gap-4 rounded-[18px] bg-white px-[22px] py-4">
           <p className="text-[15px] text-muted">
-            Showing{" "}
+            Searching for{" "}
             <strong className="text-ink">
               {searchParams.get("cancerType") || "Cancer trials"}
             </strong>{" "}
-            near{" "}
+            within{" "}
             <strong className="text-ink">
-              {searchParams.get("location") || "your area"}
+              {metadata
+                ? `${metadata.radiusMiles} straight-line miles of ${metadata.origin.label}`
+                : `${searchParams.get("radius") || "100"} straight-line miles of ${
+                    searchParams.get("location") || "your area"
+                  }`}
             </strong>
           </p>
           <div className="flex flex-wrap gap-2.5">
@@ -100,6 +151,26 @@ function ResultsContent() {
           </div>
         </div>
 
+        {metadata ? (
+          <div className="mt-3">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
+              <span className="rounded-full bg-okSoft px-3 py-1.5 font-bold text-okText">
+                Live ClinicalTrials.gov data
+              </span>
+              {metadata.appliedFilters.map((filter) => (
+                <span key={filter} className="rounded-full bg-white px-3 py-1.5">
+                  {filter}
+                </span>
+              ))}
+            </div>
+            <p className="mt-3 max-w-[840px] text-[12.5px] leading-[1.55] text-faint">
+              {metadata.pagination.orderingPolicy} Proximity is logistical
+              information only; it does not indicate medical relevance or
+              eligibility.
+            </p>
+          </div>
+        ) : null}
+
         {isLoading ? (
           <div className="mt-6 flex min-h-72 items-center justify-center rounded-[22px] bg-white">
             <div className="flex items-center gap-3 text-muted">
@@ -125,7 +196,7 @@ function ResultsContent() {
                   <div className="max-w-[640px]">
                     <div className="flex flex-wrap gap-2">
                       <StatusBadge status={trial.status} />
-                      <PhaseBadge phase={trial.phase?.[0] || "UNKNOWN"} />
+                      <PhaseBadges phases={trial.phase} />
                       <IdBadge nctId={trial.nctId} />
                     </div>
                     <h2 className="mt-4 text-[22px] font-extrabold leading-[1.25]">
@@ -137,7 +208,10 @@ function ResultsContent() {
                     </p>
                     <div className="mt-[18px] flex flex-wrap gap-x-[26px] gap-y-3">
                       <Meta label="Condition" value={trial.conditions.slice(0, 3).join(", ") || "Not stated"} />
-                      <Meta label="Location" value={formatLocations(trial)} />
+                      <Meta
+                        label="Nearest site with matching status"
+                        value={formatNearestLocation(trial)}
+                      />
                       <Meta label="Last updated" value={trial.lastUpdated || "Not stated"} />
                     </div>
                   </div>
@@ -169,10 +243,79 @@ function ResultsContent() {
             ))}
           </div>
         )}
+
+        {!isLoading && !error && metadata ? (
+          <Pagination
+            pageNumber={pageNumber}
+            recordsShown={trials.length}
+            sourceRecordsScanned={metadata.pagination.sourceRecordsScanned}
+            sourceTotalCount={metadata.pagination.sourceTotalCount}
+            previousHref={paginationHref("previous")}
+            nextHref={
+              metadata.pagination.hasNextPage ? paginationHref("next") : null
+            }
+          />
+        ) : null}
       </div>
       <MedicalDisclaimer />
     </main>
   );
+}
+
+function Pagination({
+  pageNumber,
+  recordsShown,
+  sourceRecordsScanned,
+  sourceTotalCount,
+  previousHref,
+  nextHref
+}: {
+  pageNumber: number;
+  recordsShown: number;
+  sourceRecordsScanned: number;
+  sourceTotalCount?: number;
+  previousHref: string | null;
+  nextHref: string | null;
+}) {
+  return (
+    <nav
+      aria-label="Trial result pages"
+      className="mt-6 flex flex-col gap-3 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p className="text-sm text-muted">
+        <strong className="text-ink">Page {pageNumber}</strong> · {recordsShown}{" "}
+        records shown · {sourceRecordsScanned} source records checked
+        {sourceTotalCount !== undefined
+          ? ` · ${sourceTotalCount} source candidates before local checks`
+          : ""}
+      </p>
+      <div className="flex items-center gap-2">
+        {previousHref ? (
+          <Link
+            href={previousHref}
+            className="inline-flex items-center gap-1.5 rounded-xl border-[1.5px] border-line2 bg-white px-4 py-2.5 text-sm font-bold text-ink transition hover:border-grape"
+          >
+            <ChevronLeft size={16} />
+            Previous
+          </Link>
+        ) : null}
+        {nextHref ? (
+          <Link
+            href={nextHref}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-grape px-4 py-2.5 text-sm font-bold text-white transition hover:bg-grapeDark"
+          >
+            Next
+            <ChevronRight size={16} />
+          </Link>
+        ) : null}
+      </div>
+    </nav>
+  );
+}
+
+function parsePageNumber(value: string | null) {
+  const parsed = Number(value);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : 1;
 }
 
 function Meta({ label, value }: { label: string; value: string }) {

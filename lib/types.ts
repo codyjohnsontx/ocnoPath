@@ -10,7 +10,6 @@ export type SearchCriteria = {
   radius: string;
   status: string[];
   phase?: string;
-  willingnessToTravel?: string;
 };
 
 export type TrialLocation = {
@@ -19,6 +18,10 @@ export type TrialLocation = {
   state?: string;
   country?: string;
   zip?: string;
+  status?: string;
+  latitude?: number;
+  longitude?: number;
+  distanceMiles?: number;
 };
 
 export type TrialRecord = {
@@ -30,9 +33,36 @@ export type TrialRecord = {
   briefSummary?: string;
   eligibilityCriteria?: string;
   locations: TrialLocation[];
+  nearestLocation?: TrialLocation;
   sourceUrl: string;
   lastUpdated?: string;
   rawSource?: unknown;
+};
+
+export type TrialSearchMetadata = {
+  source: "ClinicalTrials.gov";
+  sourceStatus: "live";
+  origin: {
+    label: string;
+    latitude: number;
+    longitude: number;
+  };
+  radiusMiles: number;
+  appliedFilters: string[];
+  fetchedAt: string;
+  pagination: {
+    pageSize: number;
+    hasNextPage: boolean;
+    nextCursor?: string;
+    sourceRecordsScanned: number;
+    sourceTotalCount?: number;
+    orderingPolicy: string;
+  };
+};
+
+export type TrialSearchResult = {
+  trials: TrialRecord[];
+  metadata: TrialSearchMetadata;
 };
 
 export type TrialExplanation = {
