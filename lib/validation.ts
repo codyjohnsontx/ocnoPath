@@ -59,6 +59,24 @@ export const trialRecordSchema = z.object({
   rawSource: z.unknown().optional()
 });
 
+const trialSearchPaginationBaseSchema = z.object({
+  pageSize: z.number().int().positive(),
+  sourceRecordsScanned: z.number().int().nonnegative(),
+  sourceTotalCount: z.number().int().nonnegative().optional(),
+  orderingPolicy: z.string()
+});
+
+const trialSearchPaginationSchema = z.discriminatedUnion("hasNextPage", [
+  trialSearchPaginationBaseSchema.extend({
+    hasNextPage: z.literal(true),
+    nextCursor: z.string().min(1)
+  }),
+  trialSearchPaginationBaseSchema.extend({
+    hasNextPage: z.literal(false),
+    nextCursor: z.string().min(1).optional()
+  })
+]);
+
 export const trialSearchMetadataSchema = z.object({
   source: z.literal("ClinicalTrials.gov"),
   sourceStatus: z.literal("live"),
@@ -70,14 +88,7 @@ export const trialSearchMetadataSchema = z.object({
   radiusMiles: z.number(),
   appliedFilters: z.array(z.string()),
   fetchedAt: z.string(),
-  pagination: z.object({
-    pageSize: z.number().int().positive(),
-    hasNextPage: z.boolean(),
-    nextCursor: z.string().min(1).optional(),
-    sourceRecordsScanned: z.number().int().nonnegative(),
-    sourceTotalCount: z.number().int().nonnegative().optional(),
-    orderingPolicy: z.string()
-  })
+  pagination: trialSearchPaginationSchema
 });
 
 export const trialSearchResultSchema = z.object({

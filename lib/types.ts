@@ -82,7 +82,7 @@ export type TrialExplanation = {
 export type SavedSearch = {
   id: string;
   label: string;
-  params: Record<string, string>;
+  query: string;
   createdAt: string;
 };
 

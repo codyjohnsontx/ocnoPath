@@ -11,7 +11,7 @@ const API_TIMEOUT_MS = 12_000;
 const RESULT_PAGE_SIZE = 12;
 const MAX_SOURCE_REQUESTS_PER_PAGE = 20;
 const ORDERING_POLICY =
-  "ClinicalTrials.gov relevance determines which records are considered first. Within this page, records are ordered by nearest matching site.";
+  "Records remain in ClinicalTrials.gov relevance order. Distance is used only to identify a matching site within the selected radius.";
 const SEARCH_FIELDS = [
   "NCTId",
   "BriefTitle",
@@ -176,16 +176,7 @@ export async function searchTrials(
     sourceRequests += 1;
   }
 
-  const trials = validatedTrials
-    .sort(
-      (a, b) => {
-        const distanceDifference =
-          (a.nearestLocation.distanceMiles ?? Number.POSITIVE_INFINITY) -
-          (b.nearestLocation.distanceMiles ?? Number.POSITIVE_INFINITY);
-        return distanceDifference || a.nctId.localeCompare(b.nctId);
-      }
-    )
-    .slice(0, RESULT_PAGE_SIZE);
+  const trials = validatedTrials.slice(0, RESULT_PAGE_SIZE);
 
   return {
     trials,

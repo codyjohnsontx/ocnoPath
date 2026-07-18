@@ -10,7 +10,8 @@ import {
   searchTrials,
   type SearchOrigin
 } from "../lib/clinical-trials";
-import type { SearchCriteria } from "../lib/types";
+import { savedSearchHref, savedSearchQuery } from "../lib/browser-storage";
+import type { SavedSearch, SearchCriteria } from "../lib/types";
 import {
   searchCriteriaSchema,
   trialSearchResultSchema
@@ -186,7 +187,8 @@ test("returns an opaque next cursor without dropping source records", async () =
     const secondPage = await searchTrials(criteria, { cursor: "cursor_page_2" });
 
     assert.equal(firstPage.trials.length, 12);
-    assert.equal(firstPage.trials[0].nearestLocation?.city, "Austin");
+    assert.equal(firstPage.trials[0].nearestLocation?.city, "Temple");
+    assert.equal(firstPage.trials.at(-1)?.nearestLocation?.city, "Austin");
     assert.equal(firstPage.metadata.pagination.hasNextPage, true);
     assert.equal(firstPage.metadata.pagination.nextCursor, "cursor_page_2");
     assert.equal(firstPage.metadata.pagination.sourceTotalCount, 13);
@@ -331,6 +333,46 @@ test("validates the complete client search response shape", () => {
 
   assert.equal(trialSearchResultSchema.safeParse(response).success, true);
   assert.equal(
+    trialSearchResultSchema.safeParse({
+      ...response,
+      metadata: {
+        ...response.metadata,
+        pagination: {
+          ...response.metadata.pagination,
+          hasNextPage: true
+        }
+      }
+    }).success,
+    false
+  );
+  assert.equal(
+    trialSearchResultSchema.safeParse({
+      ...response,
+      metadata: {
+        ...response.metadata,
+        pagination: {
+          ...response.metadata.pagination,
+          hasNextPage: true,
+          nextCursor: ""
+        }
+      }
+    }).success,
+    false
+  );
+  assert.equal(
+    trialSearchResultSchema.safeParse({
+      ...response,
+      metadata: {
+        ...response.metadata,
+        pagination: {
+          ...response.metadata.pagination,
+          nextCursor: "retained_cursor"
+        }
+      }
+    }).success,
+    true
+  );
+  assert.equal(
     trialSearchResultSchema.safeParse({ ...response, trials: {} }).success,
     false
   );
@@ -344,6 +386,27 @@ test("validates the complete client search response shape", () => {
     }).success,
     false
   );
+});
+
+test("round-trips repeated saved-search parameters without pagination", () => {
+  const query = savedSearchQuery(
+    "cancerType=lung+cancer&status=RECRUITING&status=NOT_YET_RECRUITING&page=2&cursor=next_cursor&cursorHistory=__START__"
+  );
+  const search: SavedSearch = {
+    id: "saved-search",
+    label: "lung cancer",
+    query,
+    createdAt: "2026-07-17T00:00:00.000Z"
+  };
+  const loaded = new URL(savedSearchHref(search), "http://localhost").searchParams;
+
+  assert.deepEqual(loaded.getAll("status"), [
+    "RECRUITING",
+    "NOT_YET_RECRUITING"
+  ]);
+  assert.equal(loaded.get("page"), null);
+  assert.equal(loaded.get("cursor"), null);
+  assert.equal(loaded.get("cursorHistory"), null);
 });
 
 function study(nctId: string, locations: ReturnType<typeof location>[]) {

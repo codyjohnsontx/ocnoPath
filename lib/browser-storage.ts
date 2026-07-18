@@ -11,6 +11,18 @@ export function saveSearch(search: SavedSearch) {
   window.localStorage.setItem(SEARCHES_KEY, JSON.stringify(next));
 }
 
+export function savedSearchQuery(query: string) {
+  const params = new URLSearchParams(query);
+  params.delete("cursor");
+  params.delete("cursorHistory");
+  params.delete("page");
+  return params.toString();
+}
+
+export function savedSearchHref(search: SavedSearch) {
+  return `/results?${search.query}`;
+}
+
 export function getSavedSearches(): SavedSearch[] {
   if (typeof window === "undefined") return [];
   return safeParse(window.localStorage.getItem(SEARCHES_KEY), []);

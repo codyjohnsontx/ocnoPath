@@ -21,7 +21,11 @@ import {
 } from "lucide-react";
 import { MedicalDisclaimer } from "@/components/medical-disclaimer";
 import { IdBadge, PhaseBadges, StatusBadge } from "@/components/status-badges";
-import { saveSearch, saveTrialToSheet } from "@/lib/browser-storage";
+import {
+  savedSearchQuery,
+  saveSearch,
+  saveTrialToSheet
+} from "@/lib/browser-storage";
 import { formatNearestLocation } from "@/lib/format";
 import type {
   TrialRecord,
@@ -75,6 +79,8 @@ function ResultsContent() {
     let ignore = false;
     setIsLoading(true);
     setError(null);
+    setMetadata(null);
+    setFiltersOpen(false);
 
     fetch(`/api/trials/search?${query}`)
       .then(async (response) => {
@@ -117,7 +123,7 @@ function ResultsContent() {
     saveSearch({
       id: crypto.randomUUID(),
       label: searchParams.get("cancerType") || "Cancer trial search",
-      params: Object.fromEntries(searchParams.entries()),
+      query: savedSearchQuery(searchParams.toString()),
       createdAt: new Date().toISOString()
     });
   }

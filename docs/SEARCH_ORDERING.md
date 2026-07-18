@@ -26,14 +26,12 @@ silently converted into sample data.
 
 ## Page ordering
 
-Each page contains at most 12 validated records. Within that page, records are
-ordered by straight-line distance to the nearest matching site. Equal distances
-are ordered by NCT ID for deterministic output.
+Each page contains at most 12 validated records in ClinicalTrials.gov relevance
+order. OncoPath does not reorder those records by distance or NCT ID.
 
-This means source relevance determines which candidates are considered before
-later pages, while distance controls presentation inside the current page. A
-record on page 2 may be closer than a record on page 1. Proximity is logistical
-information only and does not indicate medical relevance or eligibility.
+Distance is used only to confirm that a matching site falls within the selected
+radius and to identify the nearest matching site. It does not indicate medical
+relevance or eligibility.
 
 ## Counts
 
