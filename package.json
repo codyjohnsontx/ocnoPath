@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/**/*.test.ts",
     "eval:snapshot": "tsx scripts/eval/snapshot.ts",
     "eval:run": "tsx scripts/eval/run.ts",
     "eval:judge": "tsx scripts/eval/judge.ts",
@@ -20,12 +21,14 @@
     "openai": "^4.73.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "zipcodes": "^8.0.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
+    "@types/zipcodes": "^8.0.5",
     "autoprefixer": "^10.4.20",
     "dotenv": "^17.4.2",
     "eslint": "^9.16.0",
