@@ -1,6 +1,11 @@
 "use client";
 
-import type { DiscussionSheetState, SavedSearch, TrialExplanation, TrialRecord } from "@/lib/types";
+import type {
+  DiscussionSheetState,
+  SavedSearch,
+  TrialExplanation,
+  TrialRecord
+} from "@/lib/types";
 
 const SEARCHES_KEY = "oncopath.savedSearches";
 const SHEET_KEY = "oncopath.discussionSheet";
@@ -25,7 +30,18 @@ export function savedSearchHref(search: SavedSearch) {
 
 export function getSavedSearches(): SavedSearch[] {
   if (typeof window === "undefined") return [];
-  return safeParse(window.localStorage.getItem(SEARCHES_KEY), []);
+  const stored = safeParse<unknown>(window.localStorage.getItem(SEARCHES_KEY), []);
+  if (!Array.isArray(stored)) return [];
+
+  const searches = stored
+    .map(normalizeSavedSearch)
+    .filter((search): search is SavedSearch => Boolean(search));
+
+  if (JSON.stringify(searches) !== JSON.stringify(stored)) {
+    window.localStorage.setItem(SEARCHES_KEY, JSON.stringify(searches));
+  }
+
+  return searches;
 }
 
 export function saveTrialToSheet(trial: TrialRecord) {
@@ -71,6 +87,42 @@ function emptySheet(): DiscussionSheetState {
     trialSnapshots: [],
     explanations: [],
     updatedAt: new Date().toISOString()
+  };
+}
+
+function normalizeSavedSearch(value: unknown): SavedSearch | null {
+  if (!value || typeof value !== "object") return null;
+
+  const record = value as Record<string, unknown>;
+  if (
+    typeof record.id !== "string" ||
+    typeof record.label !== "string" ||
+    typeof record.createdAt !== "string"
+  ) {
+    return null;
+  }
+
+  if (typeof record.query === "string") {
+    return {
+      id: record.id,
+      label: record.label,
+      query: savedSearchQuery(record.query),
+      createdAt: record.createdAt
+    };
+  }
+
+  if (!record.params || typeof record.params !== "object") return null;
+
+  const params = new URLSearchParams();
+  for (const [key, item] of Object.entries(record.params)) {
+    if (typeof item === "string") params.append(key, item);
+  }
+
+  return {
+    id: record.id,
+    label: record.label,
+    query: savedSearchQuery(params.toString()),
+    createdAt: record.createdAt
   };
 }
 

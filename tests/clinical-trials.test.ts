@@ -10,7 +10,11 @@ import {
   searchTrials,
   type SearchOrigin
 } from "../lib/clinical-trials";
-import { savedSearchHref, savedSearchQuery } from "../lib/browser-storage";
+import {
+  getSavedSearches,
+  savedSearchHref,
+  savedSearchQuery
+} from "../lib/browser-storage";
 import type { SavedSearch, SearchCriteria } from "../lib/types";
 import {
   searchCriteriaSchema,
@@ -370,7 +374,7 @@ test("validates the complete client search response shape", () => {
         }
       }
     }).success,
-    true
+    false
   );
   assert.equal(
     trialSearchResultSchema.safeParse({ ...response, trials: {} }).success,
@@ -407,6 +411,54 @@ test("round-trips repeated saved-search parameters without pagination", () => {
   assert.equal(loaded.get("page"), null);
   assert.equal(loaded.get("cursor"), null);
   assert.equal(loaded.get("cursorHistory"), null);
+});
+
+test("migrates legacy saved-search params before building a results URL", () => {
+  const originalWindow = Object.getOwnPropertyDescriptor(globalThis, "window");
+  let storedValue = JSON.stringify([
+    {
+      id: "legacy-search",
+      label: "lung cancer",
+      params: {
+        cancerType: "lung cancer",
+        status: "RECRUITING",
+        page: "2"
+      },
+      createdAt: "2026-07-17T00:00:00.000Z"
+    }
+  ]);
+
+  Object.defineProperty(globalThis, "window", {
+    configurable: true,
+    value: {
+      localStorage: {
+        getItem: () => storedValue,
+        setItem: (_key: string, value: string) => {
+          storedValue = value;
+        }
+      }
+    }
+  });
+
+  try {
+    const [search] = getSavedSearches();
+    const href = savedSearchHref(search);
+    const loaded = new URL(href, "http://localhost").searchParams;
+    const persisted = JSON.parse(storedValue) as Array<Record<string, unknown>>;
+
+    assert.equal(href.includes("undefined"), false);
+    assert.equal(loaded.get("cancerType"), "lung cancer");
+    assert.equal(loaded.get("status"), "RECRUITING");
+    assert.equal(loaded.get("page"), null);
+    assert.equal(typeof persisted[0].query, "string");
+    assert.equal("params" in persisted[0], false);
+  } finally {
+    if (originalWindow) {
+      Object.defineProperty(globalThis, "window", originalWindow);
+    } else {
+      Reflect.deleteProperty(globalThis, "window");
+    }
+  }
 });
 
 function study(nctId: string, locations: ReturnType<typeof location>[]) {

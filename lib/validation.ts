@@ -73,7 +73,7 @@ const trialSearchPaginationSchema = z.discriminatedUnion("hasNextPage", [
   }),
   trialSearchPaginationBaseSchema.extend({
     hasNextPage: z.literal(false),
-    nextCursor: z.string().min(1).optional()
+    nextCursor: z.never().optional()
   })
 ]);
 
