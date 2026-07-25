@@ -115,7 +115,16 @@ function normalizeSavedSearch(value: unknown): SavedSearch | null {
 
   const params = new URLSearchParams();
   for (const [key, item] of Object.entries(record.params)) {
-    if (typeof item === "string") params.append(key, item);
+    const values = Array.isArray(item) ? item : [item];
+    for (const value of values) {
+      if (
+        typeof value === "string" ||
+        typeof value === "number" ||
+        typeof value === "boolean"
+      ) {
+        params.append(key, String(value));
+      }
+    }
   }
 
   return {

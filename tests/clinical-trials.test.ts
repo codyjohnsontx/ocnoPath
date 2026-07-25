@@ -421,7 +421,7 @@ test("migrates legacy saved-search params before building a results URL", () => 
       label: "lung cancer",
       params: {
         cancerType: "lung cancer",
-        status: "RECRUITING",
+        status: ["RECRUITING", "NOT_YET_RECRUITING"],
         page: "2"
       },
       createdAt: "2026-07-17T00:00:00.000Z"
@@ -448,7 +448,10 @@ test("migrates legacy saved-search params before building a results URL", () => 
 
     assert.equal(href.includes("undefined"), false);
     assert.equal(loaded.get("cancerType"), "lung cancer");
-    assert.equal(loaded.get("status"), "RECRUITING");
+    assert.deepEqual(loaded.getAll("status"), [
+      "RECRUITING",
+      "NOT_YET_RECRUITING"
+    ]);
     assert.equal(loaded.get("page"), null);
     assert.equal(typeof persisted[0].query, "string");
     assert.equal("params" in persisted[0], false);
