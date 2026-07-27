@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Printer, Trash2 } from "lucide-react";
 import { clearDiscussionSheet, getDiscussionSheet } from "@/lib/browser-storage";
-import { PhaseBadge, StatusBadge } from "@/components/status-badges";
+import { PhaseBadges, StatusBadge } from "@/components/status-badges";
 import { formatLocations } from "@/lib/format";
 import type { DiscussionSheetState } from "@/lib/types";
 
@@ -104,7 +104,7 @@ export default function DiscussionSheetPage() {
                     </h3>
                     <div className="mt-3 flex flex-wrap gap-x-6 gap-y-3">
                       <SheetMeta label="Status" value={<StatusBadge status={trial.status} />} />
-                      <SheetMeta label="Phase" value={<PhaseBadge phase={trial.phase?.[0] || "UNKNOWN"} />} />
+                      <SheetMeta label="Phase" value={<span className="flex flex-wrap gap-1"><PhaseBadges phases={trial.phase} /></span>} />
                       <SheetMeta
                         label="Location"
                         value={

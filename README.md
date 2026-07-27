@@ -8,6 +8,9 @@ OncoPath helps patients and caregivers search public clinical trial information,
 
 OncoPath does not diagnose cancer, recommend treatment, confirm eligibility, or tell anyone to enroll in a trial. Only oncology care teams and trial teams can determine whether a trial is appropriate.
 
+Search pagination and ordering are documented in
+[`docs/SEARCH_ORDERING.md`](docs/SEARCH_ORDERING.md).
+
 ## Development
 
 ```bash

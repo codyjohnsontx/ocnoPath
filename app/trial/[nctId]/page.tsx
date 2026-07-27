@@ -5,7 +5,7 @@ import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
 import { MedicalDisclaimer } from "@/components/medical-disclaimer";
-import { IdBadge, PhaseBadge, StatusBadge } from "@/components/status-badges";
+import { IdBadge, PhaseBadges, StatusBadge } from "@/components/status-badges";
 import { Squiggle } from "@/components/squiggle";
 import { saveExplanationToSheet, saveTrialToSheet } from "@/lib/browser-storage";
 import type { TrialExplanation, TrialRecord } from "@/lib/types";
@@ -103,7 +103,7 @@ function TrialDetailContent() {
           <section className="rounded-[26px] bg-white p-6 shadow-card sm:p-8">
             <div className="flex flex-wrap gap-2">
               <StatusBadge status={trial.status} />
-              <PhaseBadge phase={trial.phase?.[0] || "UNKNOWN"} />
+              <PhaseBadges phases={trial.phase} />
               <IdBadge nctId={trial.nctId} />
             </div>
             <h1 className="mt-[18px] text-[26px] font-extrabold leading-[1.18] sm:text-[32px]">

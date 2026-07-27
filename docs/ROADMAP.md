@@ -1,58 +1,97 @@
 # OncoPath Roadmap
 
-North star: **credible + real**. Two tracks move together — the product, and the
-evidence that it's safe and accurate. We don't build features that imply
-eligibility or ranking. What we refuse to build is part of the product.
+North star: **credible and real**. OncoPath must be honest about what it searched,
+what the public record says, what the model inferred, and what remains unknown.
+Search correctness and explanation faithfulness are release gates, not polish.
 
-Gating principle: each phase depends on the one before it. We don't build trial
-matching (Phase 4) before faithfulness is proven (Phase 1).
+## Product gates
 
-## Phase 0 — Shipped baseline
+1. Search results must honor every visible filter.
+2. Synthetic records must never appear as live trial data.
+3. Every AI factual claim must be traceable to supplied source text.
+4. The product must not imply eligibility, ranking, treatment advice, or expected benefit.
+5. User-entered health context must be minimized, short-lived, and disclosed when transmitted.
 
-- [x] Trial search over ClinicalTrials.gov v2
-- [x] Results, trial detail, printable discussion sheet
-- [x] AI plain-English explanations w/ safety validator + deterministic fallback
-- [x] Browser-local saved searches + sheet (no PHI collected, HIPAA sidestepped by design)
-- [x] Purple/amber redesign + accessibility/review passes
+## Phase 0 - Shipped baseline
 
-## Phase 1 — Prove it works (trust & evidence)  ← CURRENT
+- [x] Next.js MVP with landing, search, results, trial detail, and discussion sheet
+- [x] ClinicalTrials.gov v2 integration
+- [x] Browser-local saved searches and discussion sheet
+- [x] Deterministic explanation fallback and prohibited-language validator
+- [x] Groq/OpenAI-compatible and local Ollama model options
+- [x] Explanation evaluation fixtures, judge, and human-calibration harness
 
-- [x] 1.0 Wire Groq hosted model (production model = the model we evaluate)
-- [x] 1.1 Gold set of real trials (12; grow toward ~30)
-- [x] 1.2 Thin eval: snapshot + run + usability/fallback rate + manual read (Groq llama-3.3-70b: 12/12 usable after the validator fix)
-- [ ] 1.3 Automated faithfulness judge (claim-level source grounding) + human-calibrated subset  ← IN PROGRESS
-      (judge + calibration harness shipped; judge says 81% faithful on Groq gpt-oss-120b. Calibration
-      round 1 (n=6) = 33%/50% agreement: judge too lenient on second-person reader-assertions. Next:
-      tighten judge + stop generator "you…" claims, re-run, re-calibrate. 81% NOT yet trusted.)
-- [ ] 1.4 Overstatement/eligibility scan beyond current blocklist; export & harden validateExplanation
-      (done: disclaimer guaranteed by construction; dropped model-generated safetyWarnings that
-      freelanced unsourced clinical claims. TODO: broader overstatement scan; retry/timeout for
-      large prompts; granular fallback reasons)
-- [ ] 1.5 Published eval REPORT.md + written case study (the flagship portfolio artifact)
-- [ ] 1.6 Product principles / non-goals doc + decision log
+## Phase 1 - Search integrity (current release gate)
 
-## Phase 2 — Trustworthy in-product (transparency)
+- [x] 1.1 Map cancer, age, phase, status, stage, biomarker, and prior-treatment inputs to valid ClinicalTrials.gov queries
+- [x] 1.2 Resolve US ZIP or City, ST locally and enforce the selected geographic radius
+- [x] 1.3 Return the nearest site whose site status matches the selected recruiting status
+- [x] 1.4 Remove silent synthetic fallback records; show a source-unavailable state instead
+- [x] 1.5 Return and display source status, resolved origin, radius, and applied-filter metadata
+- [x] 1.6 Add regression tests for query construction, distance, site status, invalid location, and upstream failure
+- [x] 1.7 Add pagination and a documented ordering policy after distance correctness is proven
 
-- [ ] 2.1 Show source snippets next to each explanation claim (traceability)
-- [ ] 2.2 Surface uncertainty / "missing info" prominently; label when fallback was used
-- [ ] 2.3 "How we generate this" methodology page
-- [ ] 2.4 Deploy online (Vercel + Groq) with honest model-unavailable UX
+Success criteria: every returned card has a matching site inside the selected radius,
+phase and age filters are verified against the returned record, and an upstream error
+cannot produce a trial card.
 
-## Phase 3 — Reach & usability (distribution + caregiver)
+## Phase 2 - Explanation faithfulness (release gate)
 
-- [ ] 3.1 Caregiver mode (researching for someone else; multiple shortlists)
-- [ ] 3.2 Discussion sheet polish (PDF quality, share/print)
-- [ ] 3.3 Accessibility pass (WCAG AA)
-- [ ] 3.4 Entry points: SEO, methodology transparency, advocacy-org outreach framing
+- [x] 2.1 Gold set of 12 real trials and reproducible model runs
+- [x] 2.2 Claim-level faithfulness judge and first human calibration
+- [ ] 2.3 Remove free-form source-grounded notes and second-person reader assertions
+- [ ] 2.4 Require each factual claim to include a source field and exact supporting excerpt
+- [ ] 2.5 Reject or replace any claim whose evidence cannot be verified deterministically
+- [ ] 2.6 Keep oncology-team questions deterministic until generated questions pass a separate safety eval
+- [ ] 2.7 Expand the gold set to at least 30 varied oncology trials
+- [ ] 2.8 Recalibrate the judge; do not publish an accuracy percentage until agreement is acceptable
+- [ ] 2.9 Publish `REPORT.md` with methods, failures, limitations, and representative examples
 
-## Phase 4 — Depth & scale (only if going more real)
+Success criteria: no unsupported claim reaches the UI in the gold-set run, and the
+human-calibrated evaluator is conservative about reader-specific assertions.
 
-- [ ] 4.1 Saved profile + trial surfacing (within non-goals: surface, never rank/qualify)
-- [ ] 4.2 Data cache/DB (Prisma already scaffolded) + trial-change detection
-- [ ] 4.3 Trial status-change alerts
-- [ ] 4.4 Privacy-preserving analytics to learn what actually helps
+## Phase 3 - Privacy and API hardening
 
-## Cross-cutting (ongoing)
+- [ ] 3.1 Remove medical search details from browser URLs and hosting access logs
+- [ ] 3.2 Stop sending user search context to the explanation model
+- [ ] 3.3 Make the explanation endpoint accept only an NCT ID and fetch trusted source data server-side
+- [ ] 3.4 Add request-size limits, timeouts, retry policy, rate limiting, and granular provider errors
+- [ ] 3.5 Publish clear privacy copy covering ClinicalTrials.gov and AI-provider transmission
+- [ ] 3.6 Add retention rules and a one-action local-data reset
+- [ ] 3.7 Add structured audit events that contain no medical search content
 
-- [ ] Decision-log entry per major choice
-- [ ] Case study + changelog updates as items merge
+## Phase 4 - Product usefulness and transparency
+
+- [ ] 4.1 Show why each trial matched without implying eligibility
+- [ ] 4.2 Flag obvious search conflicts, such as a negative biomarker when a positive biomarker was entered
+- [ ] 4.3 Distinguish official source text, deterministic notes, AI explanations, and fallback content
+- [ ] 4.4 Add explanation error and retry states instead of indefinite loading
+- [ ] 4.5 Add saved-search management or remove the unfinished save control
+- [ ] 4.6 Add confirmations for save, add-to-sheet, remove, and clear actions
+- [ ] 4.7 Improve the discussion sheet with concerns, missing information, source links, dates, and generation mode
+- [ ] 4.8 Add caregiver mode and multiple local shortlists
+
+## Phase 5 - Accessibility and design credibility
+
+- [ ] 5.1 Meet WCAG AA contrast and keyboard/focus requirements
+- [ ] 5.2 Replace the generic purple SaaS treatment with a quieter clinical research system
+- [ ] 5.3 Use the primary tagline and a real, clearly labeled trial-explanation example on the homepage
+- [ ] 5.4 Add methodology, privacy, limitations, and trust pages
+- [ ] 5.5 Improve mobile navigation, result scanning, long-summary handling, and print/PDF output
+- [ ] 5.6 Run browser and assistive-technology checks across desktop and mobile breakpoints
+
+## Phase 6 - Deployment and enterprise path
+
+- [ ] 6.1 Deploy the gated MVP with health checks and honest provider-unavailable UX
+- [ ] 6.2 Add a locally ingested ClinicalTrials.gov dataset and change detection
+- [ ] 6.3 Support local database, private vector search, and local/private model adapters
+- [ ] 6.4 Add RBAC, audit logs, human review, and clinician/trial-coordinator workflows
+- [ ] 6.5 Add EHR/FHIR integration and medical terminology support only inside a secure deployment
+- [ ] 6.6 Prove a no-third-party-API, no-cloud-egress enterprise configuration
+
+## Ongoing evidence
+
+- [ ] Record major safety and architecture decisions in a decision log
+- [ ] Keep the evaluation model aligned with the production model
+- [ ] Add a regression case for every confirmed search or explanation failure
+- [ ] Keep portfolio claims narrower than the evidence in the latest published report
